@@ -24,10 +24,10 @@ $(document).ready(function () {
                 content = `${content}
                 <div class="col-lg-4">
                     <title>${response[i].foodname}</title>
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false" src="https://onlinefood-ef2c.restdb.io/media/${response[i].foodimage}?key=${APIKEY}"/>
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false" src="${response[i].foodimageurl}"/>
                     
                     <h2>${response[i].foodname}</h2>
-                    <p>${response[i].fooddescription}</p>
+                    <p>$${response[i].foodprice.toFixed(2)}</p>
                     <p><a class="btn btn-secondary" href="${response[i]._id}-${response[i].foodname}" target="_blank">View details &raquo;</a></p>
                 </div>`
                 
