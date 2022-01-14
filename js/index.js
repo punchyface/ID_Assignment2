@@ -28,15 +28,19 @@ $(document).ready(function () {
                     
                     <h2>${response[i].foodname}</h2>
                     <p>$${response[i].foodprice.toFixed(2)}</p>
-                    <p><a class="btn btn-secondary" href="${response[i]._id}-${response[i].foodname}" target="_blank">View details &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="#" data-name='${response[i].foodname}' data-email='${response[i].foodprice}' data_id='${response[i]._id}' >View details &raquo;</a></p>
                 </div>`
                 
             }
 
-            document.querySelector("body > main > div.container.marketing > div").innerHTML = content
-            
-            
+            document.querySelector("body > main > div.container.marketing > div").innerHTML = content;
         }); 
+
+
+        document.querySelector("col-lg-4").on("click", "a", function () {
+            let idtobedeleted = $(this).data("id");
+            deleteForm(idtobedeleted);
+        })
     }
 })
 
