@@ -15,8 +15,6 @@ body {
  --------------------------------------------------- */
   /* Logo */
 .logo{
-  width: 30%;
-  height: 20%;
   margin-left: 5px;
 } 
  /* text beside logo */
@@ -24,6 +22,7 @@ body {
   margin-left: 5px;
   font-weight: 500;
   font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 22px;
 }
 
   /* CUSTOMIZE THE CAROUSEL
