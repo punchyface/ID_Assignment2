@@ -9,7 +9,8 @@
     
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
         
-        
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
         <!-- Bootstrap core CSS -->
         <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -53,25 +54,21 @@
                         <img src="images/Logo.png" width="5%" height="4%" alt="">
                         <span>Taste of Wonders</span>
                     </a>
-                    <!-- Not sure what this is for -->
+                    <!-- For smaller screen (dropdown button) -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <!-- Container for the links in navbar -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <!-- list of links -->
+                        <!-- list of links in the middle -->
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <!-- Home Page link -->
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-                            <!-- Another link -->
+                            <!-- Mini Game Page link -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <!-- Another link -->
-                            <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
+                                <a class="nav-link" href="#">Mini Game</a>
                             </li>
                             <!-- Food Categories page link -->
                             <li class="nav-item dropdown">
@@ -79,6 +76,14 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdown04">
 
                                 </ul>
+                            </li>
+                            <!-- Login/Sign Up page link -->
+                            <li class="nav-item navbar-right">
+                                <a href="#" class="nav-link"><i class="fa fa-user-circle-o"></i><span class="signin">Sign In</span></a>
+                            </li>
+                            <!-- Login/Sign Up page link -->
+                            <li class="nav-item navbar-right">
+                                <a href="#" class="nav-link"><i class="fa fa-shopping-cart"></i> <span>0</span></a>
                             </li>
                         </ul>
                     </div>
