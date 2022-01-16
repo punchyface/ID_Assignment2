@@ -23,7 +23,7 @@ $(document).ready(function () {
             let content ="";
             for (var i = 0; i < response.length; i++) {
                 
-                content = `${content}<div class="row" id="${response[i].foodcat}"><h3>${response[i].foodcatname}</h3></div>`
+                content = `${content}<div class="row" id="${response[i].foodcat}"><h3>${response[i].foodcat}</h3></div>`
             }
             document.querySelector("div.container.marketing").innerHTML = content;
         });
@@ -31,8 +31,8 @@ $(document).ready(function () {
         getMenu();
     }
 
+    //category area
     function catarea(foodcat, content){
-        console.log(foodcat)
         document.querySelector(`body > main > div.container.marketing > div#${foodcat}`).innerHTML += content;
     }
 
@@ -70,7 +70,6 @@ $(document).ready(function () {
                     </button>
                     </p>
                 </div>`;
-
                 catarea(response[i].foodcat[0].foodcat, content);  
             }
             removeemptycategory()
@@ -79,15 +78,18 @@ $(document).ready(function () {
 
 
     //to close pop up
-    $(".modal").on("click", "button.close" , function(){
+    $(".modal").on("click", "button.close" , function(e){
+        e.preventDefault();
         $('.modal').modal('hide');
     })
-    $(".modal").on("click", "button.btn.btn-secondary" , function(){
+    $(".modal").on("click", "button.btn.btn-secondary" , function(e){
+        e.preventDefault();
         $('.modal').modal('hide');
     })
 
     //for popup when click view details
-    $("div.marketing").on("click", ".btn-secondary", function () {
+    $("div.marketing").on("click", ".btn-secondary", function (e) {
+        e.preventDefault();
         let foodname = $(this).data("foodname");
         console.log($(this).data());
         let foodprice = $(this).data("foodprice");
