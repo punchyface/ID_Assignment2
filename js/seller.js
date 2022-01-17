@@ -17,12 +17,21 @@ $(document).ready(function () {
           
         $.ajax(settings).done(function (response) {
             console.log(response);
+            //for the cards
             let content ="";
             for (var i = 0; i < response.length; i++) {
                 
                 content = `${content}<div class="row" id="${response[i].foodcat}"><h3>${response[i].foodcat}</h3></div>`
             }
             document.querySelector("div.fooditem .container").innerHTML = content;
+
+            //for the options in add food
+            let content0 = "";
+            for (var i = 0; i < response.length; i++) {
+                
+                content0 = `${content0}<option data-foodcat='${response[i]._id}'>${response[i].foodcat}</option>`
+            }
+            document.querySelector("select#foodcatselection").innerHTML = content0;
             
         });
         
@@ -96,6 +105,7 @@ $(document).ready(function () {
             document.querySelector(".dropdown-menu").innerHTML += content;
         } 
     }
+
 
 
 
