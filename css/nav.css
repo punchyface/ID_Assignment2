@@ -1,0 +1,11 @@
+/* ================= Customise Nav ================= */
+.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark.background-transparent{
+    background: rgba(0, 0, 0, 0.582) !important;
+    padding-bottom: 2px;
+    padding-top: 3px;
+    color: #fff !important;
+}
+.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark{
+    padding-bottom: 2px;
+    padding-top: 3px;
+}
