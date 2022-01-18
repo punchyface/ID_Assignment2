@@ -19,8 +19,7 @@ body {
 }
  /* Nav bar bg-dark */
 .bg-dark{
-  --bs-bg-opacity: 0;
-  background-color: #343a40!important;
+  background-color: #343a40;
 }
 
  /* nav lin class */
