@@ -1,200 +1,712 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- =========== Meta Tags =========== -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
 
-        <!-- =========== Title of page ========== -->
-        <title>Home</title>
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Rescaf - Food & Restauratn Template">
 
-        <!-- =========== Canonical ========== -->
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <!-- ========== Page Title ========== -->
+    <title>Rescaf - Food & Restauratn Template</title>
 
-        <!-- ========== Icon ========== -->
-        <link rel="icon" href="Images/favicon.ico">
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
-        <!-- ========== Start of StyleSheet ========== -->
-        <!-- Load an icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Bootstrap core CSS -->
-        <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <!-- Custom styles for this template -->
-        <link href="css/index.css" rel="stylesheet">
-        <!-- Nav css -->
-        <link rel="stylesheet" href="css/nav.css">
-    
-        <!-- Favicons -->
-        <!--<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-        <link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-        <link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-        <link rel="manifest" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/manifest.json">
-        <link rel="mask-icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-        <link rel="icon" href="https://getbootstrap.com/docs/5.1/assets/img/favicons/favicon.ico">-->
-        <meta name="theme-color" content="#7952b3">
-    
-    
-        <style>
-          .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-          }
-    
-          @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-              font-size: 3.5rem;
-            }
-          }
-        </style>
-    
-    </head>
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/flaticon-set.css" rel="stylesheet" />
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <link href="assets/css/bootsnav.css" rel="stylesheet" />
+    <link href="assets/maincss/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
 
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark background-transparent">
-                <div class="container-fluid">
-                    <!-- Logo for nav bar -->
-                    <a class="navbar-brand logo background-transparent" href="index.html">
-                        <img src="images/logo.png" width="5%" height="4%" alt="">
-                        <span>Taste of Wonders</span>
-                    </a>
-                    <!-- For smaller screen (dropdown button) -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5/html5shiv.min.js"></script>
+      <script src="assets/js/html5/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ========== Google Fonts ========== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
+
+    <!-- Header 
+    ============================================= -->
+    <header id="home">
+
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-default fixed-border navbar-fixed white no-background bootsnav brand-center center-side">
+
+            <div class="container">
+
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
                     </button>
-                    <!-- Container for the links in navbar -->
-                    <div class="collapse navbar-collapse background-transparent" id="navbarCollapse">
-                        <!-- list of links in the middle -->
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                            <!-- Home Page link -->
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                            </li>
-                            <!-- Mini Game Page link -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Mini Game</a>
-                            </li>
-                            <!-- Food Categories page link -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Food Categories</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown04">
-
-                                </ul>
-                            </li>
-                            <!-- Login/Sign Up page link -->
-                            <li class="nav-item navbar-right">
-                                <a href="#" class="nav-link"><i class="fa fa-user-circle-o"></i><span class="signin">Sign In</span></a>
-                            </li>
-                            <!-- Login/Sign Up page link -->
-                            <li class="nav-item navbar-right">
-                                <a href="#" class="nav-link"><i class="fa fa-shopping-cart"></i> <span>0</span></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo-light.png" class="logo logo-display" alt="Logo">
+                        <img src="assets/img/logo.png" class="logo logo-scrolled" alt="Logo">
+                    </a>
                 </div>
-            </nav>
-        </header>
-        
-        <main>
+                <!-- End Header Navigation -->
 
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav" data-in="#" data-out="#">
+                        <li>
+                            <a class="smooth-menu" href="#home">Home</a>
+                        </li>
+                        <li>
+                            <a class="smooth-menu" href="#popular-dishes">Popular Dishes</a>
+                        </li>
+                        <li>
+                            <a class="smooth-menu" href="menu.html">Menu</a>
+                        </li>
+                        <li>
+                            <a class="smooth-menu" href="#gallery">Gallery</a>
+                        </li>
+                        <li>
+                            <a class="smooth-menu" href="#review">Review</a>
+                        </li>
+                        <li>
+                            <a class="smooth-menu" href="#blog">Blog</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
 
-                        <div class="container">
-                            <div class="carousel-caption text-start">
-                                <h1>Example headline.</h1>
-                                <p>Some representative placeholder content for the first slide of the carousel.</p>
-                                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+    </header>
+    <!-- End Header -->
 
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>Another example headline.</h1>
-                                <p>Some representative placeholder content for the second slide of the carousel.</p>
-                                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
+    <!-- Start Banner 
+    ============================================= -->
+    <div class="banner-area ds-fonts text-light text-center">
+        <div id="bootcarousel" class="carousel slide animate_text" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner transparent-nav heading-uppercase text-dark">
+                <div class="item active bg-cover" style="background-image: url(assets/img/2440x1578.png);">
+                    <div class="box-table shadow dark">
+                        <div class="box-cell">
                             <div class="container">
-                                <div class="carousel-caption text-end">
-                                    <h1>One more for good measure.</h1>
-                                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="content">
+                                            <h2 data-animation="animated fadeInUp">Burger</h2>
+                                            <h1 data-animation="animated fadeInDown">Awesome delicious food</h1>
+                                            <p data-animation="animated slideInUp">
+                                                Stronger unpacked felicity to of mistaken. Fanny at wrong table ye in. Be on easily cannot innate in lasted months on. Differed and and felicity steepest mrs age outweigh.
+                                            </p>
+                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="menu.html">Order Now</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>    
-
-            <!-- Marketing messaging and featurettes
-            ================================================== -->
-            <!-- Wrap the rest of the page in another container to center all the content. -->
-
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content"></div>
-                </div>
-            </div>
-
-            <div class="container marketing">
-
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <div class ="col-lg-4" id="loadingbar">
-                        <div class="spinner-grow text-muted"></div>
-                        <div class="spinner-grow text-primary"></div>
-                        <div class="spinner-grow text-success"></div>
-                        <div class="spinner-grow text-info"></div>
-                        <div class="spinner-grow text-warning"></div>
-                        <div class="spinner-grow text-danger"></div>
-                        <div class="spinner-grow text-secondary"></div>
-                        <div class="spinner-grow text-dark"></div>
-                        <div class="spinner-grow text-light"></div>
+                <div class="item bg-cover" style="background-image: url(assets/img/2440x1578.png);">
+                    <div class="box-table shadow dark">
+                        <div class="box-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="content">
+                                            <h2 data-animation="animated fadeInUp">Pizza</h2>
+                                            <h1 data-animation="animated fadeInDown">Awesome delicious food</h1>
+                                            <p data-animation="animated slideInUp">
+                                                Stronger unpacked felicity to of mistaken. Fanny at wrong table ye in. Be on easily cannot innate in lasted months on. Differed and and felicity steepest mrs age outweigh.
+                                            </p>
+                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="menu.html">Order Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <div class="item bg-cover" style="background-image: url(assets/img/2440x1578.png);">
+                    <div class="box-table shadow dark">
+                        <div class="box-cell">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="content">
+                                            <h2 data-animation="animated fadeInUp">Sandwich</h2>
+                                            <h1 data-animation="animated fadeInDown">Awesome delicious food</h1>
+                                            <p data-animation="animated slideInUp">
+                                                Stronger unpacked felicity to of mistaken. Fanny at wrong table ye in. Be on easily cannot innate in lasted months on. Differed and and felicity steepest mrs age outweigh.
+                                            </p>
+                                            <a data-animation="animated slideInUp" class="btn btn-light border btn-md" href="#">Order Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- End Wrapper for slides -->
 
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#bootcarousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#bootcarousel" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Shape -->
+        <div class="wavesshape">
+            <img src="assets/img/shape.png" alt="Shape">
+        </div>
+        <!-- Shape -->
+    </div>
+    <!-- End Banner -->
 
-            <!-- FOOTER -->
-            <footer class="container">
-                <p class="float-end"><a href="#">Back to top</a></p>
-                <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-            </footer>
-        </main>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="js/index.js"></script>
-        <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="/JS/nav.js"></script>
+    <!-- Start Basic Info 
+    ============================================= -->
+    <div class="basic-info-area text-center default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 single-item">
+                    <div class="item">
+                        <h4>Reservations</h4>
+                        <p>
+                            Making a reservation at Délicious restaurant is easy and takes just a couple of minutes.
+                        </p>
+                        <h2>+123 456 7890</h2>
+                    </div>
+                </div>
+                <div class="col-md-4 single-item">
+                    <img src="assets/img/food.png" alt="Thumb">
+                </div>
+                <div class="col-md-4 single-item">
+                    <div class="item">
+                        <h4>Get an offer</h4>
+                        <p>
+                            Subsctibe today and get an offer everyday. It's easy and takes just a couple of minutes.
+                        </p>
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="email" placeholder="Enter your e-mail here" class="form-control" name="email">
+                                <button type="submit"><i class="fa fa-paper-plane"></i></button>  
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Basic Info -->
 
-        
-    </body>
+    <!-- Start Popular Dishes
+    ============================================= -->
+    <div id="popular-dishes" class="food-menu-area path-less carousel-shadow bg-gray default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h3>Discorver</h3>
+                        <h2>Our specials</h2>
+                        <p>
+                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="menu-lists food-menu-carousel owl-carousel owl-theme text-center">
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                                <div class="price">
+                                    <h5>$5.90</h5>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4><a href="#">Crispy Crust Pizzeria</a></h4>
+                                <span>Mutton / Olive Oil / Salt</span>
+                                <p>
+                                    Considered introduced themselves mr to discretion at. Means among saw hopes for. Death mirth in oh learn he equal on.
+                                </p>
+                                <div class="button">
+                                    <a href="#">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                                <div class="price">
+                                    <h5>$18.10</h5>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4><a href="#">Luger Burger</a></h4>
+                                <span>Beef / Olive Oil / Salt</span>
+                                <p>
+                                    Considered introduced themselves mr to discretion at. Means among saw hopes for. Death mirth in oh learn he equal on.
+                                </p>
+                                <div class="button">
+                                    <a href="#">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                                <div class="price">
+                                    <h5>$6.00</h5>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4><a href="#">Fries McDonald's</a></h4>
+                                <span>Chicken / Olive Oil / Salt</span>
+                                <p>
+                                    Considered introduced themselves mr to discretion at. Means among saw hopes for. Death mirth in oh learn he equal on.
+                                </p>
+                                <div class="button">
+                                    <a href="#">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                                <div class="price">
+                                    <h5>$11.50</h5>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4><a href="#">Chicken Popeyes</a></h4>
+                                <span>Mutton / Olive Oil / Salt</span>
+                                <p>
+                                    Considered introduced themselves mr to discretion at. Means among saw hopes for. Death mirth in oh learn he equal on.
+                                </p>
+                                <div class="button">
+                                    <a href="#">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Popular Dishes -->
+
+    <!-- Start Gallery
+    ============================================= -->
+    <div id="gallery" class="gallery-area default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h3>Gallery</h3>
+                        <h2>Our Environment</h2>
+                        <p>
+                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-items col-3">
+                <div class="row">
+                    <div class="col-md-12 text-center food-menu-content">
+                        <div class="row magnific-mix-gallery text-center masonary">
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                            <!-- Single Item -->
+                            <div class="pf-item">
+                                <div class="item-effect">
+                                    <img src="assets/img/800x800.png" alt="Thumb">
+                                    <a href="assets/img/800x800.png" class="item popup-link"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- End Single Item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Gallery -->
+
+    <!-- Start Testimonials 
+    ============================================= -->
+    <div id="review" class="testimonials-area bg-gray carousel-shadow default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h3>Reviews</h3>
+                        <h2>Testimonials</h2>
+                        <p>
+                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="testimonial-items testimonials-carousel owl-carousel owl-theme text-center">
+                        <!-- Single Item -->
+                        <div class="item">
+                            <h4>Delicious Burger</h4>
+                            <p>
+                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                            </p>
+                            <div class="thumb">
+                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div class="clients-info">
+                                <h5>Ahel John</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <h4>Awesome pizza</h4>
+                            <p>
+                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                            </p>
+                            <div class="thumb">
+                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div class="clients-info">
+                                <h5>Michel Athem</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <h4>Delicious Burger</h4>
+                            <p>
+                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                            </p>
+                            <div class="thumb">
+                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <div class="clients-info">
+                                <h5>Ahel John</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Testimonials -->
+
+    <!-- Start Blog 
+    ============================================= -->
+    <div id="blog" class="blog-area default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h3>Blog</h3>
+                        <h2>Latest News</h2>
+                        <p>
+                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="blog-items">
+                    <!-- Left Blog -->
+                    <div class="col-md-6 default">
+                        <div class="single-item">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                                <div class="meta">
+                                    <div class="tags">
+                                        <a href="#">Burget</a>
+                                        <a href="#">Pizza</a>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fas fa-user"></i> Admin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-calendar-alt"></i> 24 Aug, 2019</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h3>
+                                    <a href="#">Possession so comparison inquietude he conviction </a>
+                                </h3>
+                                <p>
+                                    Arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months turned oh at change of. Astonished set expression solicitude way admiration. 
+                                </p>
+                                <a class="btn circle btn-theme border btn-md" href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Left Blog -->
+
+                    <!-- Right Blog -->
+                    <div class="col-md-6 flex">
+                        <!-- Single Item -->
+                        <div class="single-item flex">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fas fa-user"></i> Admin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-calendar-alt"></i> 24 Apr, 2019</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h4>
+                                    <a href="#">stimulated cultivated projection possession</a>
+                                </h4>
+                                <p>
+                                    Arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months turned oh at change of.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="single-item flex">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img src="assets/img/800x600.png" alt="Thumb">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fas fa-user"></i> Admin</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fas fa-calendar-alt"></i> 24 Apr, 2019</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h4>
+                                    <a href="#">Difficulty on insensible reasonable in</a>
+                                </h4>
+                                <p>
+                                    Arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months turned oh at change of. 
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                    </div>
+                    <!-- End Right Blog -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog -->
+
+    <!-- Start Footer 
+    ============================================= -->
+    <footer class="bg-fixed pattern shadow dark-hard" style="background-image: url(assets/img/2440x1578.png);">
+        <div class="container">
+            <div class="row">
+
+                <div class="f-items title-effect text-light default-padding">
+                    <div class="col-md-6 col-md-offset-3 item-center text-center">
+                        <a href="#"><img src="assets/img/logo-light.png" alt="Logo"></a>
+                        <p>
+                            (French Cafe/Bistrot) 840, South Spring Street, Los Angeles.
+                        </p>
+                        <ul>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                +123 456 7890
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope-open"></i>
+                                <a href="mailto:support@validtheme.com">support@validtheme.com</a>
+                            </li>
+                        </ul>
+                        <div class="social">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Footer Bottom -->
+        <div class="footer-bottom text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; Copyright 2019. All Rights Reserved by <a href="#">validthemes</a></p>
+                    </div>
+                    <div class="col-md-6 text-right link">
+                        <ul>
+                            <li>
+                                <a href="#">Terms of user</a>
+                            </li>
+                            <li>
+                                <a href="#">License</a>
+                            </li>
+                            <li>
+                                <a href="#">Support</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Bottom -->
+    </footer>
+    <!-- End Footer -->
+
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/equal-height.min.js"></script>
+    <script src="assets/js/jquery.appear.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/modernizr.custom.13711.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/count-to.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/YTPlayer.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
 </html>
