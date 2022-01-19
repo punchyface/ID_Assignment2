@@ -1,39 +1,8 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
+    catlist = [];
     getCategory();
     
-    /*imagesLoaded active*/
-    function filtercat() 
-    {
-        $('#portfolio-grid,.blog-masonry').imagesLoaded(function() {
-
-            /* Filter menu */
-            $('.mix-item-menu').on('click', 'button', function() {
-                var filterValue = $(this).attr('data-filter');
-                $grid.isotope({
-                    filter: filterValue
-                });
-            });
-
-            /* filter menu active class  */
-            $('.mix-item-menu button').on('click', function(event) {
-                $(this).siblings('.active').removeClass('active');
-                $(this).addClass('active');
-                event.preventDefault();
-            });
-
-            /* Filter active */
-            var $grid = $('#portfolio-grid').isotope({
-                itemSelector: '.pf-item',
-                percentPosition: true,
-                masonry: {
-                    columnWidth: '.pf-item',
-                }
-            });
-
-        });
-
-    }
 
     //create foodcat div.row
     function getCategory(){
@@ -53,8 +22,8 @@ $(document).ready(function () {
             console.log(response);
             let content ="";
             for (var i = 0; i < response.length; i++) {
-                
-                content = `${content}<button data-filter=".${response[i]._id}">${response[i].foodcat}</button>`
+                catlist.push(response[i]._id)
+                content = `${content}<button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button>`
             }
             document.querySelector(".food-menu-content .mix-item-menu").innerHTML += content;
         });
@@ -106,39 +75,70 @@ $(document).ready(function () {
                     </div>
                 </div>`;
                 document.querySelector("div#portfolio-grid.menu-lists").innerHTML += content;
+                eleremove(response[i].foodcat[0]._id, catlist);
             }
+            removecategory()
             filtercat()
         }); 
-    function removecaregory(){
-        document.querySelectorAll()
-        array.forEach(element => {
-            
+    }
+
+    function eleremove(item, alist){
+        console.log(alist.length)
+        if (alist.includes(item)){
+            let num = alist.indexOf(item);
+            alist.splice(num, 1);
+            console.log(alist.length)
+        }
+    }
+
+    /*imagesLoaded active*/
+    function filtercat() 
+    {
+        $('#portfolio-grid,.blog-masonry').imagesLoaded(function() {
+
+            /* Filter menu */
+            $('.mix-item-menu').on('click', 'button', function() {
+                var filterValue = $(this).attr('data-filter');
+                $grid.isotope({
+                    filter: filterValue
+                });
+            });
+
+            /* filter menu active class  */
+            $('.mix-item-menu button').on('click', function(event) {
+                $(this).siblings('.active').removeClass('active');
+                $(this).addClass('active');
+                event.preventDefault();
+            });
+
+            /* Filter active */
+            var $grid = $('#portfolio-grid').isotope({
+                itemSelector: '.pf-item',
+                percentPosition: true,
+                masonry: {
+                    columnWidth: '.pf-item',
+                }
+            });
+
         });
+
+    }
+
+
+
+    function removecategory(){
+        for (i = 0; i < catlist.length; i++){
+            $(`.mix-item-menu button#${catlist[i]}`).remove()
+        }
     }
 
 
 
-    }
+
 
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
