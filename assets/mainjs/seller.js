@@ -58,7 +58,7 @@ $(document).ready(function () {
             for (var i = 0; i < response.length; i++) {
                 let content = "";
                 content = `
-                <div class="item-single pf-item ${response[i].foodcat[0]._id} a${response[i].foodstatus}">
+                <div class="item-single pf-item ${response[i].foodcat[0]._id} avail${response[i].foodstatus} recommended${response[i].recommended}">
                     <div class="item">
                         <div class="thumb">
                             <a href="#">
@@ -74,7 +74,7 @@ $(document).ready(function () {
                                 ${response[i].fooddescription}
                             </p>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" id="update" data-toggle="modal" data-target="#exampleModalCenter" data-foodname='${response[i].foodname}' data-foodprice='${response[i].foodprice}' data-foodid='${response[i]._id}' data-fooddescription='${response[i].fooddescription}' data-foodimageurl='${response[i].foodimageurl}' data-foodcat='${JSON.stringify(response[i].foodcat)}' data-foodstatus='${response[i].foodstatus}'>Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" id="update" data-toggle="modal" data-target="#exampleModalCenter" data-foodname='${response[i].foodname}' data-foodprice='${response[i].foodprice}' data-foodid='${response[i]._id}' data-fooddescription='${response[i].fooddescription}' data-foodimageurl='${response[i].foodimageurl}' data-foodcat='${JSON.stringify(response[i].foodcat)}' data-foodstatus='${response[i].foodstatus}' data-recommended='${response[i].recommended}'>Edit</button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary" id="delete" data-toggle="modal" data-target="#exampleModalCenter" data-foodid='${response[i]._id}'>Delete</button>
                             </div>
                         </div>
@@ -129,6 +129,7 @@ $(document).ready(function () {
         let fooddescription = $(this).data("fooddescription");
         let foodcat = $(this).data("foodcat");
         let foodstatus = $(this).data("foodstatus");
+        let recommended = $(this).data("recommended");
         let content = `
         <div class="modal-content">
             <div class="modal-header">
@@ -167,8 +168,13 @@ $(document).ready(function () {
                             <input type="checkbox" class="form-check-input" id="update-foodstatus">
                             <label class="form-check-label" for="update-foodstatus">Available</label>
                         </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="update-recommended">
+                            <label class="form-check-label" for="update-recommended">Recommended</label>
+                        </div>
                     </form>
                 </div> 
+                <div id="update-error"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -183,6 +189,7 @@ $(document).ready(function () {
         $("#update-foodimageurl").val(foodimageurl);
         $(`#update-foodcat option#${foodcat[0]._id}`).attr('selected', true);
         $("#update-foodstatus").attr('checked', foodstatus);
+        $("#update-recommended").attr('checked', recommended);
         $("#update-foodid").val(foodid);
         $('.modal').modal('show');
 
@@ -195,22 +202,25 @@ $(document).ready(function () {
             let fooddescription = $("#update-fooddescription").val();
             let foodcat = $('#update-foodcat').val();
             let foodstatus =  $("#update-foodstatus").is(":checked");
-            updatemenu(foodid, foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus)
+            let recommended =  $("#update-recommended").is(":checked");
+            updatemenu(foodid, foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus, recommended)
         })
     })
     
-    function updatemenu(foodid, foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus){
+    function updatemenu(foodid, foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus, recommended){
+        tocheck("update-foodname", "update-error")
+        tocheck("update-fooddescription", "update-error")
+        tocheck("update-foodimageurl", "update-error")
         foodcat = [JSON.parse(foodcat)];
         var jsondata = {
             "foodname": foodname,
             "foodprice": Number(foodprice),
             "fooddescription": fooddescription,
             "foodstatus": foodstatus,
+            "recommended": recommended,
             "foodimageurl": foodimageurl,
             "foodcat": foodcat
         };
-        console.log(foodid)
-        console.log(jsondata)
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -234,14 +244,104 @@ $(document).ready(function () {
         });
     }
 
+
+    $("#add-food-submit").on("click", function (e) {
+        e.preventDefault();
+        let foodname = $("#add-foodname").val();
+        let foodprice = $("#add-foodprice").val();
+        let foodimageurl = $("#add-foodimageurl").val();
+        let fooddescription = $("#add-fooddescription").val();
+        let foodcat = $('#add-foodcat').val();
+        let foodstatus =  $("#add-foodstatus").is(":checked");
+        let recommended =  $("#add-recommended").is(":checked");
+        addmenu(foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus, recommended)
+    })
+
+    function addmenu(foodname, foodprice, fooddescription, foodcat, foodimageurl, foodstatus, recommended){
+        tocheck("add-foodname", "add-error")
+        tocheck("add-fooddescription", "add-error")
+        tocheck("add-foodimageurl", "add-error")
+        foodcat = [JSON.parse(foodcat)];
+        var jsondata = {
+            "foodname": foodname,
+            "foodprice": Number(foodprice),
+            "fooddescription": fooddescription,
+            "foodstatus": foodstatus,
+            "recommended": recommended,
+            "foodimageurl": foodimageurl,
+            "foodcat": foodcat
+        };
+        console.log(jsondata)
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://onlinefood-ef2c.restdb.io/rest/menu",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata),
+            "beforeSend": function(){
+              $("#add-food-submit").prop( "disabled", true);
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            location.reload();
+        });
+    }
+
+    $("div#portfolio-grid.menu-lists").on("click", "#delete", function (e) {
+        e.preventDefault();
+        let foodid = $(this).data("foodid");
+        deleteform(foodid);
+    })
+
+    function deleteform(foodid){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://onlinefood-ef2c.restdb.io/rest/menu/${foodid}`,
+            "method": "DELETE",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            }
+        }
+          
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            location.reload();
+        });
+    }
     
 
-    
 
 
 
 
 
+
+
+
+
+
+
+
+
+    //validator
+    function tocheck(idcheck, area) {
+        const inpObj = document.getElementById(idcheck);
+        if (!inpObj.checkValidity()) {
+        document.getElementById(area).innerHTML = `<b>${inpObj.validationMessage} Located in (${idcheck})</b>`;
+        throw new Error();
+        } 
+    } 
 
 })
 

@@ -56,7 +56,7 @@ $(document).ready(function () {
                 if (response[i].foodstatus == true){
                     let content = "";
                     content = `
-                    <div class="item-single pf-item ${response[i].foodcat[0]._id}">
+                    <div class="item-single pf-item ${response[i].foodcat[0]._id} recommended${response[i].recommended}">
                         <div class="item">
                             <div class="thumb">
                                 <a href="#">
@@ -81,17 +81,17 @@ $(document).ready(function () {
                     eleremove(response[i].foodcat[0]._id, catlist);
                 }
             }
-            removecategory()
-            filtercat()
+            $("div#portfolio-grid.menu-lists").ready(function () {
+                removecategory();
+                filtercat();
+            });
         }); 
     }
 
     function eleremove(item, alist){
-        console.log(alist.length)
         if (alist.includes(item)){
             let num = alist.indexOf(item);
             alist.splice(num, 1);
-            console.log(alist.length)
         }
     }
 
