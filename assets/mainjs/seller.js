@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
-    getCategory();
+    getCategory()
     var content0;
 
     //create foodcat div.row
@@ -31,9 +31,7 @@ $(document).ready(function () {
             }
             document.querySelector("select#add-foodcat").innerHTML = content0;
         });
-        $("select#add-foodcat").ready(function () {
-            getMenu()
-        })
+        $(document).ready(getMenu());
     }
 
 

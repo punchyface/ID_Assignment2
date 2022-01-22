@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
     catlist = [];
-    getCategory();
+    getCategory()
     
 
     //create foodcat div.row
@@ -27,10 +27,7 @@ $(document).ready(function () {
             }
             document.querySelector(".food-menu-content .mix-item-menu").innerHTML += content;
         });
-        
-        $(".food-menu-content .mix-item-menu").ready(function () {
-            getMenu()
-        })
+        $(document).ready(getMenu());
     }
 
 
@@ -81,10 +78,8 @@ $(document).ready(function () {
                     eleremove(response[i].foodcat[0]._id, catlist);
                 }
             }
-            $("div#portfolio-grid.menu-lists").ready(function () {
                 removecategory();
                 filtercat();
-            });
         }); 
     }
 
