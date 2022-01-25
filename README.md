@@ -1,9 +1,9 @@
-# Taste of Wonders
-Taste of Wonders is a food delivery platform that offers a range of foods from different cuisines.
-...
+# Shiok Ah
+Shiok Ah is an e-commerce website that sells a variety of food and beverages to it's consumer.
 ## Design Process
 
 ## Features
+### Existing Features
 ## Technologies Used
 ## Testing
 ## Credits
