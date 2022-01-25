@@ -129,13 +129,6 @@ $(document).ready(function () {
         let foodstatus = $(this).data("foodstatus");
         let recommended = $(this).data("recommended");
         let content = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLongTitle">Edit</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
                 <div class="form" id="update-food">
                     <form id="update-food-form">
@@ -177,9 +170,8 @@ $(document).ready(function () {
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" id="update-food-submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>`;
-        document.querySelector("div.modal-dialog").innerHTML = content;
+            </div>`;
+        document.querySelector("div.modal-dialog div.modal-content").innerHTML = content;
         document.querySelector("select#update-foodcat").innerHTML = content0;
         $("#update-foodname").val(foodname);
         $("#update-foodprice").val(foodprice);
