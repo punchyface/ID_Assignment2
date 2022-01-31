@@ -1,0 +1,28 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "description": "Shiok Ah is an e-commerce website that sells a variety of food and beverages to it's consumer.\r ## Design Process",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punchyface/Assignment-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/punchyface/Assignment-2/issues"
+  },
+  "homepage": "https://github.com/punchyface/Assignment-2#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
