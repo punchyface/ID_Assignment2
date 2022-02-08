@@ -19,6 +19,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function(response){
             console.log(response);
             let content = "";
+            let total = 0.00;
 
             //Go through data
             for(var i = 0; i < response.length; i++){
@@ -42,10 +43,14 @@ $(document).ready(function () {
                 </td>
                 <!-- Subtotal -->
                 <td class="subtotal">${(response[i].foodid[0].foodprice * response[i].quantity).toFixed(2)}</td>
-            </tr>`
+                </tr>`;
+                
+                let subtotal = `${(response[i].foodid[0].foodprice * response[i].quantity.toFixed(2))}`;
+                total += parseFloat(subtotal);
             }
-
+            // Update html page
             $(".cart-table tbody").html(content);
+            $(".total-price table .display-total-cost").html(total);
         })
     }
 
