@@ -74,12 +74,17 @@ th:last-child{
     text-align: right;
 }
 /* check out btn */
+.check-out-btn{
+    text-align: center;
+    width: 100%;
+}
+/* check out btn input */
 .check-out-btn input{
     background-color: #E7272D;
     color: #fff;
     width: 100%;
     border-radius: 30px;
-    margin-top: 10px;
+    margin: 20px auto 10px;
     font-weight: bold;
 }
 /* tbody img */
