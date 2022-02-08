@@ -22,14 +22,14 @@ $(document).ready(function () {
 
             //Go through data
             for(var i = 0; i < response.length; i++){
-                content = `<tr>
+                content += `<tr>
                 <!-- Product -->
                 <td>
                     <div class="cart-info">
-                        <img src="${response[i].foodid[4]}" alt=""> <!-- item image -->
+                        <img src="${response[i].foodid[0].foodimageurl}" alt=""> <!-- item image -->
                         <div>
-                            <p>${response[i].foodid[0]}</p> <!-- item name -->
-                            <small>$${response[i].foodid[1]}</small> <!-- item price-->
+                            <p>${response[i].foodid[0].foodname}</p> <!-- item name -->
+                            <small>$${response[i].foodid[0].foodprice.toFixed(2)}</small><br> <!-- item price-->
                             <a href="">Remove</a>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ $(document).ready(function () {
                     </div>
                 </td>
                 <!-- Subtotal -->
-                <td class="subtotal">${response[i].foodid[1] * response[i].quantity}</td>
+                <td class="subtotal">${(response[i].foodid[0].foodprice * response[i].quantity).toFixed(2)}</td>
             </tr>`
             }
 
