@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
     catlist = [];
@@ -78,8 +79,9 @@ $(document).ready(function () {
                     eleremove(response[i].foodcat[0]._id, catlist);
                 }
             }
-                removecategory();
-                filtercat();
+            removecategory();
+            filtercat();
+            $("body > div > div.se-pre-con").fadeOut("slow");
         }); 
     }
 

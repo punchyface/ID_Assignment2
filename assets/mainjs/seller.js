@@ -80,7 +80,9 @@ $(document).ready(function () {
                 </div>`;
                 document.querySelector("div#portfolio-grid.menu-lists").innerHTML += content;
             }
-            filtercat()
+            filtercat();
+
+            $("body > div > div.se-pre-con").fadeOut("slow");
         }); 
     }
 
