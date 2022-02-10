@@ -97,10 +97,12 @@
 
     <main class="cart-content">
 
-        <!-- Cover page -->
-        <!-- <div class="cover-page">
-            <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_mpmR6B.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-        </div> -->
+        <!-- Page header -->
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <hr>
+        </div>
+        <br>
 
 
         <!-- Display items in the cart -->
@@ -109,15 +111,25 @@
             <table class="cart-table">
                 <thead>
                     <tr>
-                        <th>Product</th>
+                        <th>Dishes</th>
                         <th>Quantity</th>
                         <th>Subtotal</th>
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody class="tbody"> 
+                    <!-- Display items in cart using JS -->
                 </tbody>
+                
             </table>
+
+            <!-- Cart preloader -->
+            <div class="cart-preloader">
+                
+                <!-- Default Preloader -->
+                <div class="default-cart-preloader"></div>
+
+            </div>
 
             <!-- Display total price -->
             <div class="total-price">
@@ -230,8 +242,9 @@
     <script src="assets/js/YTPlayer.min.js"></script>
     <script src="assets/js/bootsnav.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="assets/mainjs/Shoppingcart.js"></script>
+    <script src="assets/mainjs/index.js"></script>
+    
 
 </body>
 
