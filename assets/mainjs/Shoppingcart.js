@@ -18,6 +18,8 @@ $(document).ready(function () {
 
         $.ajax(settings).done(function(response){
             console.log(response);
+            $(".default-cart-preloader").fadeOut(60); //Remove default preloader
+            $(".total-price table").css('visibility', 'visible'); //Make price visibal
             let content = "";
             let total = 0.00;
 
@@ -38,7 +40,7 @@ $(document).ready(function () {
                 <!-- Quantity -->
                 <td>
                     <div class="cart-item-qty">
-                        <input type="number" value="${response[i].quantity}">
+                        ${response[i].quantity}
                     </div>
                 </td>
                 <!-- Subtotal -->
@@ -49,9 +51,19 @@ $(document).ready(function () {
                 total += parseFloat(subtotal);
             }
             // Update html page
-            $(".cart-table tbody").html(content);
+            $(".tbody").html(content);
             $(".total-price table .display-total-cost").html(total);
         })
+    }
+
+    //function to replace cart preloader
+    function EmptyCartPreloader(){
+        $(".default-cart-preloader").fadeOut(60); //Remove default preloader
+        
+        let content = `<img src="assets/img/your-cart-is-empty.png" alt="">`;
+
+        //Update html page
+        $(".cart-preloader").html(content);
     }
 
 })
