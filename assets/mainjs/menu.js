@@ -136,6 +136,8 @@ $(document).ready(function () {
 
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
+        logo: 'assets/img/logo.png',
+        logoText: 'Shiok Ah',
         clientId: "0oa3tpe06geyv3Tq25d7",
         authParams: {
           issuer: "default",
