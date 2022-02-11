@@ -33,14 +33,14 @@ $(document).ready(function () {
                         <div>
                             <p>${response[i].foodid[0].foodname}</p> <!-- item name -->
                             <small>$${response[i].foodid[0].foodprice.toFixed(2)}</small><br> <!-- item price-->
-                            <a href="">Remove</a>
+                            <button class="remove-cart-btn" type="button">Remove</button>
                         </div>
                     </div>
                 </td>
                 <!-- Quantity -->
                 <td>
                     <div class="cart-item-qty">
-                        ${response[i].quantity}
+                        <p>${response[i].quantity}</p>
                     </div>
                 </td>
                 <!-- Subtotal -->
@@ -53,6 +53,17 @@ $(document).ready(function () {
             // Update html page
             $(".tbody").html(content);
             $(".total-price table .display-total-cost").html(total);
+
+            //function to remove cart item when remove btn is clicked
+            var removeCartItemButton = document.getElementsByClassName('remove-cart-btn');
+            console.log(removeCartItemButton);
+            for(var i = 0; i < removeCartItemButton.length; i++){
+                var button = removeCartItemButton[i];
+                button.addEventListener('click', function(event){
+                    var buttonClicked = event.target;
+                    buttonClicked.closest('tr').remove();
+                })
+            }
         })
     }
 
@@ -65,5 +76,7 @@ $(document).ready(function () {
         //Update html page
         $(".cart-preloader").html(content);
     }
+
+    
 
 })
