@@ -76,22 +76,22 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="#" data-out="#">
                         <li>
-                            <a class="smooth-menu" href="#home">Home</a>
+                            <a class="smooth-menu" href="index.html">Home</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="#popular-dishes">Popular Dishes</a>
+                            <a class="smooth-menu" href="index.html#popular-dishes">Popular Dishes</a>
                         </li>
                         <li>
                             <a class="smooth-menu" href="menu.html">Menu</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="#review">Review</a>
+                            <a class="smooth-menu" href="index.html#review">Review</a>
                         </li>
                         <li>
                             <a class="smooth-menu" href="shoppingcart.html"><i class="fas fa-lg fa-shopping-cart cart-icon"></i><span class="cart-items">0</span></a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="#"><i class="far fa-lg fa-user-circle"></i></a>
+                            <a data-toggle="modal" data-target=".loginModal" href="#"><i class="far fa-lg fa-user-circle"></i></a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -116,10 +116,10 @@
     <!-- End Breadcrumb -->
 
     <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade loginModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
-                <div id="messageBox" class="container"></div>
+                <div id="messageBox" class="container" style="padding-top: 15px;"></div>
                 <!-- where the sign-in form will be displayed -->
                 <div id="okta-login-container"></div>
                 <br>
