@@ -19,11 +19,11 @@ $(document).ready(function () {
         $.ajax(settings).done(function(response){
             console.log(response);
             $(".default-cart-preloader").fadeOut(60); //Remove default preloader
-            $(".total-price table").css('visibility', 'visible'); //Make price visibal
+            $(".total-price table").css('visibility', 'visible'); //Make price visible
             let content = "";
             let total = 0.00;
 
-            //Go through data
+            //Go through database and update html
             for(var i = 0; i < response.length; i++){
                 content += `<tr>
                 <!-- Product -->
@@ -40,7 +40,9 @@ $(document).ready(function () {
                 <!-- Quantity -->
                 <td>
                     <div class="cart-item-qty">
-                        <p>${response[i].quantity}</p>
+                        <button class="cart-qty-minus" type="button">-</button>
+                        <input type="number" min="1" class="qty qty-btn" value="${response[i].quantity}" readonly>
+                        <button class="cart-qty-plus" type="button">+</button>
                     </div>
                 </td>
                 <!-- Subtotal -->
@@ -53,17 +55,25 @@ $(document).ready(function () {
             // Update html page
             $(".tbody").html(content);
             $(".total-price table .display-total-cost").html(total);
+            sumUpQty();
 
-            //function to remove cart item when remove btn is clicked
+            /*to remove cart item when remove btn is clicked
+            -------------------------------------------------------------------------------*/
             var removeCartItemButton = document.getElementsByClassName('remove-cart-btn');
-            console.log(removeCartItemButton);
             for(var i = 0; i < removeCartItemButton.length; i++){
                 var button = removeCartItemButton[i];
                 button.addEventListener('click', function(event){
                     var buttonClicked = event.target;
-                    buttonClicked.closest('tr').remove();
+                    buttonClicked.closest('tr').remove(); //not complete (need to remove item in database)
+                    //call function to calculate the total cost
+                    recalculateTotal();
+                    //call function to update total item in cart
+                    sumUpQty();
                 })
             }
+
+            /*to update cart page when plus btn is clicked
+            -------------------------------------------------------------------------------*/
         })
     }
 
@@ -77,6 +87,36 @@ $(document).ready(function () {
         $(".cart-preloader").html(content);
     }
 
-    
+    //function to recalculate total 
+    function recalculateTotal(){
+        let totalsum = 0.00;
+        var allsubtotals = document.getElementsByClassName('subtotal')
+        console.log(allsubtotals);
+        for(var i = 0; i < allsubtotals.length; i++){
+            var subtotal = allsubtotals[i];
+            totalsum += parseFloat(subtotal.innerHTML);
+        }
+
+        //Update html page
+        $(".total-price table .display-total-cost").html(totalsum.toFixed(2));
+    }
+
+    //function to add upp all qty
+    function sumUpQty(){
+        let totalqty = 0;
+        var allqty = document.getElementsByClassName('qty');
+        console.log(allqty);
+        for(var i = 0; i < allqty.length; i++){
+            var qty = allqty[i];
+            totalqty += parseInt(qty.attributes[3].value);
+        }
+        //update html page
+        $(".cart-items").html(totalqty);
+    }
+
+    //function to update subtotal
+    function updateSubtotal(plusclicked){
+        updatedsubtotal = 0.00;
+    }
 
 })
