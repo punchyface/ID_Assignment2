@@ -741,6 +741,7 @@ nav.navbar.bootsnav.sticked .attr-nav.social li {
 }
 
 
+
 /* ============================================================== 
      # Bradcrumb 
 =================================================================== */
@@ -4831,4 +4832,19 @@ footer.shadow .footer-bottom {
   z-index: 999999;
   background: url(../img/preloader.gif) center no-repeat #fff;
   text-align: center;
+}
+
+/* ============================================================== 
+     # Custom
+=================================================================== */
+/* Navbar */
+.cart-items{
+  position: absolute;
+  top: -8px;
+  right: -1px;
+  margin: 35px 0px;
+  padding: 0px 5px;
+  background: #e7272d;
+  border-radius: 50%;
+  color: #fff;
 }
