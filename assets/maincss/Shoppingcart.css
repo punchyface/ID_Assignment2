@@ -45,6 +45,9 @@
     color: #fff;
     background: #E7272D;
 }
+
+/* Cart table details
+----------------------------------------------------------------*/
 /* cart info */
 .cart-info{
     display: flex;
@@ -81,6 +84,19 @@ th:last-child{
     text-align: right;
     padding-right: 5px;
 }
+/* tbody img */
+tbody img{
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    border-radius: 10px;
+}
+/*tbody p */
+tbody p{
+    margin: 0px;
+}
+/* Cart buttons
+----------------------------------------------------------------*/
 /* check out btn */
 .check-out-btn{
     text-align: center;
@@ -94,18 +110,33 @@ th:last-child{
     border-radius: 30px;
     margin: 20px auto 10px;
     font-weight: bold;
+    transition: all 0.3s ease 0s;
 }
-/* tbody img */
-tbody img{
-    width: 80px;
-    height: 80px;
-    padding: 5px;
-    border-radius: 10px;
+/* check out btn input hover effect */
+.check-out-btn input:hover{
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
 }
-/*tbody p */
-tbody p{
-    margin: 0px;
+/* remove-cart-btn */
+.remove-cart-btn{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
 }
+/* remove-cart-btn hover */
+.remove-cart-btn:hover{
+    color: #E7272D;
+    transform: translateY(-2px);
+}
+
 
 /*--- media query for screen size less than 600px ---*/
 @media only screen and (max-width: 600px){
