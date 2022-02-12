@@ -1,9 +1,19 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
-    getItemInCart();
+    var itemsInLocalStorage = localStorage.getItem('Product Details');
+
+    if (itemsInLocalStorage != null){
+        itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
+        
+        getItemInCart(itemsInLocalStorage)
+
+    }
+    else{
+        EmptyCartPreloader();
+    }
 
     //function to get items in cart
-    function getItemInCart(){
+    function getItemInCart(itemsInLocalStorage){
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -23,16 +33,18 @@ $(document).ready(function () {
             let content = "";
             let total = 0.00;
 
-            //Go through database and update html
-            for(var i = 0; i < response.length; i++){
+            //Go through local storage and update page
+            Object.values(itemsInLocalStorage).map(item => {
+                $(".default-cart-preloader").fadeOut(60); //Remove default preloader
+                $(".total-price table").css('visibility', 'visible'); //Make price visible
                 content += `<tr>
                 <!-- Product -->
                 <td>
                     <div class="cart-info">
-                        <img src="${response[i].foodid[0].foodimageurl}" alt=""> <!-- item image -->
+                        <img src="${item.foodimageurl}" alt=""> <!-- item image -->
                         <div>
-                            <p>${response[i].foodid[0].foodname}</p> <!-- item name -->
-                            <small>$${response[i].foodid[0].foodprice.toFixed(2)}</small><br> <!-- item price-->
+                            <p>${item.foodname}</p> <!-- item name -->
+                            <small>$${item.foodprice.toFixed(2)}</small><br> <!-- item price-->
                             <button class="remove-cart-btn" type="button">Remove</button>
                         </div>
                     </div>
@@ -41,20 +53,20 @@ $(document).ready(function () {
                 <td>
                     <div class="cart-item-qty">
                         <button class="cart-qty-minus" type="button">-</button>
-                        <input type="number" min="1" class="qty qty-btn" value="${response[i].quantity}" readonly>
+                        <input type="number" min="1" class="qty qty-btn" value="${item.qty}" readonly>
                         <button class="cart-qty-plus" type="button">+</button>
                     </div>
                 </td>
                 <!-- Subtotal -->
-                <td class="subtotal">${(response[i].foodid[0].foodprice * response[i].quantity).toFixed(2)}</td>
+                <td class="subtotal">${(item.foodprice * item.qty).toFixed(2)}</td>
                 </tr>`;
-                
-                let subtotal = `${(response[i].foodid[0].foodprice * response[i].quantity.toFixed(2))}`;
+    
+                let subtotal = `${(item.foodprice.toFixed(2) * item.qty)}`;
                 total += parseFloat(subtotal);
-            }
+            })
             // Update html page
             $(".tbody").html(content);
-            $(".total-price table .display-total-cost").html(total);
+            $(".total-price table .display-total-cost").html(total.toFixed(2));
             sumUpQty();
 
             /*to remove cart item when remove btn is clicked
@@ -77,7 +89,7 @@ $(document).ready(function () {
         })
     }
 
-    
+
     /* start of external functions
     -------------------------------------------------------------------------------*/
 
@@ -95,7 +107,6 @@ $(document).ready(function () {
     function recalculateTotal(){
         let totalsum = 0.00;
         var allsubtotals = document.getElementsByClassName('subtotal')
-        console.log(allsubtotals);
         for(var i = 0; i < allsubtotals.length; i++){
             var subtotal = allsubtotals[i];
             totalsum += parseFloat(subtotal.innerHTML);
@@ -109,7 +120,6 @@ $(document).ready(function () {
     function sumUpQty(){
         let totalqty = 0;
         var allqty = document.getElementsByClassName('qty');
-        console.log(allqty);
         for(var i = 0; i < allqty.length; i++){
             var qty = allqty[i];
             totalqty += parseInt(qty.attributes[3].value);
