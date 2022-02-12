@@ -4848,3 +4848,11 @@ footer.shadow .footer-bottom {
   border-radius: 50%;
   color: #fff;
 }
+/* add-to-cart btn */
+.add-to-cart{
+  cursor: pointer;
+}
+/* badge */
+.badge{
+  background-color: #e7272d;
+}
