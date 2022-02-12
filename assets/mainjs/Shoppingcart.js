@@ -77,6 +77,10 @@ $(document).ready(function () {
         })
     }
 
+    
+    /* start of external functions
+    -------------------------------------------------------------------------------*/
+
     //function to replace cart preloader
     function EmptyCartPreloader(){
         $(".default-cart-preloader").fadeOut(60); //Remove default preloader
