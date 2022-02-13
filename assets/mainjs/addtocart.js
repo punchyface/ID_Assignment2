@@ -17,6 +17,10 @@ $(document).ready(function () {
 
         $.ajax(settings).done(function (response) {
             let dishesAvail = [];
+            
+            //Call function to check no of foodname that are added in cart
+            checkItemQty();
+
             for(var d = 0; d < response.length; d++){
                 //Check if food in menu is available or not
                 if(response[d].foodstatus == true){
@@ -117,6 +121,35 @@ $(document).ready(function () {
             }
         })
         return qty;
+    }
+
+    //function to display item of each item when page reload
+    function checkItemQty(){
+        let products = localStorage.getItem('Product Details');//get data from local storage
+        products = JSON.parse(products);
+
+        let infoclass = document.getElementsByClassName('info');
+
+        //check if local storage is empty
+        if(products != null){
+            //for each food name displayed
+            for(var i = 0; i < infoclass.length; i++){
+                let thisitem = infoclass[i];
+                let qty = 0;
+                //get the food name
+                thisitem = thisitem.firstElementChild.innerHTML;
+                //go through values of local storage
+                Object.values(products).map(item => {
+                    if(item.foodname == thisitem){
+                        qty = parseInt(item.qty);
+                        thisitem = infoclass[i];
+                        //update badge number
+                        thisitem.closest('.item').firstElementChild.lastElementChild.textContent = qty;
+                        thisitem = thisitem.firstElementChild.innerHTML;
+                    }
+                })
+            }
+        }
     }
 
     //Call function to check item in local storage
