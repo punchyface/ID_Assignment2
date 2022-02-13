@@ -67,7 +67,7 @@ $(document).ready(function () {
                                 <span class="badge">0</span>
                             </div>
                             <div class="info">
-                                <h4><a href="#">${response[i].foodname}</a></h4>
+                                <h4>${response[i].foodname}</h4>
                                 <p>
                                     ${response[i].fooddescription}
                                 </p>
