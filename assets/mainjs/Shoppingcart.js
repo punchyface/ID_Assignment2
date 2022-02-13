@@ -76,7 +76,9 @@ $(document).ready(function () {
                 var button = removeCartItemButton[i];
                 button.addEventListener('click', function(event){
                     var buttonClicked = event.target;
-                    buttonClicked.closest('tr').remove(); //not complete (need to remove item in database)
+                    buttonClicked.closest('tr').remove();
+                    //update local storage and refresh page
+                    removeItemInStorage(buttonClicked.closest('div').firstElementChild.innerHTML, itemsInLocalStorage)
                     //call function to calculate the total cost
                     recalculateTotal();
                     //call function to update total item in cart
@@ -128,9 +130,63 @@ $(document).ready(function () {
         $(".cart-items").html(totalqty);
     }
 
-    //function to update subtotal
-    function updateSubtotal(plusclicked){
-        updatedsubtotal = 0.00;
+    //function to remove item in localstorage
+    function removeItemInStorage(foodName, itemsInLocalStorage){
+        var clonelocalstorage = [];
+        let count = 0;
+
+        //Create a clone of local storage
+        Object.values(itemsInLocalStorage).map(item => {
+            clonelocalstorage.push(item);
+        });
+
+        //To remove items from clone localstorage
+        Object.values(itemsInLocalStorage).map(item => {
+            if(clonelocalstorage.length == 1){
+                count = 0;
+            }
+            //Get the correct food item that is clicked
+            if(item.foodname == foodName){
+                //remove that item in clone storage
+                clonelocalstorage.splice(count, 1);
+                //update and refresh local storage
+                localStorage.removeItem('Product Details'); //clear actual localstorage
+
+                for(var i = 0; i < clonelocalstorage.length; i++){//update and set local storage
+                    let cartItem = JSON.parse(localStorage.getItem('Product Details'));
+
+                    if(cartItem != null){
+                        cartItem = {...cartItem, [clonelocalstorage[i].foodname]:clonelocalstorage[i]};
+                    }
+                    else{
+                        cartItem = {[clonelocalstorage[i].foodname]:clonelocalstorage[i]};
+                    }
+                    localStorage.setItem('Product Details', JSON.stringify(cartItem));
+                }
+                //update no of items in localstorage
+                if (parseInt(localStorage.getItem('NoOfItems')) == 0){
+                    localStorage.removeItem('NoOfItems');
+                }
+                else{
+                    localStorage.setItem('NoOfItems', parseInt(localStorage.getItem('NoOfItems')) - parseInt(item.qty));
+                }
+                
+                
+            }
+            count += 1;
+        })
+
+        let checkstorage = localStorage.getItem('Product Details');
+        checkstorage = JSON.parse(checkstorage);
+        if(checkstorage == null || checkstorage == []){
+            $(".total-price table").css('visibility', 'hidden'); //Make price hidden
+            $(".default-cart-preloader").css('display', 'block'); //show default preloader
+            EmptyCartPreloader();
+        }
+        else{
+            
+            getItemInCart(checkstorage);
+        }
     }
 
 })
