@@ -60,17 +60,19 @@ $(document).ready(function () {
                                 <a href="#">
                                     <img src="${response[i].foodimageurl}" alt="Thumb" height="300" width="400">
                                 </a>
+                                
                                 <div class="price">
                                     <h5>$${response[i].foodprice.toFixed(2)}</h5>
                                 </div>
+                                <span class="badge">0</span>
                             </div>
                             <div class="info">
-                                <h4><a href="#">${response[i].foodname}</a></h4>
+                                <h4>${response[i].foodname}</h4>
                                 <p>
                                     ${response[i].fooddescription}
                                 </p>
                                 <div class="button" data-_id='${response[i]._id}'>
-                                    <a href="#">ADD TO CART</a>
+                                    <a class="add-to-cart">ADD TO CART</a>
                                 </div>
                             </div>
                         </div>
