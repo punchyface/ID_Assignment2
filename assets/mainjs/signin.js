@@ -40,7 +40,7 @@ $(document).ready(function () {
                 $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
                     e.preventDefault();  
                     var win = window.open('https://dev-77878233.okta.com/login/signout', "mywindow","status=1,width=350,height=150");
-                    setTimeout(function() { win.close();}, 5);
+                    win.close();
                     localStorage.clear();
                     location.reload();
                 });
