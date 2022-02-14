@@ -1,9 +1,10 @@
+const CLIENTID = "0oa3tpe06geyv3Tq25d7"
 $(document).ready(function () {
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
         logoText: 'Shiok Ah',
-        clientId: "0oa3tpe06geyv3Tq25d7",
+        clientId: CLIENTID,
         authParams: {
         issuer: "default",
         responseType: ['token', 'id_token'],
@@ -35,7 +36,25 @@ $(document).ready(function () {
             console.log(res)
             if (res.status === 'ACTIVE') {
                 document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
-                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" onclick="oktaAuth.tokenManager.clear(); location.reload();" >Logout</a>`
+                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
+                $(".loginModal .modal-content .loginpage .btn btn-primary").on("click", function (e) {
+                    e.preventDefault();    
+                    config = new OIDCConfig.Builder()
+                    .clientId(CLIENTID)
+                    .redirectUri("https://punchyface.github.io/ID_Assignment2")
+                    .endSessionRedirectUri("https://punchyface.github.io/ID_Assignment2")
+                    .scopes("openid", "profile", "offline_access")
+                    .discoveryUri("https://dev-77878233.okta.com/.well-known/openid-configuration")
+                    .create();
+
+                    client = new Okta.WebAuthBuilder()
+                        .withConfig(config)
+                        .withContext(this)
+                        .create();
+
+                    client.signOutOfOkta(this);
+                    client.getSessionClient().clear();
+                });
                 return;
             }
             document.getElementById("messageBox").innerHTML = "You are not logged in";
