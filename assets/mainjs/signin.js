@@ -38,22 +38,9 @@ $(document).ready(function () {
                 document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
                 document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
                 $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
-                    e.preventDefault();    
-                    config = new OIDCConfig.Builder()
-                    .clientId(CLIENTID)
-                    .redirectUri("https://punchyface.github.io/ID_Assignment2")
-                    .endSessionRedirectUri("https://punchyface.github.io/ID_Assignment2")
-                    .scopes("openid", "profile", "offline_access")
-                    .discoveryUri("https://dev-77878233.okta.com/.well-known/openid-configuration")
-                    .create();
-
-                    client = new Okta.WebAuthBuilder()
-                        .withConfig(config)
-                        .withContext(this)
-                        .create();
-
-                    client.signOutOfOkta(this);
-                    client.getSessionClient().clear();
+                    e.preventDefault();  
+                    var win = window.open('https://dev-77878233.okta.com/login/signout');
+                    setTimeout(function() { win.close();}, 10);
                     localStorage.clear();
                     location.reload();
                 });
