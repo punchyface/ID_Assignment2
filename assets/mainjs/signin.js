@@ -32,19 +32,18 @@ $(document).ready(function () {
     else {
         oktaSignIn.session.get(function (res) {
         // If we get here, the user is already signed in.
-        console.log(res)
-        if (res.status === 'ACTIVE') {
-            document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
-            return;
-        }
-            oktaSignIn.renderEl(
-                { el: '#okta-login-container' },
-                function success(res) {},
-                function error(err) {
-                    console.error(err);
-                }
-            );
-        });
+            console.log(res)
+            if (res.status === 'ACTIVE') {
+                document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
+                return;
+            }
+            document.getElementById("messageBox").innerHTML = "You are not logged in";
+            document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="https://punchyface.github.io/ID_Assignment2/signup.html" role="button">Login/SignUp</a>`
+            $("div#portfolio-grid.menu-lists").on("click", ".add-to-cart", function (e) {
+                e.preventDefault();    
+                $('.loginModal').modal('show')
+            });
+        })
     }
 })
 
