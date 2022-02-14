@@ -35,7 +35,7 @@ $(document).ready(function () {
             console.log(res)
             if (res.status === 'ACTIVE') {
                 document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
-                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" onclick="oktaSignIn.tokenManager.clear(); location.reload();" >Login/SignUp</a>`
+                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" onclick="oktaAuth.tokenManager.clear(); location.reload();" >Logout</a>`
                 return;
             }
             document.getElementById("messageBox").innerHTML = "You are not logged in";
