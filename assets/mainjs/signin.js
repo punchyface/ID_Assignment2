@@ -54,6 +54,8 @@ $(document).ready(function () {
 
                     client.signOutOfOkta(this);
                     client.getSessionClient().clear();
+                    localStorage.clear();
+                    location.reload();
                 });
                 return;
             }
