@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if IE 7]><html lang="en" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html lang="en" class="lt-ie10 lt-ie9"> <![endif]-->
@@ -14,7 +15,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <script src="https://ok12static.oktacdn.com/assets/js/sdk/okta-signin-widget/6.0.0/js/okta-sign-in.min.js" type="text/javascript"></script>
     <link href="https://ok12static.oktacdn.com/assets/js/sdk/okta-signin-widget/6.0.0/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
-    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link href="https://ok12static.oktacdn.com/assets/loginpage/css/loginpage-theme.fe35d60e3e7ac95814eda9241d23b189.css" type="text/css" rel="stylesheet"/><link href="https://dev-77878233.okta.com/api/internal/brand/theme/style-sheet?touch-point=SIGN_IN_PAGE&v=78951ddafdd36e2a5d09a5c3665ce72b" rel="stylesheet" type="text/css">
     <script>
         var okta = {
@@ -154,8 +155,8 @@
 
 <script type="text/javascript">function runLoginPage (fn) {var mainScript = document.createElement('script');mainScript.src = 'https://ok12static.oktacdn.com/assets/js/mvc/loginpage/initLoginPage.pack.103f0a08c8f9401f5a348e6d81b34c6a.js';mainScript.crossOrigin = 'anonymous';mainScript.integrity = 'sha384-dCJOCwjnEUHXlpSu8AVtqBreoCdbsmdg3F1aT3Si+c85NMIu2ocEVwG+B6PRrL3S';document.getElementsByTagName('head')[0].appendChild(mainScript);fn && mainScript.addEventListener('load', function () { setTimeout(fn, 1) });}</script><script type="text/javascript">
 (function(){
-  var baseUrl = 'https://dev-77878233.okta.com';
-  var suppliedRedirectUri = 'https://punchyface.github.io/ID_Assignment2';
+  var baseUrl = 'https\x3A\x2F\x2Fdev\x2D77878233.okta.com';
+  var suppliedRedirectUri = '';
   var repost = false;
   var stateToken = '';
   var fromUri = '\x2Fuser\x2Fnotifications';
@@ -276,7 +277,7 @@
   var loginPageConfig = {
     fromUri: fromUri,
     repost: repost,
-    redirectUri: "https://punchyface.github.io/ID_Assignment2/",
+    redirectUri: redirectUri,
     isMobileClientLogin: false,
     isMobileSSO: false,
     disableiPadCheck: false,
@@ -290,24 +291,23 @@
     stateTokenExpiresAt: '',
     stateTokenRefreshWindowMs: '',
     signIn: {
-        el: '#signin-container',
-        baseUrl: "https://dev-77878233.okta.com",
-        logo: 'assets/img/logo.png',
-        logoText: 'Shiok Ah',
-        helpSupportNumber: orgSupportPhoneNumber,
-        stateToken: stateToken,
-        username: username,
-        signOutLink: signOutUrl,
-        consent: consentFunc,
-        authScheme: authScheme,
-        relayState: fromUri,
-        redirectUri: "https://punchyface.github.io/ID_Assignment2/",
-        proxyIdxResponse: proxyIdxResponse,
-        overrideExistingStateToken: overrideExistingStateToken,
-        interstitialBeforeLoginRedirect: 'DEFAULT',
-        idpDiscovery: {
-            requestContext: idpDiscoveryRequestContext
-        },
+      el: '#signin-container',
+      baseUrl: baseUrl,
+      logo: 'assets/img/logo.png',
+      logoText: 'Shiok Ah',
+      helpSupportNumber: orgSupportPhoneNumber,
+      stateToken: stateToken,
+      username: username,
+      signOutLink: signOutUrl,
+      consent: consentFunc,
+      authScheme: authScheme,
+      relayState: fromUri,
+      proxyIdxResponse: proxyIdxResponse,
+      overrideExistingStateToken: overrideExistingStateToken,
+      interstitialBeforeLoginRedirect: 'DEFAULT',
+      idpDiscovery: {
+        requestContext: idpDiscoveryRequestContext
+      },
       features: {
         router: true,
         securityImage: securityImage,
@@ -340,7 +340,7 @@
       },
 
       assets: {
-        baseUrl: "https://ok12static.oktacdn.com\assets\Fjs\x2Fsdk\x2Fokta\x2Dsignin\x2Dwidget\x2F6.0.0"
+        baseUrl: "https\x3A\x2F\x2Fok12static.oktacdn.com\x2Fassets\x2Fjs\x2Fsdk\x2Fokta\x2Dsignin\x2Dwidget\x2F6.0.0"
       },
 
       language: okta.locale,
