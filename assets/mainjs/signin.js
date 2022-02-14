@@ -39,8 +39,8 @@ $(document).ready(function () {
                 document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
                 $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
                     e.preventDefault();  
-                    var win = window.open('https://dev-77878233.okta.com/login/signout');
-                    setTimeout(function() { win.close();}, 10);
+                    var win = window.open('https://dev-77878233.okta.com/login/signout', "mywindow","status=1,width=350,height=150");
+                    setTimeout(function() { win.close();}, 5);
                     localStorage.clear();
                     location.reload();
                 });
