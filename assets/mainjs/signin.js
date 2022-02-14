@@ -47,7 +47,7 @@ $(document).ready(function () {
                 return;
             }
             document.getElementById("messageBox").innerHTML = "You are not logged in";
-            document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="signup.html" role="button" target="_blank" >Login/SignUp</a>`
+            document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="signup.html" role="button" >Login/SignUp</a>`
             $("div#portfolio-grid.menu-lists").on("click", ".add-to-cart", function (e) {
                 e.preventDefault();    
                 $('.loginModal').modal('show')
