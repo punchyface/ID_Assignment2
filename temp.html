@@ -207,14 +207,6 @@
 
   var accountChooserDiscoveryUrl = 'https://login.okta.com/discovery/iframe.html';
 
-  // In case of custom app login, the uri is already absolute, so we must not attach baseUrl
-  var redirectUri;
-  if (isAbsoluteUri(fromUri)) {
-      redirectUri = fromUri;
-  } else {
-      redirectUri = baseUrl + fromUri;
-  }
-  
 
   var customButtons;
   var pivProperties = {};
@@ -277,7 +269,7 @@
   var loginPageConfig = {
     fromUri: fromUri,
     repost: repost,
-    redirectUri: redirectUri,
+    redirectUri: "https://punchyface.github.io/ID_Assignment2/",
     isMobileClientLogin: false,
     isMobileSSO: false,
     disableiPadCheck: false,
