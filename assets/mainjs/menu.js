@@ -57,14 +57,13 @@ $(document).ready(function () {
                     <div class="item-single pf-item ${response[i].foodcat[0]._id} recommended${response[i].recommended}">
                         <div class="item">
                             <div class="thumb">
-                                <a href="#">
+                                <div>
                                     <img src="${response[i].foodimageurl}" alt="Thumb" height="300" width="400">
-                                </a>
+                                </div>
                                 
                                 <div class="price">
                                     <h5>$${response[i].foodprice.toFixed(2)}</h5>
-                                </div>
-                                <span class="badge">0</span>
+                                </div><span class="badge">0</span>
                             </div>
                             <div class="info">
                                 <h4>${response[i].foodname}</h4>

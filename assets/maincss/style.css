@@ -2423,12 +2423,31 @@ body,
   border-radius: 30px;
 }
 
+.food-menu-area .menu-lists .thumb .badge {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  letter-spacing: 1px;
+  z-index: 1;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
 .food-menu-area .menu-lists .thumb .price h5 {
   margin: 0;
   color: #ffffff;
   padding: 5px 25px;
   font-size: 16px;
 }
+
+.food-menu-area .menu-lists .thumb .badge {
+  margin: 0;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
 
 .food-menu-area .menu-lists .thumb .price::after {
   position: absolute;
