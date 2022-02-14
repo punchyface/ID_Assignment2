@@ -4398,7 +4398,7 @@ footer.pattern::before {
   content: "";
   height: 100%;
   width: 100%;
-  background: url(assets/img/pattern.png);
+  background: url(../img/pattern.png);
 }
 
 footer .f-items {
