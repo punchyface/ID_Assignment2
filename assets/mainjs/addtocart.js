@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
-    getMenuItems();
+    setTimeout(function(){
+        getMenuItems();
+    }, 4500);
 
     function getMenuItems(){
         var settings = {
