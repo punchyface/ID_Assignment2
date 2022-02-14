@@ -146,12 +146,6 @@
   </div>
 </div>
 
-<div class="footer">
-  <div class="footer-container clearfix">
-    <p class="copyright">Powered by <a href="http://www.okta.com/" class="inline-block notranslate">Okta</a></p>
-        <p class="privacy-policy"><a href="/privacy" target="_blank" class="inline-block margin-l-10">Privacy Policy</a></p>
-    </div>
-</div>
 
 <script type="text/javascript">function runLoginPage (fn) {var mainScript = document.createElement('script');mainScript.src = 'https://ok12static.oktacdn.com/assets/js/mvc/loginpage/initLoginPage.pack.103f0a08c8f9401f5a348e6d81b34c6a.js';mainScript.crossOrigin = 'anonymous';mainScript.integrity = 'sha384-dCJOCwjnEUHXlpSu8AVtqBreoCdbsmdg3F1aT3Si+c85NMIu2ocEVwG+B6PRrL3S';document.getElementsByTagName('head')[0].appendChild(mainScript);fn && mainScript.addEventListener('load', function () { setTimeout(fn, 1) });}</script><script type="text/javascript">
 (function(){
@@ -433,43 +427,6 @@
     applyStyle('login-bg-image', "background-image: none");
     applyStyle('login-bg-image-ie8', "");
   });
-</script>
-<script>
-  if (oktaSignIn.token.hasTokensInUrl()) {
-        oktaSignIn.token.parseTokensFromUrl(
-            // If we get here, the user just logged in.
-            function success(res) {
-            var accessToken = res[0];
-            var idToken = res[1];
-
-            oktaSignIn.tokenManager.add('accessToken', accessToken);
-            oktaSignIn.tokenManager.add('idToken', idToken);
-
-            window.location.hash='';
-            document.getElementById("messageBox").innerHTML = "Hello, " + idToken.claims.email + "! You just logged in! :)";
-        },
-            function error(err) {
-                console.error(err);
-            }
-        );
-    } 
-    else {
-        oktaSignIn.session.get(function (res) {
-        // If we get here, the user is already signed in.
-        console.log(res)
-        if (res.status === 'ACTIVE') {
-            document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
-            return;
-        }
-            oktaSignIn.renderEl(
-                { el: '#okta-login-container' },
-                function success(res) {},
-                function error(err) {
-                    console.error(err);
-                }
-            );
-        });
-    }
 </script>
 </body>
 </html>
