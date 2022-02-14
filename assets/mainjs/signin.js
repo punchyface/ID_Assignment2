@@ -37,7 +37,7 @@ $(document).ready(function () {
             if (res.status === 'ACTIVE') {
                 document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are *still* logged in! :)";
                 document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
-                $(".loginModal .modal-content .loginpage .btn btn-primary").on("click", function (e) {
+                $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
                     e.preventDefault();    
                     config = new OIDCConfig.Builder()
                     .clientId(CLIENTID)
