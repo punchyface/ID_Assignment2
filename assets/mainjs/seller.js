@@ -30,8 +30,8 @@ $(document).ready(function () {
                 content0 = `${content0}<option value='${JSON.stringify(response[i])}' id="${response[i]._id}">${response[i].foodcat}</option>`
             }
             document.querySelector("select#add-foodcat").innerHTML = content0;
+            $(document).ready(getMenu());
         });
-        $(document).ready(getMenu());
     }
 
 
@@ -59,9 +59,7 @@ $(document).ready(function () {
                 <div class="item-single pf-item ${response[i].foodcat[0]._id} avail${response[i].foodstatus} recommended${response[i].recommended}">
                     <div class="item">
                         <div class="thumb">
-                            <a href="#">
-                                <img src="${response[i].foodimageurl}" alt="Thumb" height="300" width="400">
-                            </a>
+                            <img src="${response[i].foodimageurl}" alt="Thumb" height="300" width="400">
                             <div class="price">
                                 <h5>$${response[i].foodprice.toFixed(2)}</h5>
                             </div>
