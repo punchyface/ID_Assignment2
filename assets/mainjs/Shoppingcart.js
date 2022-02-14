@@ -108,6 +108,22 @@ $(document).ready(function () {
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
+        var checkoutButton = document.getElementsByClassName('check-out-btn');
+        for(var i = 0; i < checkoutButton.length; i++){
+            var button = checkoutButton[i];
+            button.addEventListener('click', function(event){
+                var checkoutbtnClicked = event.target;
+                //Clear local storage
+                localStorage.removeItem('NoOfItems');
+                localStorage.removeItem('Product Details')
+                //show popup/modal
+                showModal();
+                //remove table row from html
+                checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
+                //Refresh page
+                refreshTable();
+            })
+        }
 
     }
 
@@ -276,6 +292,27 @@ $(document).ready(function () {
             localStorage.setItem('NoOfItems', parseInt(localStorage.getItem('NoOfItems')) - 1);
         }
         
+    }
+
+    //functin to show popup/modal
+    function showModal(){
+        $('.modal-checkout').css('display', 'block');
+        //when dismiss btn clicked
+        var dismissButton = document.getElementsByClassName('dismiss-btn');
+        for(var i = 0; i < dismissButton.length; i++){
+            var button = dismissButton[i];
+            button.addEventListener('click', function(){
+            $('.modal-checkout').fadeOut(80);
+            })
+        }
+        //when x btn clicked
+        var closeButton = document.getElementsByClassName('close-btn');
+        for(var i = 0; i < closeButton.length; i++){
+            var button = closeButton[i];
+            button.addEventListener('click', function(){
+            $('.modal-checkout').fadeOut(80);
+            })
+        }
     }
 
     //function to fresh table
