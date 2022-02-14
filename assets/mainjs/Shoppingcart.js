@@ -120,6 +120,8 @@ $(document).ready(function () {
                 showModal();
                 //remove table row from html
                 checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
+                //call function to update total item in cart
+                sumUpQty();
                 //Refresh page
                 refreshTable();
             })
