@@ -2338,6 +2338,7 @@ body,
 .food-menu-area.path-less .menu-lists .thumb img,
 .food-menu-area.simple .menu-lists .thumb img {
   clip-path: inherit;
+  height: 300px;
 }
 
 .food-menu-area .menu-lists .info h4 {
