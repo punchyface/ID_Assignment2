@@ -184,7 +184,7 @@ tbody p{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.modal-content{
+.modal-checkout .modal-content{
     padding: 5px;
     top: 50%;
     left: 50%;
@@ -195,13 +195,13 @@ tbody p{
     border: none;
     box-shadow: none;
 }
-.close-btn{
+.modal-checkout .close-btn{
     font-size: 28px;
     font-weight: bold;
     float: right;
     padding: 0px 5px;
 }
-.close-btn:hover{
+.modal-checkout .close-btn:hover{
     cursor: pointer;
     text-decoration: none;
     color: #E7272D;
@@ -213,7 +213,7 @@ tbody p{
     background-color: #2EE59D;
     font-weight: bold;
 }
-.dismiss-btn{
+.modal-checkout .dismiss-btn{
     border: none;
     padding: 0px 6px;
     border-radius: 30px;
@@ -226,7 +226,7 @@ tbody p{
     box-shadow: none;
     margin-bottom: 5px;
 }
-.dismiss-btn:hover{
+.modal-checkout .dismiss-btn:hover{
     background-color: #2EE59D;
     color: #fff;
 }

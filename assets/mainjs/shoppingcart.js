@@ -300,7 +300,7 @@ $(document).ready(function () {
     function showModal(){
         $('.modal-checkout').css('display', 'block');
         //when dismiss btn clicked
-        var dismissButton = document.getElementsByClassName('dismiss-btn');
+        var dismissButton = document.querySelector('.modal-checkout .dismiss-btn');
         for(var i = 0; i < dismissButton.length; i++){
             var button = dismissButton[i];
             button.addEventListener('click', function(){
@@ -308,7 +308,7 @@ $(document).ready(function () {
             })
         }
         //when x btn clicked
-        var closeButton = document.getElementsByClassName('close-btn');
+        var closeButton = document.querySelector('.modal-checkout .close-btn');
         for(var i = 0; i < closeButton.length; i++){
             var button = closeButton[i];
             button.addEventListener('click', function(){
