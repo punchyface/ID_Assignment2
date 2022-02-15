@@ -119,9 +119,9 @@ $(document).ready(function () {
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
-        var button = $('.check-out-btn input');
+        var button = document.querySelector('.check-out-btn input');
         button.addEventListener('click', function(event){
-            button.prop( "disabled", true);
+            $(".check-out-btn").prop( "disabled", true);
             let address = $("#address").val();
 
             oktaSignIn.session.get(function (res) {
