@@ -148,23 +148,21 @@ $(document).ready(function () {
                   }
                 }
                 $.ajax(settings).done(function (response) {
-                console.log(response);
+                    console.log(response);
+                    //Clear local storage
+                    localStorage.clear();
+                    //show popup/modal
+                    showModal();
+                    //remove table row from html
+                    var checkoutbtnClicked = event.target;
+                    checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
+                    //call function to update total item in cart
+                    sumUpQty();
+                    //Refresh page
+                    refreshTable();
                 });
                     
             })
-            
-            
-            //Clear local storage
-            localStorage.clear();
-            //show popup/modal
-            showModal();
-            //remove table row from html
-            var checkoutbtnClicked = event.target;
-            checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
-            //call function to update total item in cart
-            sumUpQty();
-            //Refresh page
-            refreshTable();
         })
 
     }
