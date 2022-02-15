@@ -235,7 +235,9 @@ $(document).ready(function () {
                         let email = res.email;
 
                         let jsondata = {
-                            "email": email
+                            "email": email,
+                            "attempt": 0,
+                            "points": 0
                         };
                         //post data to restdb data
                         let settings = {
