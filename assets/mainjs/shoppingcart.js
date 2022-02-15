@@ -124,26 +124,25 @@ $(document).ready(function () {
                 sumUpQty();
                 //Refresh page
                 refreshTable();
-            })
-        }
 
-        //when dismiss btn clicked
-        var dismissButton = document.querySelector('.modal-checkout .dismiss-btn');
-        for(var i = 0; i < dismissButton.length; i++){
-            var button = dismissButton[i];
-            button.addEventListener('click', function(){
-            $('.modal-checkout').fadeOut(80);
+                //when dismiss btn clicked
+                var dismissButton = document.querySelector('.modal-checkout .dismiss-btn');
+                for(var i = 0; i < dismissButton.length; i++){
+                    var button = dismissButton[i];
+                    button.addEventListener('click', function(){
+                    $('.modal-checkout').fadeOut(80);
+                    })
+                }
+                //when x btn clicked
+                var closeButton = document.querySelector('.modal-checkout .close-btn');
+                for(var i = 0; i < closeButton.length; i++){
+                    var button = closeButton[i];
+                    button.addEventListener('click', function(){
+                    $('.modal-checkout').fadeOut(80);
+                    })
+                }
             })
         }
-        //when x btn clicked
-        var closeButton = document.querySelector('.modal-checkout .close-btn');
-        for(var i = 0; i < closeButton.length; i++){
-            var button = closeButton[i];
-            button.addEventListener('click', function(){
-            $('.modal-checkout').fadeOut(80);
-            })
-        }
-
     }
 
 
