@@ -81,6 +81,13 @@ $(document).ready(function () {
                 filtercat();
             })
             $("body > div > div.se-pre-con").fadeOut("slow");
+            $.getScript( "assets/mainjs/script.js" )
+                .done(function( script, textStatus ) {
+                    console.log( textStatus );
+                })
+                .fail(function( jqxhr, settings, exception ) {
+                    console.log("Unsuccessful getScript")
+            });
         }); 
     }
 
