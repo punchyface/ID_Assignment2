@@ -119,7 +119,7 @@ $(document).ready(function () {
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
-        var button = document.querySelector('.check-out-btn input');
+        var button = $('.check-out-btn input');
         button.addEventListener('click', function(event){
             button.prop( "disabled", true);
             let address = $("#address").val();
