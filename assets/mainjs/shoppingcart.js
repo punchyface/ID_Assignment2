@@ -26,7 +26,7 @@ $(document).ready(function () {
         //Go through local storage and update page
         Object.values(itemsInLocalStorage).map(item => {
             //$(".default-cart-preloader").fadeOut(60); //Remove default preloader
-            $(".total-price table").css('visibility', 'visible'); //Make price visible
+            $(".cart-footer").css('visibility', 'visible'); //Make price visible
             content += `<tr>
             <!-- Product -->
             <td>
@@ -108,24 +108,54 @@ $(document).ready(function () {
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
-        var checkoutButton = document.getElementsByClassName('check-out-btn');
-        for(var i = 0; i < checkoutButton.length; i++){
-            var button = checkoutButton[i];
-            button.addEventListener('click', function(event){
-                var checkoutbtnClicked = event.target;
-                //Clear local storage
-                localStorage.removeItem('NoOfItems');
-                localStorage.removeItem('Product Details')
-                //show popup/modal
-                showModal();
-                //remove table row from html
-                checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
-                //call function to update total item in cart
-                sumUpQty();
-                //Refresh page
-                refreshTable();
-            })
-        }
+        var button = document.querySelector('.check-out-btn input');
+        button.addEventListener('click', function(event){
+            var checkoutbtnClicked = event.target;
+            let address = $("#address").val();
+            let user;
+
+            fetch('https://dev-77878233.okta.com/api/v1/users/me')
+                .then(response => response.json()) 
+                .then(function(data){
+                    console.log(data)
+                    user = data.id
+                })
+
+            //post to order entity
+            var jsondata = {"user": user,
+                            "product": localStorage.getItem('Product Details'),
+                            "address": address
+                        };
+            var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://onlinefood-ef2c.restdb.io/rest/order",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+            }
+
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            });
+            
+            //Clear local storage
+            localStorage.removeItem('NoOfItems');
+            localStorage.removeItem('Product Details')
+            //show popup/modal
+            showModal();
+            //remove table row from html
+            checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
+            //call function to update total item in cart
+            sumUpQty();
+            //Refresh page
+            refreshTable();
+        })
 
     }
 

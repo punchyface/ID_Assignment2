@@ -7,9 +7,9 @@ $(document).ready(function () {
         logoText: 'Shiok Ah',
         clientId: "0oa3tpe06geyv3Tq25d7",
         authParams: {
-        issuer: "default",
-        responseType: ['token', 'id_token'],
-        display: 'page'
+            issuer: "default",
+            responseType: ['token', 'id_token'],
+            display: 'page'
         }
     });
 

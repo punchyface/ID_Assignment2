@@ -64,16 +64,16 @@
     padding: 5px;
 }
 /* total-price */
-.total-price{
-    display: flex;
-    justify-content: flex-end;
+.cart-footer{
+    display: grid;
+    grid-template-columns: 50% 30%;
+    visibility: hidden;
 }
 /* total-price table */
 .total-price table{
     border-top: 3px solid #E7272D;
     width: 100%;
     max-width: 400px;
-    visibility: hidden;
 }
 /* td last child */
 td:last-child{
