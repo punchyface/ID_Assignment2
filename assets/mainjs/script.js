@@ -33,7 +33,7 @@ $(document).ready(function () {
                     location.reload();
                 })
                 $(document).ready(function () {
-                    setTimeout(getMenuItems(), 4500);
+                    getMenuItems();
 
                     function getMenuItems(){
                         var settings = {
