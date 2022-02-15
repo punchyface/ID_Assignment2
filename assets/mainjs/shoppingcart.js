@@ -125,7 +125,7 @@ $(document).ready(function () {
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
-                product = [JSON.parse(localStorage.getItem('Product Details'))]
+                product = JSON.parse(localStorage.getItem('Product Details'))
                 //post to order entity
                 var jsondata = {
                         "user": user,
