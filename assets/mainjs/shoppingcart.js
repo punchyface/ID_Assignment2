@@ -121,7 +121,6 @@ $(document).ready(function () {
         -------------------------------------------------------------------------------*/
         var button = document.querySelector('.check-out-btn input');
         button.addEventListener('click', function(event){
-            $(".check-out-btn").prop( "disabled", true);
             let address = $("#address").val();
 
             oktaSignIn.session.get(function (res) {
@@ -129,7 +128,7 @@ $(document).ready(function () {
                 //post to order entity
                 var jsondata = {
                         "user": user,
-                        "product": json.parse(localStorage.getItem('Product Details')),
+                        "product": [json.parse(localStorage.getItem('Product Details'))],
                         "address": address
                     };
                 var settings = {
@@ -143,9 +142,11 @@ $(document).ready(function () {
                     "cache-control": "no-cache"
                 },
                 "processData": false,
-                "data": JSON.stringify(jsondata)
+                "data": JSON.stringify(jsondata),
+                "beforeSend": function(){
+                    $(".check-out-btn input").prop( "disabled", true);
+                  }
                 }
-
                 $.ajax(settings).done(function (response) {
                 console.log(response);
                 });
