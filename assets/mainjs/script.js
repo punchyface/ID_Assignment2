@@ -17,6 +17,7 @@ $(document).ready(function () {
         oktaSignIn.session.get(function (res) {
         // If we get here, the user is already signed in.
             console.log(res)
+            updateRestDBUser(res);
             
             if (res.status === 'ACTIVE') {
 
@@ -203,6 +204,63 @@ $(document).ready(function () {
                 })  
                 localStorage.clear();  
             }
+
+            /* start of external api functions
+            --------------------------------------------------------------------------*/
+            //function to get and update restdb users
+            function updateRestDBUser(res){
+                let settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://onlinefood-ef2c.restdb.io/rest/customers",
+                    "method": "GET",
+                    "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": APIKEY,
+                        "cache-control": "no-cache"
+                    }
+                }
+
+                $.ajax(settings).done(function(response){
+                    let valid = false;
+                    for(var i = 0; i < response.length; i++){
+                        if(response[i].email == res.email){
+                            valid = true;
+                        }
+                    }
+
+                    //Check if user is found in restdb
+                    if(valid == false){
+                        //get data
+                        let email = res.email;
+
+                        let jsondata = {
+                            "email": email
+                        };
+                        //post data to restdb data
+                        let settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": "https://onlinefood-ef2c.restdb.io/rest/customers",
+                            "method": "POST",
+                            "headers": {
+                                "content-type": "application/json",
+                                "x-apikey": APIKEY,
+                                "cache-control": "no-cache"
+                            },
+                            "processData": false,
+                            "data": JSON.stringify(jsondata)
+                        }
+
+                        $.ajax(settings).done(function(response2){
+                            console.log(response2);
+                        })
+
+                    }
+                })
+            }
+
+
         })
     }
 })
