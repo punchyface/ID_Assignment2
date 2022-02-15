@@ -129,7 +129,7 @@ $(document).ready(function () {
                 //post to order entity
                 var jsondata = {
                         "user": user,
-                        "product": localStorage.getItem('Product Details'),
+                        "product": json.parse(localStorage.getItem('Product Details')),
                         "address": address
                     };
                 var settings = {
