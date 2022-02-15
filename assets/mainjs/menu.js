@@ -80,15 +80,14 @@ $(document).ready(function () {
                 removecategory();
                 filtercat();
             })
-            $("body > div > div.se-pre-con").fadeOut("slow");
 
             //load script.js
             $.getScript( "assets/mainjs/script.js" )
                 .done(function( script, textStatus ) {
-                    console.log( textStatus );
+                    $("body > div > div.se-pre-con").fadeOut("slow");
                 })
                 .fail(function( jqxhr, settings, exception ) {
-                    console.log("Unsuccessful getScript")
+                    location.reload();
             });
         }); 
     }
