@@ -24,9 +24,9 @@ $(document).ready(function () {
             /*-------------------------------------------------------------------------------
             ---------------------------USER IS LOGIN---------------------------------------
             -------------------------------------------------------------------------------*/
-                document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are logged in! :)";
-                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
-                $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
+                document.getElementById("messageBox").innerHTML = `Hello, <b>${res.login}</b>! You are logged in!`;
+                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-info" href="https://dev-77878233.okta.com/enduser/settings" role="button" target="_blank" style="margin-right: 1rem;">Edit profile</a><a class="btn btn-primary" href="#" >Logout</a>`
+                $(".loginModal .modal-content .loginpage .btn-primary").on("click", function (e) {
                     e.preventDefault();  
                     var win = window.open('https://dev-77878233.okta.com/login/signout', "mywindow","status=1,width=350,height=150");
                     setTimeout(function() {win.close()}, 15);
