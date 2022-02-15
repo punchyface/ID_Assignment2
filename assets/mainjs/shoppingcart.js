@@ -154,14 +154,6 @@ $(document).ready(function () {
                     localStorage.clear();
                     //show popup/modal
                     showModal();
-                    //remove table row from html
-                    var checkoutbtnClicked = event.target;
-                    checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
-                    //call function to update total item in cart
-                    sumUpQty();
-                    //Refresh page
-                    refreshTable();
-                    $(".check-out-btn").prop( "disabled", false);
                 });
                     
             })
@@ -340,21 +332,17 @@ $(document).ready(function () {
     function showModal(){
         $('.modal-checkout').css('display', 'block');
         //when dismiss btn clicked
-        var dismissButton = document.getElementsByClassName('dismiss-btn');
-        for(var i = 0; i < dismissButton.length; i++){
-            var button = dismissButton[i];
-            button.addEventListener('click', function(){
+        var dismissButton = document.querySelector('.modal-checkout .dismiss-btn');
+        dismissButton.addEventListener('click', function(){
             $('.modal-checkout').fadeOut(80);
-            })
-        }
+        })
+        
         //when x btn clicked
-        var closeButton = document.getElementsByClassName('close-btn');
-        for(var i = 0; i < closeButton.length; i++){
-            var button = closeButton[i];
-            button.addEventListener('click', function(){
+        var closeButton = document.querySelector('.modal-checkout .close-btn');
+        closeButton.addEventListener('click', function(){
             $('.modal-checkout').fadeOut(80);
-            })
-        }
+            location.reload();
+        })
     }
 
     //function to fresh table
