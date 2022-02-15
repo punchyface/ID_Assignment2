@@ -51,7 +51,7 @@ $(document).ready(function () {
             $("div#portfolio-grid.menu-lists").on("click", ".add-to-cart", function (e) {
                 e.preventDefault();    
                 $('.loginModal').modal('show')
-            });
+            })
         })
     }
 })

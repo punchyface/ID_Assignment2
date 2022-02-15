@@ -1,3 +1,5 @@
+const APIKEY = '61e0110da0f7d226f9b75dbc';
+
 $(document).ready(function () {
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
@@ -11,33 +13,28 @@ $(document).ready(function () {
         }
     });
 
-    if (oktaSignIn.token.hasTokensInUrl()) {
-        oktaSignIn.token.parseTokensFromUrl(
-            // If we get here, the user just logged in.
-            function success(res) {
-            var accessToken = res[0];
-            var idToken = res[1];
-
-            oktaSignIn.tokenManager.add('accessToken', accessToken);
-            oktaSignIn.tokenManager.add('idToken', idToken);
-
-            window.location.hash='';
-        },
-            function error(err) {
-                console.error(err);
-            }
-        );
-    } 
-    else {
+    if(oktaSignIn.token.hasTokensInUrl() != true) {
         oktaSignIn.session.get(function (res) {
         // If we get here, the user is already signed in.
             console.log(res)
+            
             if (res.status === 'ACTIVE') {
+
+            /*-------------------------------------------------------------------------------
+            ---------------------------USER IS LOGIN---------------------------------------
+            -------------------------------------------------------------------------------*/
+                document.getElementById("messageBox").innerHTML = "Hello, " + res.login + "! You are logged in! :)";
+                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="#" >Logout</a>`
+                $(".loginModal .modal-content .loginpage .btn").on("click", function (e) {
+                    e.preventDefault();  
+                    var win = window.open('https://dev-77878233.okta.com/login/signout', "mywindow","status=1");
+                    win.close();
+                    localStorage.clear();
+                    location.reload();
+                })
                 $(document).ready(function () {
-                    const APIKEY = '61e0110da0f7d226f9b75dbc';
-                    setTimeout(function(){
-                        getMenuItems();
-                    }, 4500);
+                    
+                    getMenuItems();
 
                     function getMenuItems(){
                         var settings = {
@@ -193,7 +190,18 @@ $(document).ready(function () {
                     checkItemsInCart();
                 })
                 return;
-            }     
+            } 
+
+            /*-------------------------------------------------------------------------------
+           -----------------------------USER IS NOT LOGIN------------------------------------
+            -------------------------------------------------------------------------------*/
+            localStorage.clear();
+            document.getElementById("messageBox").innerHTML = "You are not logged in";
+            document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="signup.html" role="button" >Login/SignUp</a>`
+            $("div#portfolio-grid.menu-lists").on("click", ".add-to-cart", function (e) {
+                e.preventDefault();    
+                $('.loginModal').modal('show')
+            })    
         })
     }
 })
