@@ -125,34 +125,33 @@ $(document).ready(function () {
             let address = $("#address").val();
 
             oktaSignIn.session.get(function (res) {
-                    user = res.userId
-                    console.log(res)
-                    console.log(user)
-            })
-            console.log(user);
-            console.log(this.user);
-            //post to order entity
-            var jsondata = {"user": user,
-                            "product": JSON.stringify(localStorage.getItem('Product Details')),
-                            "address": address
-                        };
-            var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://onlinefood-ef2c.restdb.io/rest/order",
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json",
-                "x-apikey": APIKEY,
-                "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": JSON.stringify(jsondata)
-            }
+                user = res.userId
+                //post to order entity
+                var jsondata = {
+                        "user": user,
+                        "product": localStorage.getItem('Product Details'),
+                        "address": address
+                    };
+                var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://onlinefood-ef2c.restdb.io/rest/order",
+                "method": "POST",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY,
+                    "cache-control": "no-cache"
+                },
+                "processData": false,
+                "data": JSON.stringify(jsondata)
+                }
 
-            $.ajax(settings).done(function (response) {
-            console.log(response);
-            });
+                $.ajax(settings).done(function (response) {
+                console.log(response);
+                });
+                    
+            })
+            
             
             //Clear local storage
             localStorage.removeItem('NoOfItems');
