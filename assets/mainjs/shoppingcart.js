@@ -1,5 +1,16 @@
 $(document).ready(function () {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
+    var oktaSignIn = new OktaSignIn({
+        baseUrl: "https://dev-77878233.okta.com",
+        logo: 'assets/img/logo.png',
+        logoText: 'Shiok Ah',
+        clientId: "0oa3tpe06geyv3Tq25d7",
+        authParams: {
+            issuer: "default",
+            responseType: ['token', 'id_token'],
+            display: 'page'
+        }
+    });
     var itemsInLocalStorage = localStorage.getItem('Product Details');
 
     setTimeout(function(){
