@@ -121,7 +121,7 @@ $(document).ready(function () {
         -------------------------------------------------------------------------------*/
         var button = document.querySelector('.check-out-btn input');
         button.addEventListener('click', function(event){
-            var checkoutbtnClicked = event.target;
+            button.prop( "disabled", true);
             let address = $("#address").val();
 
             oktaSignIn.session.get(function (res) {
@@ -154,11 +154,11 @@ $(document).ready(function () {
             
             
             //Clear local storage
-            localStorage.removeItem('NoOfItems');
-            localStorage.removeItem('Product Details')
+            localStorage.clear();
             //show popup/modal
             showModal();
             //remove table row from html
+            var checkoutbtnClicked = event.target;
             checkoutbtnClicked.closest('.cart-item-container').firstElementChild.lastElementChild.remove();
             //call function to update total item in cart
             sumUpQty();
