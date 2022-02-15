@@ -63,10 +63,10 @@
     height: 30px;
     padding: 5px;
 }
-/* cart-footer */
+/* total-price */
 .cart-footer{
     display: grid;
-    grid-template-columns: 50% 30%;
+    grid-template-columns: 50% 50%;
     visibility: hidden;
 }
 /* total-price */

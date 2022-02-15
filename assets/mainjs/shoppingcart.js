@@ -123,7 +123,7 @@ $(document).ready(function () {
         button.addEventListener('click', function(event){
             var checkoutbtnClicked = event.target;
             let address = $("#address").val();
-            let user;
+            var user;
 
             oktaSignIn.session.get(function (res) {
                     user = res.userId
