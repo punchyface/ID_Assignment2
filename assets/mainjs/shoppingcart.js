@@ -125,10 +125,11 @@ $(document).ready(function () {
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
+               
                 //post to order entity
                 var jsondata = {
                         "user": user,
-                        "product": [json.parse(localStorage.getItem('Product Details'))],
+                        "product": [localStorage.getItem('Product Details')],
                         "address": address
                     };
                 var settings = {
@@ -144,7 +145,7 @@ $(document).ready(function () {
                 "processData": false,
                 "data": JSON.stringify(jsondata),
                 "beforeSend": function(){
-                    $(".check-out-btn input").prop( "disabled", true);
+                    $(".check-out-btn").prop( "disabled", true);
                   }
                 }
                 $.ajax(settings).done(function (response) {
@@ -160,6 +161,7 @@ $(document).ready(function () {
                     sumUpQty();
                     //Refresh page
                     refreshTable();
+                    $(".check-out-btn").prop( "disabled", false);
                 });
                     
             })
