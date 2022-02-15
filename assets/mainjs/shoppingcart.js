@@ -114,12 +114,9 @@ $(document).ready(function () {
             let address = $("#address").val();
             let user;
 
-            fetch('https://dev-77878233.okta.com/api/v1/users/me')
-                .then(response => response.json()) 
-                .then(function(data){
-                    console.log(data)
-                    user = data.id
-                })
+            oktaSignIn.session.get(function (res) {
+                    user = res.userId
+            })
 
             //post to order entity
             var jsondata = {"user": user,

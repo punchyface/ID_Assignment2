@@ -63,11 +63,16 @@
     height: 30px;
     padding: 5px;
 }
-/* total-price */
+/* cart-footer */
 .cart-footer{
     display: grid;
     grid-template-columns: 50% 30%;
     visibility: hidden;
+}
+/* total-price */
+.total-price{
+    display: flex;
+    justify-content: flex-end;
 }
 /* total-price table */
 .total-price table{
