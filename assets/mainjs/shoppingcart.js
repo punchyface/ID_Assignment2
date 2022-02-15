@@ -332,15 +332,12 @@ $(document).ready(function () {
     function showModal(){
         $('.modal-checkout').css('display', 'block');
         //when dismiss btn clicked
-        var dismissButton = document.querySelector('.modal-checkout .dismiss-btn');
-        dismissButton.addEventListener('click', function(){
-            $('.modal-checkout').fadeOut(80);
+        $('.modal-checkout .dismiss-btn').on('click', function(){
+            location.reload();
         })
         
         //when x btn clicked
-        var closeButton = document.querySelector('.modal-checkout .close-btn');
-        closeButton.addEventListener('click', function(){
-            $('.modal-checkout').fadeOut(80);
+        $('.modal-checkout .close-btn').on('click', function(){
             location.reload();
         })
     }
