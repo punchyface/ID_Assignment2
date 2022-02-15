@@ -129,7 +129,7 @@ $(document).ready(function () {
                 //post to order entity
                 var jsondata = {
                         "user": user,
-                        "product": {product},
+                        "product": [{product}],
                         "address": address
                     };
                 var settings = {
