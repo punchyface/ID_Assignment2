@@ -123,12 +123,14 @@ $(document).ready(function () {
         button.addEventListener('click', function(event){
             var checkoutbtnClicked = event.target;
             let address = $("#address").val();
-            var user;
 
             oktaSignIn.session.get(function (res) {
                     user = res.userId
+                    console.log(res)
+                    console.log(user)
             })
             console.log(user);
+            console.log(this.user);
             //post to order entity
             var jsondata = {"user": user,
                             "product": JSON.stringify(localStorage.getItem('Product Details')),
