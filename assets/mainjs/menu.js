@@ -81,6 +81,8 @@ $(document).ready(function () {
                 filtercat();
             })
             $("body > div > div.se-pre-con").fadeOut("slow");
+            
+            //load script.js
             $.getScript( "assets/mainjs/script.js" )
                 .done(function( script, textStatus ) {
                     console.log( textStatus );
