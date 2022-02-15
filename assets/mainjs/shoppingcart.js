@@ -128,10 +128,10 @@ $(document).ready(function () {
             oktaSignIn.session.get(function (res) {
                     user = res.userId
             })
-
+            console.log(user);
             //post to order entity
             var jsondata = {"user": user,
-                            "product": localStorage.getItem('Product Details'),
+                            "product": JSON.stringify(localStorage.getItem('Product Details')),
                             "address": address
                         };
             var settings = {
