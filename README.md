@@ -50,24 +50,25 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
     * The project uses Lottiefiles for gifs, that is used for loading pages/waiting for things to load on webpage
 
 ## Testing
+1. 
 
 ## Credits
 **Content**
 * Codes references:
     * Shopping Cart:
-        1. https://youtu.be/B20Getj_Zk4
-        2. https://youtu.be/PoTGs38DR9E
-        3. https://youtu.be/tEAl7L62GEw
-        4. https://youtu.be/QNXQfdgIXLw
-        5. https://youtu.be/IY5UN82FZ2Q
-        6. https://youtu.be/oXrlgOEiy6o
+        - https://youtu.be/B20Getj_Zk4
+        - https://youtu.be/PoTGs38DR9E
+        - https://youtu.be/tEAl7L62GEw
+        - https://youtu.be/QNXQfdgIXLw
+        - https://youtu.be/IY5UN82FZ2Q
+        - https://youtu.be/oXrlgOEiy6o
     
     * Spin The Wheel Game:
-        1. https://youtu.be/Gcz5RM-imJ8
-        2. https://youtu.be/0dKjK0liwnY
+        - https://youtu.be/Gcz5RM-imJ8
+        - https://youtu.be/0dKjK0liwnY
 
     * Overall:
-        1. https://www.w3schools.com/
+        - https://www.w3schools.com/
 
 
 **Media**
