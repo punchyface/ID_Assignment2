@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -30,10 +30,13 @@ $(document).ready(function() {
                     location.reload();
                 })
 
+                //get user from okta
+                var user = res.userid;
+                console.log(user);
+
                 //New codes start here
-                $(document).ready(function(){
-                    var user = res.userid;
-                    console.log(user);
+                $(document).ready(function(user){
+
                     //Display the game
                     $("#game").on('click', function(e){
                         e.preventDefault();
