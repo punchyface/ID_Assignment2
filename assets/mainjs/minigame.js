@@ -156,7 +156,7 @@ $(document).ready(function() {
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
                                 //method to spin the wheel
-                                attempt = spin(id,currentuser,attempt);
+                                attempt = spin(id,user,attempt);
 
                                 
                             }
