@@ -278,11 +278,11 @@ $(document).ready(function() {
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "https://onlinefood-ef2c.restdb.io/rest/voucher",
+                        "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${id}`,
                         "method": "POST",
                         "headers": {
                           "content-type": "application/json",
-                          "x-apikey": "<your CORS apikey here>",
+                          "x-apikey": APIKEY,
                           "cache-control": "no-cache"
                         },
                         "processData": false,
