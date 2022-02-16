@@ -134,7 +134,7 @@ $(document).ready(function() {
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": `https://onlinefood-ef2c.restdb.io/rest/game?q={"user":${user}}`,
+                        "url": `https://onlinefood-ef2c.restdb.io/rest/game?q={"user":"${user}"}`,
                         "method": "GET",
                         "headers": {
                             "content-type": "application/json",
