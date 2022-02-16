@@ -108,7 +108,7 @@ tbody p{
     width: 100%;
 }
 /* check out btn input */
-.check-out-btn input{
+.check-out-btn button{
     background-color: #E7272D;
     color: #fff;
     width: 100%;
