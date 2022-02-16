@@ -45,7 +45,6 @@ $(document).ready(function() {
                 /* start of external functions
                 -----------------------------------------------------------------------------------------------*/
                 function spin(id,user,attempt){
-                    let click = false;
                     let deg = 0;
                     let zoneSize = 45;
                     let wheel = document.querySelector('.wheel-border');
@@ -90,7 +89,9 @@ $(document).ready(function() {
                         //Calculate and get value
                         var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
                         //call get voucher method
-                        getVoucher(user, wheelValue);
+                        postVoucher(wheelValue, user);
+                        //display popup
+                        displayWinMessage(wheelValue);
                     })
                 }
 
@@ -186,45 +187,7 @@ $(document).ready(function() {
                     });
                 }
 
-                //function to get voucher from db
-                function getVoucher(user, wheelValue){
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "https://onlinefood-ef2c.restdb.io/rest/voucher",
-                        "method": "GET",
-                        "headers": {
-                            "content-type": "application/json",
-                            "x-apikey": APIKEY,
-                            "cache-control": "no-cache"
-                        }
-                    }
-                    
-                    $.ajax(settings).done(function (response) {
-                        let avail = false;
-                        var currentid = "";
-                        var currentvalue = "";
-                        var currentuser = "";
-                        for(var i = 0; i < response.length; i++){
-                            if(response[i].user == user){
-                                avail = true;
-                                currentid = response[i]._id;
-                                currentvalue = response[i].cost;
-                                currentuser = response[i].user;
-                            }
-                        }
-
-                        if(avail == true){
-                            //call method to update/put
-                            updateVoucher(wheelValue, currentid, currentvalue, currentuser);
-                        }
-                        else{
-                            //call method to post/create
-                            postVoucher(wheelValue, user);
-                        }
-                        
-                    });
-                }
+                
 
                 //function to post tuple to voucher
                 function postVoucher(wheelValue, user){
@@ -250,33 +213,6 @@ $(document).ready(function() {
                     });
                 }
 
-                //function to put/update tuple in voucher
-                function updateVoucher(wheelValue, id, currentvalue, currentuser){
-                    var newvalue = parseInt(currentvalue) + parseInt(wheelValue);
-                    var jsondata = {
-                        "user":currentuser,
-                        "cost":Number(newvalue)
-                    };
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${id}`,
-                        "method": "PUT",
-                        "headers": {
-                          "content-type": "application/json",
-                          "x-apikey": APIKEY,
-                          "cache-control": "no-cache"
-                        },
-                        "processData": false,
-                        "data": JSON.stringify(jsondata)
-                      }
-                      
-                      $.ajax(settings).done(function (response) {
-                        console.log(response);
-                        //show pop-up message
-                        displayWinMessage(wheelValue);
-                      });
-                }
 
                     
                 
