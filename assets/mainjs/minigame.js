@@ -192,7 +192,6 @@ $(document).ready(function() {
 
                 //function to post tuple to voucher
                 function postVoucher(wheelValue, user){
-                    wheelValue = parseInt (wheelValue);
                     var jsondata = {"user": user, "cost": wheelValue};
                     var settings = {
                         "async": true,
