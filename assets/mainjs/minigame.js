@@ -1,18 +1,6 @@
 $(document).ready(function() {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
 
-    //Display the game
-    $("#game").on('click', function(e){
-        e.preventDefault();
-        document.getElementById('modal-stw').style.display = "block";
-    })
-    
-    //to close modal
-    $(".close-btn").on('click', function(e){
-        e.preventDefault();
-        document.getElementById('modal-stw').style.display = "none";
-    })
-
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -42,6 +30,18 @@ $(document).ready(function() {
                     setTimeout(function() {win.close()}, 15);
                     localStorage.clear();
                     location.reload();
+                })
+
+                //Display the game
+                $("#game").on('click', function(e){
+                    e.preventDefault();
+                    document.getElementById('modal-stw').style.display = "block";
+                })
+                
+                //to close modal
+                $(".close-btn").on('click', function(e){
+                    e.preventDefault();
+                    document.getElementById('modal-stw').style.display = "none";
                 })
 
                 //get data from database
