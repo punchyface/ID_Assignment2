@@ -174,7 +174,7 @@ $(document).ready(function () {
 
                         $.ajax(settings).done(function (response) {
                             console.log(response);
-                            $(".modal-checkout .modal-para").innerHTML+= `<p><a class="btn btn-primary" href="minigame.html" >You earn a chance to spin the wheel</a></p>`
+                            $(".modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="minigame.html" >You earn a chance to spin the wheel</a></p>`
                             //Clear local storage
                             localStorage.clear();
                             //show popup/modal
@@ -183,9 +183,9 @@ $(document).ready(function () {
                     }
                     else{
                         //Clear local storage
-                    localStorage.clear();
-                    //show popup/modal
-                    showModal();
+                        localStorage.clear();
+                        //show popup/modal
+                        showModal();
                     }
                 });
                     
