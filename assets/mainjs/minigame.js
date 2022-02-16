@@ -1,5 +1,6 @@
+const APIKEY = '61e0110da0f7d226f9b75dbc';
+
 $(document).ready(function() {
-    const APIKEY = '61e0110da0f7d226f9b75dbc';
 
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
@@ -143,9 +144,9 @@ $(document).ready(function() {
                             "url": "https://onlinefood-ef2c.restdb.io/rest/game",
                             "method": "GET",
                             "headers": {
-                            "content-type": "application/json",
-                            "x-apikey": APIKEY,
-                            "cache-control": "no-cache"
+                                "content-type": "application/json",
+                                "x-apikey": APIKEY,
+                                "cache-control": "no-cache"
                             }
                         }
                         
