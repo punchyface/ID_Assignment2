@@ -1,4 +1,3 @@
-const APIKEY = '61e0110da0f7d226f9b75dbc';
 
 $(document).ready(function() {
 
@@ -32,6 +31,7 @@ $(document).ready(function() {
                     location.reload();
                 })
 
+                //New codes start here
                 $(document).ready(function(){
                     var user = res.userid;
                     //Display the game
