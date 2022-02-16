@@ -25,6 +25,7 @@
     <link href="assets/maincss/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet" />
     <link href="assets/maincss/shoppingcart.css" rel="stylesheet" />
+    <link href="assets/maincss/minigame.css" rel="stylesheet"/>
     <!-- ========== End Stylesheet ========== -->
 
     <!-- ========== Google Fonts ========== -->
@@ -80,7 +81,7 @@
                             <a class="smooth-menu" href="menu.html">Menu</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" id="game" href="#">MiniGame</a>
+                            <a id="game" href="#">MiniGame</a>
                         </li>
                         <li>
                             <a class="smooth-menu" href="shoppingcart.html"><i class="fas fa-lg fa-shopping-cart cart-icon"></i><span class="cart-items">0</span></a>
@@ -196,10 +197,56 @@
                     </div>
                 <input class="dismiss-btn" type="button" value="Dismiss">
             </div>
-
         </div>
-        
     </main>
+
+    <!-- Start of Spin the Wheel -->
+    <div id="modal-stw" class="modal-stw">
+        <span class="close-btn">&times;</span>
+        <!-- modal content -->
+        <div class="modal-stw-content">
+            <!-- Wheel container -->
+            <div class="game-container">
+                <div class="app">
+                    <span class="arrow"></span>
+                    <div id="wheel-border" class="wheel-border">
+                        <div class="item-in-wheel-first">
+                            <span id="wheel-value" class="item1"><b>20</b></span>
+                            <span id="wheel-value" class="item3"><b>10</b></span>
+                            <span id="wheel-value" class="item5"><b>5</b></span>
+                            <span id="wheel-value" class="item7"><b>2</b></span>
+                        </div>
+                        <div class="item-in-wheel-second">
+                            <span id="wheel-value" class="item2"><b>15</b></span>
+                            <span id="wheel-value" class="item4"><b>4</b></span>
+                            <span id="wheel-value" class="item6"><b>1</b></span>
+                            <span id="wheel-value" class="item8"><b>8</b></span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input type="button" class="spin-btn" value="Spin!" disabled>
+            </div>
+            <!-- text container -->
+            <div class="side-info">
+                <h3>Spin The Wheel!</h3>
+                <h4>Rewards</h4>
+                <p>Stand a chance to win vouchers that can be used for your next order!</p>
+                <h4>How to get attempt?</h4>
+                <p>Every purchase above $50 grants you an attempt to spin the wheel.</p>
+                <div>
+                    <h4>Attempts: <span class="no-attempt">0</span></h4>
+                </div>
+            </div>
+            <!-- Pop-up when wheel stopped spinning -->
+            <div class="win-message">
+                <h3>Congratulations! &#127881;</h3>
+                <p>You have won a $<span class="display-reward"></span> voucher!</p>
+                <input class="close-reward-btn" type="button" value="Dismiss">
+            </div>
+        </div>
+        <!-- end of modal content -->
+    </div>
 
     <!-- Start Footer 
     ============================================= -->
@@ -294,6 +341,7 @@
     <script src="assets/mainjs/script.js"></script>
     <script src="assets/mainjs/shoppingcart.js"></script>
     <script src="assets/mainjs/index.js"></script>
+    <script src="assets/mainjs/minigame.js"></script>
     
 
 </body>
