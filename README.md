@@ -4,7 +4,11 @@ Everthing began in 2021 when ShiokAh began operating as a food business, caterin
 We have decided to use a bright and vibrant theme, using colors such as red and white as Shiok Ah is a an online food-platform that welcomes people of all ages to enjoy it's wonderfully made dishes, allowing users to feel refreshed when visiting the site as well as getting them engaged in some interactive features. Colors such as black and grey are also being used in this project as it helps to give contrast as well as simplicity to the pages.
 
 **List of User Stories** <br>
-* As a customer, i want to be able to simple click a few buttons, so that i could add items into my shopping cart.
+- As a customer, i want to be able to simple click a few buttons, so that i could add items into my shopping cart.
+- As a customer, i want to be able to remove items from my shopping cart, so that i could add as many items without worrying that i wouldn't be able to remove them later.
+- As a owner, i want to be able to add new dishes/products into my webpage, so that i can update my menu without having the trouble to get a programmer to help me make the changes everytime theres a new dish.
+- As a customer, i want to get cashbacks when shopping online, so that i could save some money when shopping online
+
 
 
 
@@ -15,11 +19,15 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 - Log In - Allows the user to log into the website
 - Sign Up - Allows the user to create an account in the website
 - Shopping Cart - Allows the user to add item/product into the shopping cart
+- Responsive - webpage scale according to width of device
+- Minigame - Allows user to play a game after making a purchase (with requirements)
+- Newsletter - Allows user to send their email to us, to get updates from our web (inactive)
+- Shopping Cart buttons - Allows user to increase quantity of product in shopping cart
 
 <br>
 
 **Features left to implement** <br>
-- Minigame - Allows user to earn points to get reward
+- none
 
 ## Technologies Used
 * HTML
@@ -38,15 +46,35 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
     * The project uses Adobe illustrator to create the logo.
 * Okta
     * The project uses Okta to create a proper user login/signup feature with the use of token.
+* Lottiefiles
+    * The project uses Lottiefiles for gifs, that is used for loading pages/waiting for things to load on webpage
 
 ## Testing
 
 ## Credits
 **Content**
+* Codes references:
+    * Shopping Cart:
+        1. https://youtu.be/B20Getj_Zk4
+        2. https://youtu.be/PoTGs38DR9E
+        3. https://youtu.be/tEAl7L62GEw
+        4. https://youtu.be/QNXQfdgIXLw
+        5. https://youtu.be/IY5UN82FZ2Q
+        6. https://youtu.be/oXrlgOEiy6o
+    
+    * Spin The Wheel Game:
+        1. https://youtu.be/Gcz5RM-imJ8
+        2. https://youtu.be/0dKjK0liwnY
+
+    * Overall:
+        1. https://www.w3schools.com/
 
 
 **Media**
-* 
+* Images sources used in website:
+    * Background images
+    * Product images
+    * Other images
 
 
 **Acknowledgements**
