@@ -69,32 +69,78 @@ $(document).ready(function() {
     /* start of external functions
     -----------------------------------------------------------------------------------------------*/
     function spin(){
+        let deg = 0;
+        let zoneSize = 45;
+        let wheel = document.querySelector('.wheel-border');
+        const valueInWheel = {
+            1: 30, //1st item 
+            2: 60, //2nd item (anti-clockwise)
+            3: 10, //3rd item
+            4: 40, //4th item
+            5: 70, //5th item
+            6: 20, //6th item
+            7: 50, //7th item
+            8: 80, //8th item
+        }
         $(".spin-btn").on('click', function(e){
             e.preventDefault();
             //disable buttons
             document.querySelector('.close-btn').style.pointerEvents = 'none';
             document.querySelector('.spin-btn').style.pointerEvents = 'none';
-            spinTheWheel();
+            wheel.style.transition = 'all 5s ease-out';
+            deg = spinTheWheel(deg);
         })
     
         //when spin is over
-        let wheel = document.querySelector('.wheel-border');
         wheel.addEventListener('transitionend', function(){
             //enable buttons
             document.querySelector('.close-btn').style.pointerEvents = 'auto';
             document.querySelector('.spin-btn').style.pointerEvents = 'auto';
+
+            //get actual degree
+            var actualDeg = deg % 360;
+            //remove transition
+            wheel.style.transition = 'none';
+            //make sure wheel is at right position
+            wheel.style.transform = `rotate(${actualDeg}deg)`;
+            //Calculate and get value
+            var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
+            //show pop-up message
+            displayWinMessage(wheelValue);
+
         })
     }
 
     //function to spin the wheel
-    function spinTheWheel(){
-        
-        var x = 1024; //Min value
-        var y = 9000; //Max value
+    function spinTheWheel(deg){
 
-        var deg = Math.floor(Math.random() * (x-y)) + y;
+        var x = 1024; //min value
+        var y = 9999; //max value
+        
+        deg = Math.floor(Math.random() * (x-y)) + y;
 
         //rotate wheel
         document.getElementById('wheel-border').style.transform = "rotate("+deg+"deg)";
+        return deg;
+    }
+
+    //function to get value from wheel
+    function valueFromWheel(actualDeg, zoneSize, valueInWheel){
+        let numberInWheel = Math.ceil(actualDeg/ zoneSize);
+        let wheelValue = valueInWheel[numberInWheel];
+        return wheelValue;
+    }
+
+    //function to display popup message
+    function displayWinMessage(wheelValue){
+        //Update value in pop-up
+        document.querySelector('.display-reward').textContent = wheelValue;
+        $('.win-message').css('display', 'flex');
+
+        //on dismiss btn click close
+        document.querySelector('.close-reward-btn').addEventListener('click', function(e){
+            e.preventDefault();
+            $('.win-message').css('display', 'none');
+        })
     }
 })
