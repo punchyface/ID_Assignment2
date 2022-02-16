@@ -121,7 +121,6 @@ $(document).ready(function () {
         -------------------------------------------------------------------------------*/
         var button = document.querySelector('.check-out-btn input');
         button.addEventListener('click', function(event){
-            let address = $("#address").val();
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -175,7 +174,7 @@ $(document).ready(function () {
 
                         $.ajax(settings).done(function (response) {
                             console.log(response);
-                            $(".modal-checkout .modal-para").innerHTML+= <p><a class="btn btn-primary" href="game.html" >You earn a chance to spin the wheel</a></p>
+                            $(".modal-checkout .modal-para").innerHTML+= `<p><a class="btn btn-primary" href="minigame.html" >You earn a chance to spin the wheel</a></p>`
                         });
                     }
 
