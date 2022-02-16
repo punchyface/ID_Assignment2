@@ -145,7 +145,7 @@ $(document).ready(function() {
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "https://onlinefood-ef2c.restdb.io/rest/game",
+                        "url": `https://onlinefood-ef2c.restdb.io/rest/game?q={"user":${user}}&totals=true`,
                         "method": "GET",
                         "headers": {
                             "content-type": "application/json",
@@ -155,20 +155,8 @@ $(document).ready(function() {
                     }
                     
                     $.ajax(settings).done(function (response) {
-                        var attempt = 0;
-                        var id = "";
-                        var currentuser = "";
-                            for(var i = 0; i < response.length; i++){
-                                console.log(response[i]);
-                                if(response[i].user == user){
-                                    //increment attempt
-                                    attempt += 1;
-                                    //get id
-                                    id = response[i]._id;
-                                    currentuser = response[i].user;
-                                    console.log(response);
-                                }
-                            }
+                        var attempt = response.totals.total;
+                        var id = response.data[0]._id;
 
                             //check if attempt is more than 0
                             if(attempt > 0){
