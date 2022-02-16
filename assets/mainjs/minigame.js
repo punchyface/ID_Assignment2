@@ -156,6 +156,7 @@ $(document).ready(function() {
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
                                 //method to spin the wheel
+                                console.log(user);
                                 attempt = spin(id,user,attempt);
 
                                 
@@ -192,6 +193,7 @@ $(document).ready(function() {
 
                 //function to post tuple to voucher
                 function postVoucher(wheelValue, user){
+                    console.log(user)
                     var jsondata = {"user": user, "cost":wheelValue};
                     var settings = {
                         "async": true,
