@@ -17,18 +17,7 @@ $(document).ready(function() {
         // If we get here, the user is already signed in.
             
             if (res.status === 'ACTIVE') {
-                /*-------------------------------------------------------------------------------
-                ---------------------------USER IS LOGIN---------------------------------------
-                -------------------------------------------------------------------------------*/
-                document.getElementById("messageBox").innerHTML = `Hello, <b>${res.login}</b>! You are logged in!`;
-                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-info" href="https://dev-77878233.okta.com/enduser/settings" role="button" target="_blank" style="margin-right: 1rem;">Edit profile</a><a class="btn btn-primary" href="#" >Logout</a>`
-                $(".loginModal .modal-content .loginpage .btn-primary").on("click", function (e) {
-                    e.preventDefault();  
-                    var win = window.open('https://dev-77878233.okta.com/login/signout', "mywindow","status=1,width=350,height=150");
-                    setTimeout(function() {win.close()}, 15);
-                    localStorage.clear();
-                    location.reload();
-                })
+
 
                 //get user from okta
                 var okuser = res.userId;
@@ -296,13 +285,11 @@ $(document).ready(function() {
                 /*-------------------------------------------------------------------------------
                 -----------------------------USER IS NOT LOGIN------------------------------------
                 -------------------------------------------------------------------------------*/
-                document.getElementById("messageBox").innerHTML = "You are not logged in";
-                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="signup.html" role="button" >Login/SignUp</a>`
+
                 $("#game").on("click", function (e) {
                     e.preventDefault();    
                     $('.loginModal').modal('show')
                 })  
-                localStorage.clear();  
             }
         });
     }
