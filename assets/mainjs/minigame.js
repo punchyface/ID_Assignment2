@@ -34,6 +34,7 @@ $(document).ready(function() {
                 //New codes start here
                 $(document).ready(function(){
                     var user = res.userid;
+                    console.log(user);
                     //Display the game
                     $("#game").on('click', function(e){
                         e.preventDefault();
