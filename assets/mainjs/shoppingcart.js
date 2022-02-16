@@ -150,6 +150,35 @@ $(document).ready(function () {
                 }
                 $.ajax(settings).done(function (response) {
                     console.log(response);
+                    let totalsum = 0.00;
+                    var allsubtotals = document.getElementsByClassName('subtotal')
+                    for(var i = 0; i < allsubtotals.length; i++){
+                        var subtotal = allsubtotals[i];
+                        totalsum += parseFloat(subtotal.innerHTML);
+                    }
+                    minspend = 50
+                    if (totalsum >= minspend){
+                        var jsondata = {"user": user};
+                        var settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": "https://onlinefood-ef2c.restdb.io/rest/game",
+                            "method": "POST",
+                            "headers": {
+                                "content-type": "application/json",
+                                "x-apikey": APIKEY,
+                                "cache-control": "no-cache"
+                            },
+                            "processData": false,
+                            "data": JSON.stringify(jsondata)
+                        }
+
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            $(".modal-checkout .modal-para").innerHTML+= <p><a class="btn btn-primary" href="game.html" >You earn a chance to spin the wheel</a></p>
+                        });
+                    }
+
                     //Clear local storage
                     localStorage.clear();
                     //show popup/modal
