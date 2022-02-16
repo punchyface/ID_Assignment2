@@ -279,7 +279,7 @@ $(document).ready(function() {
                         "async": true,
                         "crossDomain": true,
                         "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${id}`,
-                        "method": "POST",
+                        "method": "PUT",
                         "headers": {
                           "content-type": "application/json",
                           "x-apikey": APIKEY,
