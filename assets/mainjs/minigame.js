@@ -227,17 +227,19 @@ $(document).ready(function() {
                         let avail = false;
                         var currentid = "";
                         var currentvalue = "";
+                        var currentuser = "";
                         for(var i = 0; i < response.length; i++){
                             if(response[i].user == user){
                                 avail = true;
                                 currentid = response[i]._id;
                                 currentvalue = response[i].cost;
+                                currentuser = response[i].user;
                             }
                         }
 
                         if(avail == true){
                             //call method to update/put
-                            updateVoucher(wheelValue, currentid, currentvalue);
+                            updateVoucher(wheelValue, currentid, currentvalue, currentuser);
                         }
                         else{
                             //call method to post/create
@@ -272,9 +274,12 @@ $(document).ready(function() {
                 }
 
                 //function to put/update tuple in voucher
-                function updateVoucher(wheelValue, id, currentvalue){
+                function updateVoucher(wheelValue, id, currentvalue, currentuser){
                     var newvalue = parseInt(currentvalue) + parseInt(wheelValue);
-                    var jsondata = {"$inc": {"cost":newvalue}};
+                    var jsondata = {
+                        "user":currentuser,
+                        "cost":Number(newvalue)
+                    };
                     var settings = {
                         "async": true,
                         "crossDomain": true,
