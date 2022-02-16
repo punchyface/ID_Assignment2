@@ -43,6 +43,10 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 
 ## Credits
 **Content**
+
+
 **Media**
 * 
+
+
 **Acknowledgements**
