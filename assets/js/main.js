@@ -32,7 +32,7 @@
             target: ".navbar-collapse",
             offset: 200
         });
-        $('#smooth-menu').on('click', function(event) {
+        $('a.smooth-menu').on('click', function(event) {
             var $anchor = $(this);
             var headerH = '75';
             $('html, body').stop().animate({
