@@ -161,15 +161,14 @@ $(document).ready(function() {
                                     //increment attempt
                                     attempt += 1;
                                     //get id
-                                    id = response[i].id;
+                                    id = response[i]._id;
                                     console.log(response);
                                 }
                             }
 
                             //check if attempt is more than 0
                             if(attempt > 0){
-                                //update attempt page
-                                $('.no-attempt').html(attempt);
+                                
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
                                 //method to spin the wheel
@@ -177,6 +176,8 @@ $(document).ready(function() {
 
                                 if(click == true){
                                     attempt -= 1;
+                                    //update attempt page
+                                    $('.no-attempt').html(attempt);
                                 }
                             }
                             else{
