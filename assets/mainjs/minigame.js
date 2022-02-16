@@ -31,19 +31,19 @@ $(document).ready(function() {
                 })
 
                 //get user from okta
-                var user = res.userId;
+                var okuser = res.userId;
                 console.log(user);
 
                 //New codes start here
-                $(document).ready(function(user){
+                $(document).ready(function(okuser){
 
                     //Display the game
                     $("#game").on('click', function(e){
                         e.preventDefault();
                         document.getElementById('modal-stw').style.display = "block";
                         //get data from database
-                        console.log(user);
-                        getUserFromDB(user);
+                        console.log(okuser);
+                        getUserFromDB(okuser);
                     })
                     
                     //to close modal
