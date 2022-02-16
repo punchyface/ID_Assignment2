@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-
+    const APIKEY = '61e0110da0f7d226f9b75dbc';
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
