@@ -170,7 +170,8 @@ $(document).ready(function() {
 
                             //check if attempt is more than 0
                             if(attempt > 0){
-                                
+                                //update attempt page
+                                $('.no-attempt').html(attempt);
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
                                 //method to spin the wheel
@@ -200,7 +201,7 @@ $(document).ready(function() {
                         "method": "DELETE",
                         "headers": {
                         "content-type": "application/json",
-                        "x-apikey": "<your CORS apikey here>",
+                        "x-apikey": APIKEY,
                         "cache-control": "no-cache"
                         }
                     }
@@ -226,13 +227,11 @@ $(document).ready(function() {
                     
                     $.ajax(settings).done(function (response) {
                         let avail = false;
-                        var currentuser = "";
                         var currentid = "";
                         var currentvalue = "";
                         for(var i = 0; i < response.length; i++){
                             if(response[i].user == user){
                                 avail = true;
-                                currentuser = response[i].user;
                                 currentid = response[i]._id;
                                 currentvalue = response[i].cost;
                             }
@@ -244,7 +243,7 @@ $(document).ready(function() {
                         }
                         else{
                             //call method to post/create
-                            postVoucher(wheelValue, currentuser);
+                            postVoucher(wheelValue, user);
                         }
                         
                     });
