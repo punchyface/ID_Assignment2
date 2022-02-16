@@ -172,7 +172,7 @@ $(document).ready(function () {
 
                         $.ajax(settings).done(function (response) {
                             console.log(response);
-                            document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="minigame.html" target="_blank">You earn a chance to spin the wheel</a></p>`
+                            document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`
                             //Clear local storage
                             localStorage.clear();
                             //show popup/modal
