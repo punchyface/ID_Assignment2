@@ -31,7 +31,7 @@ $(document).ready(function() {
                 })
 
                 //get user from okta
-                var user = res.userid;
+                var user = res.userId;
                 console.log(user);
 
                 //New codes start here
