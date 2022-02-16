@@ -1,0 +1,233 @@
+/* Modal for spin the wheel
+-----------------------------------------------------------------------*/
+.modal-stw{
+    z-index: 101;
+    background-color: rgba(0,0,0,0.4);
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.close-btn{
+    font-size: 28px;
+    font-weight: bold;
+    top: 12%;
+    left: 76%;
+    padding: 0px 5px;
+    width: 2%;
+    height: 5%;
+    position: absolute;
+    color: #fff;
+}
+.close-btn:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: #E7272D;
+}
+.modal-stw-content{
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 20%);
+    width: 50%;
+    text-align: center;
+    background-color: #fff;
+    border: none;
+    box-shadow: none;
+    display: inline-flex;
+    border-radius: 10px;
+}
+.game-container{
+    width: 100%;
+    padding: 10px;
+    background-color: #2F403B;
+    border-radius: 10px 0px 0px 10px;
+}
+.side-info{
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.app{
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+/* border of the wheel */
+.wheel-border{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #730202;
+    position: relative;
+    transition: all ease 5s;
+}
+
+.item-in-wheel-second{
+    width: 100%;
+    height: 100%;
+    transform: rotate(-135deg);
+}
+#wheel-value{
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    position: absolute;
+}
+.arrow{
+    clip-path: polygon(42% 76%, 47% 76%, 47% 65%, 53% 65%, 53% 76%, 58% 76%, 50% 85%);
+    z-index: 103;
+    background-color: #6ec0f7;
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+/* Items/values in the wheel
+------------------------------------------------------------------------------ */
+.item1{
+    clip-path: polygon(0 92%, 100% 50%, 0 8%);
+    background-color: #F2ECEB;
+    top: 25%;
+    left: 0%;
+}
+.item3{
+    clip-path: polygon(50% 100%, 92% 0, 8% 0%);
+    background-color: #F2ECEB;
+    top: 0%;
+    left: 25%;
+}
+.item5{
+    clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+    background-color: #F2ECEB;
+    top: 25%;
+    left: 50%;
+}
+.item7{
+    clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+    background-color: #F2ECEB;
+    top: 50%;
+    left: 25%;
+}
+.item2{
+    clip-path: polygon(0 92%, 100% 50%, 0 8%);
+    background-color: #BF4B21;
+    top: 25%;
+    left: 0%;
+    color: #fff;
+}
+.item4{
+    clip-path: polygon(50% 100%, 92% 0, 8% 0%);
+    background-color: #BF4B21;
+    top: 0%;
+    left: 25%;
+    color: #fff;
+}
+.item6{
+    clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+    background-color: #BF4B21;
+    top: 25%;
+    left: 50%;
+    color: #fff;
+}
+.item8{
+    clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+    background-color: #BF4B21;
+    top: 50%;
+    left: 25%;
+    color: #fff;
+}
+span b{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5%;
+    height: 5%;
+    line-height: 5%;
+    transform: translate(-50%,-50%);
+}
+/* Spin the wheel button
+------------------------------------------------------------------------------ */
+.spin-btn{
+    padding: 0px 5px;
+    border-radius: 50%;
+    width: 20%;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease 0s;;
+}
+.spin-btn:hover{
+    color: #fff;
+    background-color: #2EE59D;
+}
+/* Side info
+------------------------------------------------------------------------------ */
+.no-attempt{
+    width: 3%;
+    height: 3%;
+}
+/* Nav bar minigame a
+------------------------------------------------------------------------------ */
+#game:hover{
+    cursor: pointer;
+}
+
+/*--- media query for screen size less than 1380px ---*/
+@media only screen and (max-width: 1380px){
+    .modal-stw-content{
+        flex-wrap: wrap;
+    }
+    .game-container{
+        border-radius: 10px 10px 0px 0px;
+    }
+    .app{
+        width: 300px;
+        height: 300px;
+        display: inline-flex;
+    }
+}
+/*--- media query for screen size less than 600px ---*/
+@media only screen and (max-width: 600px){
+    .modal-stw-content{
+        flex-wrap: wrap;
+    }
+    .game-container{
+        border-radius: 10px 10px 0px 0px;
+    }
+    .app{
+        width: 200px;
+        height: 200px;
+        display: inline-flex;
+    }
+}
+/*--- media query for screen size less than 600px ---*/
+@media only screen and (max-width: 439px){
+    .modal-stw-content{
+        flex-wrap: wrap;
+    }
+    .game-container{
+        border-radius: 10px 10px 0px 0px;
+    }
+    .app{
+        width: 160px;
+        height: 160px;
+        display: inline-flex;
+    }
+    span b{
+        font-size: 10px;
+    }
+    .spin-btn{
+        width: 30%;
+    }
+}
