@@ -1,35 +1,52 @@
 # Shiok Ah
-Shiok Ah is an e-commerce website that sells a variety of food and beverages to it's consumer.
+Everthing began in 2021 when ShiokAh began operating as a food business, catering fusion cuisines and dishes to people during the covid-19 pandemic, hoping that our food brings happineess and joy to our customers during a tough time. Today, ShiokAh stills hopes to bring its customer happiness and joy through our food, through an e-commerce website.
 ## Design Process
+We have decided to use a bright and vibrant theme, using colors such as red and white as Shiok Ah is a an online food-platform that welcomes people of all ages to enjoy it's wonderfully made dishes, allowing users to feel refreshed when visiting the site as well as getting them engaged in some interactive features. Colors such as black and grey are also being used in this project as it helps to give contrast as well as simplicity to the pages.
+
+**List of User Stories** <br>
+* As a customer, i want to be able to simple click a few buttons, so that i could add items into my shopping cart.
+
+
 
 ## Features
 **Existing Features** <br>
 - Publish new product - Allows the seller/owner of the site to add in new product through the website
 - Navigation bar - Allows the user to navigate around the website easily
+- Log In - Allows the user to log into the website
+- Sign Up - Allows the user to create an account in the website
+- Shopping Cart - Allows the user to add item/product into the shopping cart
 
 <br>
 
 **Features left to implement** <br>
-- Log In - Allows the user to log into the website
-- Sign Up - Allows the user to create an account in the website
-- Shopping Cart - Allows the user to add item/product into the shopping cart
 - Minigame - Allows user to earn points to get reward
 
 ## Technologies Used
 * HTML
-    * To create the content of the website.
+    * The project uses create HTML to the content of the website.
 * CSS
-    * To modify the looks of the website.
+    * The project uses CSS to modify the looks of the website.
 * JavaScript
-    * To access the data base through the use of api.
+    * The project uses Javascript to access the data base through the use of api.
 * JQuery
-    * Used to simplify DOM manipulation.
+    * The project uses JQuery to simplify DOM manipulation.
 * restdb
-    * Used to create NoSQL database for the products/items.
+    * The project uses restdb to create NoSQL database for the products/items.
 * Bootstrap
-    * Used to simplify the styling of the website.
+    * The project uses bootstrap to simplify the styling of the website.
 * Illustrator
-    * Used to create logo.
+    * The project uses Adobe illustrator to create the logo.
+* Okta
+    * The project uses Okta to create a proper user login/signup feature with the use of token.
 
 ## Testing
+
 ## Credits
+**Content**
+
+
+**Media**
+* 
+
+
+**Acknowledgements**

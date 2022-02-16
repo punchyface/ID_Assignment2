@@ -24,6 +24,7 @@
     <link href="assets/css/bootsnav.css" rel="stylesheet" />
     <link href="assets/maincss/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet" />
+    <link href="assets/maincss/minigame.css" rel="stylesheet"/>
     <!-- ========== End Stylesheet ========== -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -77,19 +78,19 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="#" data-out="#">
                         <li>
-                            <a class="smooth-menu" href="#home">Home</a>
+                            <a id="smooth-menu" class="smooth-menu" href="#home">Home</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="#popular-dishes">Popular Dishes</a>
+                            <a id="smooth-menu" class="smooth-menu" href="#popular-dishes">Popular Dishes</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="menu.html">Menu</a>
+                            <a id="smooth-menu" class="smooth-menu" href="menu.html">Menu</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="#review">Review</a>
+                            <a class="smooth-menu" id="game">MiniGame</a>
                         </li>
                         <li>
-                            <a class="smooth-menu" href="shoppingcart.html"><i class="fas fa-lg fa-shopping-cart cart-icon"></i><span class="cart-items">0</span></a>
+                            <a id="smooth-menu" class="smooth-menu" href="shoppingcart.html"><i class="fas fa-lg fa-shopping-cart cart-icon"></i><span class="cart-items">0</span></a>
                         </li>
                         <li>
                             <a data-toggle="modal" data-target=".loginModal" href="#"><i class="far fa-lg fa-user-circle"></i></a>
@@ -225,9 +226,9 @@
                 </div>
                 <div class="col-md-4 single-item">
                     <div class="item">
-                        <h4>Get an offer</h4>
+                        <h4>Stay Updated</h4>
                         <p>
-                            Subsctibe today and get an offer everyday. It's easy and takes just a couple of minutes.
+                            Subscribe today to recieve the latest new on us. It's easy and takes just a couple of minutes.
                         </p>
                         <form action="#">
                             <div class="input-group">
@@ -252,7 +253,7 @@
                         <h3>Discover</h3>
                         <h2>Our specials</h2>
                         <p>
-                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                            Check out some of our most reviewed and recommended dishes!
                         </p>
                     </div>
                 </div>
@@ -355,7 +356,7 @@
     </div>
     <!-- End Popular Dishes -->
 
-    <!-- Start Gallery
+    <!-- Start about
     ============================================= -->
     <div id="About" class="gallery-area default-padding">
         <div class="container">
@@ -373,7 +374,7 @@
            
         </div>
     </div>
-    <!-- End Gallery -->
+    <!-- End about -->
 
     <!-- Start Testimonials 
     ============================================= -->
@@ -385,7 +386,7 @@
                         <h3>Reviews</h3>
                         <h2>Testimonials</h2>
                         <p>
-                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                            Reviews given by our customers.
                         </p>
                     </div>
                 </div>
@@ -395,16 +396,16 @@
                     <div class="testimonial-items testimonials-carousel owl-carousel owl-theme text-center">
                         <!-- Single Item -->
                         <div class="item">
-                            <h4>Delicious Burger</h4>
+                            <h4>Delicious Iced Lemon Tea</h4>
                             <p>
-                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                                Very refreshing, slightly different from the usual. &#128077;&#128031;
                             </p>
                             <div class="thumb">
-                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <img src="assets/img/review-user-icon3.gif" alt="Thumb">
                                 <i class="fas fa-quote-left"></i>
                             </div>
                             <div class="clients-info">
-                                <h5>Ahel John</h5>
+                                <h5>John Fisher</h5>
                                 <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -417,12 +418,12 @@
                         <!-- End Single Item -->
                         <!-- Single Item -->
                         <div class="item">
-                            <h4>Awesome pizza</h4>
+                            <h4>Awesome Bingsu</h4>
                             <p>
-                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                                Suprisingly amazing, worth trying it. &#128077;⭐
                             </p>
                             <div class="thumb">
-                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <img src="assets/img/review-user-icon2.png" alt="Thumb">
                                 <i class="fas fa-quote-left"></i>
                             </div>
                             <div class="clients-info">
@@ -439,16 +440,16 @@
                         <!-- End Single Item -->
                         <!-- Single Item -->
                         <div class="item">
-                            <h4>Delicious Burger</h4>
+                            <h4>Delicious Chili Crab</h4>
                             <p>
-                                Finished no horrible blessing landlord dwelling dissuade if. Rent fond am he in on read. Anxious cordial demands settled entered in do to colonel. 
+                                Best Chili crab ever! &#128077;&#129415;
                             </p>
                             <div class="thumb">
-                                <img src="assets/img/100x100.png" alt="Thumb">
+                                <img src="assets/img/review-user-icon1.gif" alt="Thumb">
                                 <i class="fas fa-quote-left"></i>
                             </div>
                             <div class="clients-info">
-                                <h5>Ahel John</h5>
+                                <h5>Bruce Wayne</h5>
                                 <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -466,6 +467,54 @@
     </div>
     <!-- End Testimonials -->
 
+    <!-- Start of Spin the Wheel -->
+    <div id="modal-stw" class="modal-stw">
+        <span class="close-btn">&times;</span>
+        <!-- modal content -->
+        <div class="modal-stw-content">
+            <!-- Wheel container -->
+            <div class="game-container">
+                <div class="app">
+                    <span class="arrow"></span>
+                    <div id="wheel-border" class="wheel-border">
+                        <div class="item-in-wheel-first">
+                            <span id="wheel-value" class="item1"><b>20</b></span>
+                            <span id="wheel-value" class="item3"><b>10</b></span>
+                            <span id="wheel-value" class="item5"><b>5</b></span>
+                            <span id="wheel-value" class="item7"><b>2</b></span>
+                        </div>
+                        <div class="item-in-wheel-second">
+                            <span id="wheel-value" class="item2"><b>15</b></span>
+                            <span id="wheel-value" class="item4"><b>4</b></span>
+                            <span id="wheel-value" class="item6"><b>1</b></span>
+                            <span id="wheel-value" class="item8"><b>8</b></span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input type="button" class="spin-btn" value="Spin!" disabled>
+            </div>
+            <!-- text container -->
+            <div class="side-info">
+                <h3>Spin The Wheel!</h3>
+                <h4>Rewards</h4>
+                <p>Stand a chance to win vouchers that can be used for your next order!</p>
+                <h4>How to get attempt?</h4>
+                <p>Every purchase above $50 grants you an attempt to spin the wheel.</p>
+                <div>
+                    <h4>Attempts: <span class="no-attempt">0</span></h4>
+                </div>
+            </div>
+            <!-- Pop-up when wheel stopped spinning -->
+            <div class="win-message">
+                <h3>Congratulations! &#127881;</h3>
+                <p>You have won a $<span class="display-reward"></span> voucher!</p>
+                <input class="close-reward-btn" type="button" value="Dismiss">
+            </div>
+        </div>
+        <!-- end of modal content -->
+    </div>
+
 
 
     <!-- Start Footer 
@@ -478,12 +527,12 @@
                     <div class="col-md-6 col-md-offset-3 item-center text-center">
                         <a href="#"><img src="assets/img/logo-light.png" alt="Logo"></a>
                         <p>
-                            (Cafe/Bistrot) 840, South Spring Street, Los Angeles.
+                            (Singapore Cafe/Bistrot) 46 East Coast Road, Singapore.
                         </p>
                         <ul>
                             <li>
                                 <i class="fas fa-phone"></i>
-                                +123 456 7890
+                                +65 456 7890
                             </li>
                             <li>
                                 <i class="fas fa-envelope-open"></i>
@@ -560,6 +609,7 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/mainjs/script.js"></script>
     <script src="assets/mainjs/index.js"></script>
+    <script src="assets/mainjs/minigame.js"></script>
 
 </body>
 </html>
