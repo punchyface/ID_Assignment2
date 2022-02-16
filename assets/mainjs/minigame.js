@@ -37,6 +37,8 @@ $(document).ready(function() {
                     $("#game").on('click', function(e){
                         e.preventDefault();
                         document.getElementById('modal-stw').style.display = "block";
+                        //get data from database
+                        getUserFromDB(user);
                     })
                     
                     //to close modal
@@ -45,8 +47,7 @@ $(document).ready(function() {
                         document.getElementById('modal-stw').style.display = "none";
                     })
 
-                    //get data from database
-                    getUserFromDB(user);
+                    
 
                     /* start of external functions
                     -----------------------------------------------------------------------------------------------*/
@@ -157,7 +158,7 @@ $(document).ready(function() {
                                         attempt += 1;
                                         //get id
                                         id = response[i].id;
-                                        
+                                        console.log(response);
                                     }
                                 }
 
