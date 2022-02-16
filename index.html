@@ -470,28 +470,31 @@
     <!-- Start of Spin the Wheel -->
     <div id="modal-stw" class="modal-stw">
         <span class="close-btn">&times;</span>
+        <!-- modal content -->
         <div class="modal-stw-content">
+            <!-- Wheel container -->
             <div class="game-container">
                 <div class="app">
                     <span class="arrow"></span>
                     <div id="wheel-border" class="wheel-border">
                         <div class="item-in-wheel-first">
-                            <span id="wheel-value" class="item1"><b>20</b></span>
-                            <span id="wheel-value" class="item3"><b>20</b></span>
-                            <span id="wheel-value" class="item5"><b>20</b></span>
-                            <span id="wheel-value" class="item7"><b>20</b></span>
+                            <span id="wheel-value" class="item1"><b>10</b></span>
+                            <span id="wheel-value" class="item3"><b>30</b></span>
+                            <span id="wheel-value" class="item5"><b>50</b></span>
+                            <span id="wheel-value" class="item7"><b>70</b></span>
                         </div>
                         <div class="item-in-wheel-second">
-                            <span id="wheel-value" class="item2"><b>10</b></span>
-                            <span id="wheel-value" class="item4"><b>10</b></span>
-                            <span id="wheel-value" class="item6"><b>10</b></span>
-                            <span id="wheel-value" class="item8"><b>10</b></span>
+                            <span id="wheel-value" class="item2"><b>20</b></span>
+                            <span id="wheel-value" class="item4"><b>40</b></span>
+                            <span id="wheel-value" class="item6"><b>60</b></span>
+                            <span id="wheel-value" class="item8"><b>80</b></span>
                         </div>
                     </div>
                 </div>
                 <br>
                 <input type="button" class="spin-btn" value="Spin!">
             </div>
+            <!-- text container -->
             <div class="side-info">
                 <h3>Spin The Wheel!</h3>
                 <h4>Rewards</h4>
@@ -502,7 +505,14 @@
                     <h4>Attempts: <span class="no-attempt">0</span></h4>
                 </div>
             </div>
+            <!-- Pop-up when wheel stopped spinning -->
+            <div class="win-message">
+                <h3>Congratulations! &#127881;</h3>
+                <p>You have won a $<span class="display-reward"></span> voucher!</p>
+                <input class="close-reward-btn" type="button" value="Dismiss">
+            </div>
         </div>
+        <!-- end of modal content -->
     </div>
 
 
