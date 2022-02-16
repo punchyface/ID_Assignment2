@@ -120,7 +120,8 @@ $(document).ready(function () {
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
         $('.check-out-btn button').on('click', function(event){
-
+            $(".check-out-btn button").prop( "disabled", true);
+            $(".default-cart-preloader").show();
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
@@ -141,11 +142,7 @@ $(document).ready(function () {
                     "cache-control": "no-cache"
                 },
                 "processData": false,
-                "data": JSON.stringify(jsondata),
-                "beforeSend": function(){
-                    $(".check-out-btn button").prop( "disabled", true);
-                    $(".default-cart-preloader").show();
-                  }
+                "data": JSON.stringify(jsondata)
                 }
                 $.ajax(settings).done(function (response) {
                     console.log(response);
