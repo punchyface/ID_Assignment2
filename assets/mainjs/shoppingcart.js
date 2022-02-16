@@ -143,7 +143,7 @@ $(document).ready(function () {
                 "processData": false,
                 "data": JSON.stringify(jsondata),
                 "beforeSend": function(){
-                    $(".check-out-btn").prop( "disabled", true);
+                    $(".check-out-btn button").prop( "disabled", true);
                   }
                 }
                 $.ajax(settings).done(function (response) {
