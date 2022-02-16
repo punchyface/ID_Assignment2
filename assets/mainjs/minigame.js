@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
     var oktaSignIn = new OktaSignIn({
@@ -31,10 +30,13 @@ $(document).ready(function() {
                     location.reload();
                 })
 
+                //get user from okta
+                var user = res.userId;
+                console.log(user);
+
                 //New codes start here
-                $(document).ready(function(){
-                    var user = res.userid;
-                    console.log(user);
+                $(document).ready(function(user){
+
                     //Display the game
                     $("#game").on('click', function(e){
                         e.preventDefault();
