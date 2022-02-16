@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    const APIKEY = '61e0110da0f7d226f9b75dbc';
 
     //Display the game
     $("#game").on('click', function(e){
@@ -12,11 +13,7 @@ $(document).ready(function() {
         document.getElementById('modal-stw').style.display = "none";
     })
 
-    spin();
-
-    
-
-    /*var oktaSignIn = new OktaSignIn({
+    var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
         logoText: 'Shiok Ah',
@@ -31,13 +28,13 @@ $(document).ready(function() {
     if(oktaSignIn.token.hasTokensInUrl() != true) {
         oktaSignIn.session.get(function (res) {
         // If we get here, the user is already signed in.
-            console.log(res)*/
+            var user = res.userid
             
-            //if (res.status === 'ACTIVE') {
+            if (res.status === 'ACTIVE') {
                 /*-------------------------------------------------------------------------------
                 ---------------------------USER IS LOGIN---------------------------------------
                 -------------------------------------------------------------------------------*/
-                /*document.getElementById("messageBox").innerHTML = `Hello, <b>${res.login}</b>! You are logged in!`;
+                document.getElementById("messageBox").innerHTML = `Hello, <b>${res.login}</b>! You are logged in!`;
                 document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-info" href="https://dev-77878233.okta.com/enduser/settings" role="button" target="_blank" style="margin-right: 1rem;">Edit profile</a><a class="btn btn-primary" href="#" >Logout</a>`
                 $(".loginModal .modal-content .loginpage .btn-primary").on("click", function (e) {
                     e.preventDefault();  
@@ -47,40 +44,43 @@ $(document).ready(function() {
                     location.reload();
                 })
 
-                let spin = document.querySelector('.spin-btn');
-                spin.addEventListener('click', function(){
-                    spinTheWheel();
-                })
+                //get data from database
+                getUserFromDB(user);
 
-                //function to spin the wheel
-                function spinTheWheel(){
-                    
-                    var x = 1024; //Min value
-                    var y = 5000; //Max value
 
-                    var deg = Math.floor(Math.random() * (x-y)) + y;
-
-                    //rotate wheel
-                    document.querySelector('.wheel-border').style.transform = "rotate("+deg+"deg)";
-                }
+                
+            }
+            else{
+                /*-------------------------------------------------------------------------------
+                -----------------------------USER IS NOT LOGIN------------------------------------
+                -------------------------------------------------------------------------------*/
+                document.getElementById("messageBox").innerHTML = "You are not logged in";
+                document.querySelector(".loginModal .modal-content .loginpage").innerHTML= `<a class="btn btn-primary" href="signup.html" role="button" >Login/SignUp</a>`
+                $("div#portfolio-grid.menu-lists").on("click", ".add-to-cart", function (e) {
+                    e.preventDefault();    
+                    $('.loginModal').modal('show')
+                })  
+                localStorage.clear();  
             }
         });
-    }*/
+    }
+
     /* start of external functions
     -----------------------------------------------------------------------------------------------*/
-    function spin(){
+    function spin(id){
+        let click = false;
         let deg = 0;
         let zoneSize = 45;
         let wheel = document.querySelector('.wheel-border');
         const valueInWheel = {
-            1: 30, //1st item 
-            2: 60, //2nd item (anti-clockwise)
-            3: 10, //3rd item
-            4: 40, //4th item
-            5: 70, //5th item
-            6: 20, //6th item
-            7: 50, //7th item
-            8: 80, //8th item
+            1: 10, //1st item (class item3)
+            2: 1, //2nd item (anti-clockwise) (class item6)
+            3: 20, //3rd item (class item1)
+            4: 4, //4th item (class item4)
+            5: 2, //5th item (class item7)
+            6: 15, //6th item (class item2)
+            7: 5, //7th item (class item5)
+            8: 8, //8th item (class item8)
         }
         $(".spin-btn").on('click', function(e){
             e.preventDefault();
@@ -89,6 +89,9 @@ $(document).ready(function() {
             document.querySelector('.spin-btn').style.pointerEvents = 'none';
             wheel.style.transition = 'all 5s ease-out';
             deg = spinTheWheel(deg);
+            //remove tuple
+            removeTupleFromGame(id);
+            click = true;
         })
     
         //when spin is over
@@ -107,6 +110,8 @@ $(document).ready(function() {
             var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
             //show pop-up message
             displayWinMessage(wheelValue);
+            //return click
+            return click;
 
         })
     }
@@ -142,5 +147,80 @@ $(document).ready(function() {
             e.preventDefault();
             $('.win-message').css('display', 'none');
         })
+    }
+
+    /* database functions
+    -----------------------------------------------------------------------------------------------*/
+    //function to get data from game db in restdb
+    function getUserFromDB(user){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://onlinefood-ef2c.restdb.io/rest/game",
+            "method": "GET",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": APIKEY,
+              "cache-control": "no-cache"
+            }
+          }
+          
+          $.ajax(settings).done(function (response) {
+              var attempt = 0;
+              var id = "";
+                for(var i = 0; i < response.length; i++){
+                    if(response[i].user == user){
+                        //increment attempt
+                        attempt += 1;
+                        //get id
+                        id = response[i].id;
+                        
+                    }
+                }
+
+                //check if attempt is more than 0
+                if(attempt > 0){
+                    //update attempt page
+                    $('.no-attempt').html(attempt);
+                    //enable button to spin
+                    $('.spin-btn').prop('disabled', false);
+                    //method to spin the wheel
+                    let click = spin(id);
+
+                    if(click == true){
+                        attempt -= 1;
+                    }
+                }
+                else{
+                    //disable button to spin
+                    $('.spin-btn').prop('disabled', true);
+                }
+
+            
+          });
+    }
+
+    //function to delete tuple
+    function removeTupleFromGame(id){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://onlinefood-ef2c.restdb.io/rest/game/${id}`,
+            "method": "DELETE",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": "<your CORS apikey here>",
+              "cache-control": "no-cache"
+            }
+          }
+          
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
+    }
+
+    //function to post tuple to voucher
+    function postVoucher(wheelValue){
+
     }
 })
