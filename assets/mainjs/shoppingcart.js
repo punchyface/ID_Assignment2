@@ -169,7 +169,6 @@ $(document).ready(function () {
                             "processData": false,
                             "data": JSON.stringify(jsondata)
                         }
-
                         $.ajax(settings).done(function (response) {
                             console.log(response);
                             document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`

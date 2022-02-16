@@ -145,12 +145,12 @@ $(document).ready(function() {
                     }
                     
                     $.ajax(settings).done(function (response) {
-                        var attempt = response.data.length;
+                        var attempt = response.length;
 
                             //check if attempt is more than 0
                             if(attempt > 0){
                                 //user id
-                                var id = response.data[0]._id;
+                                var id = response[0]._id;
                                 //update attempt page
                                 $('.no-attempt').html(attempt);
                                 //enable button to spin
