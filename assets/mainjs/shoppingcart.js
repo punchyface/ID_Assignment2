@@ -119,8 +119,7 @@ $(document).ready(function () {
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
-        var button = document.querySelector('.check-out-btn input');
-        button.addEventListener('click', function(event){
+        $('.check-out-btn button').on('click', function(event){
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -155,7 +154,8 @@ $(document).ready(function () {
                         var subtotal = allsubtotals[i];
                         totalsum += parseFloat(subtotal.innerHTML);
                     }
-                    minspend = 50
+
+                    let minspend = 50
                     if (totalsum >= minspend){
                         var jsondata = {"user": user};
                         var settings = {
@@ -178,7 +178,7 @@ $(document).ready(function () {
                             //Clear local storage
                             localStorage.clear();
                             //show popup/modal
-                            $(document).ready(showModal());
+                            showModal();
                         });
                     }
                     else{
@@ -187,7 +187,7 @@ $(document).ready(function () {
                         //show popup/modal
                         showModal();
                     }
-                });
+                })
                     
             })
         })
