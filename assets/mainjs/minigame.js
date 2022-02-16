@@ -192,8 +192,8 @@ $(document).ready(function() {
 
                 //function to post tuple to voucher
                 function postVoucher(wheelValue, user){
-                    console.log(wheelValue)
-                    var jsondata = {"user": user, "cost":wheelValue};
+                    wheelValue = parseInt (wheelValue);
+                    var jsondata = {"user": user, "cost": wheelValue};
                     var settings = {
                         "async": true,
                         "crossDomain": true,
