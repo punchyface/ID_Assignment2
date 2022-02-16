@@ -41,6 +41,7 @@ $(document).ready(function() {
                     document.getElementById('modal-stw').style.display = "block";
                     //get data from database
                     console.log(okuser);
+                    //Start of backend
                     getUserFromDB(okuser);
                 })
                 
@@ -54,7 +55,7 @@ $(document).ready(function() {
 
                 /* start of external functions
                 -----------------------------------------------------------------------------------------------*/
-                function spin(id,user){
+                function spin(id,user,attempt){
                     let click = false;
                     let deg = 0;
                     let zoneSize = 45;
@@ -76,9 +77,13 @@ $(document).ready(function() {
                         document.querySelector('.spin-btn').style.pointerEvents = 'none';
                         wheel.style.transition = 'all 5s ease-out';
                         deg = spinTheWheel(deg);
+                        //minus attempt and update page
+                        attempt -= 1;
+                        $(".no-attempt").html(attempt);
                         //remove tuple
                         removeTupleFromGame(id);
-                        click = true;
+                        //return attempt
+                        return attempt;
                     })
                 
                     //when spin is over
@@ -97,9 +102,6 @@ $(document).ready(function() {
                         var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
                         //call get voucher method
                         getVoucher(user, wheelValue);
-                        //return click
-                        return click;
-
                     })
                 }
 
@@ -175,13 +177,9 @@ $(document).ready(function() {
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
                                 //method to spin the wheel
-                                let click = spin(id,currentuser);
+                                attempt = spin(id,currentuser,attempt);
 
-                                if(click == true){
-                                    attempt -= 1;
-                                    //update attempt page
-                                    $('.no-attempt').html(attempt);
-                                }
+                                
                             }
                             else{
                                 //disable button to spin
