@@ -74,8 +74,27 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 **Media**
 * Images sources used in website:
     * Background images
+        - https://images.app.goo.gl/ZkF7J4gBCgte2cww9
+        - https://images.app.goo.gl/yKAVXXnTCYtFdBat6
+        - https://images.app.goo.gl/475SrENb2qd9JSJW9
+        - https://canarywharf.com/wp-content/uploads/2021/06/canary-wharf-eating-drinking-six-by-nico-ss21-2-710x690-1.jpg
+        - https://sethlui.com/wp-content/uploads/2021/05/persea-2.jpg
+        - https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80
+
+
     * Product images
+        - https://kimchimari.com/wp-content/uploads/2016/06/Shaved-ice-dessert-bingsu-with-berries-1024x657.jpg
+        - https://res.cloudinary.com/hksqkdlah/image/upload/44371-sfs-thai-style-fried-chicken-40.jpg
+        - https://i.pinimg.com/474x/95/d4/32/95d43290e76613abdf474b8a9971201e.jpg
+        - https://www.besthealthmag.ca/wp-content/uploads/2020/07/iced-tea-best-health.jpg
+
+
     * Other images
+        - https://images.neopets.com/template_images/arkmite_swim.gif
+        - https://www.cultjobs.com/uploads/job/logo/103866600/thumb_TMTV_Logomark_Avatar_1_RGB_72ppi_1000x1000.png
+        - https://avatarbox.net/avatars/img40/batman_eyes_avatar_picture_32033.gif
+        
+
 
 
 **Acknowledgements**
