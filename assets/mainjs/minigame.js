@@ -42,6 +42,7 @@ $(document).ready(function() {
                         e.preventDefault();
                         document.getElementById('modal-stw').style.display = "block";
                         //get data from database
+                        console.log(user);
                         getUserFromDB(user);
                     })
                     
@@ -157,6 +158,7 @@ $(document).ready(function() {
                             var attempt = 0;
                             var id = "";
                                 for(var i = 0; i < response.length; i++){
+                                    console.log(response[i]);
                                     if(response[i].user == user){
                                         //increment attempt
                                         attempt += 1;
