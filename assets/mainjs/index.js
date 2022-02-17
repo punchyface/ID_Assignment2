@@ -16,11 +16,9 @@ $(window).on('load', function() {
         display: 'page'
         }
     });
-    oktaSignIn.session.get(function (res){
-        oktaSignIn.fetch('https://dev-77878233.okta.com/api/v1/users/me')
-            .then(response => response.json()) 
-            .then(function(data){
-                console.log(data)
-            })
-    })
+    oktaSignIn.fetch('https://dev-77878233.okta.com/api/v1/users/me')
+        .then(response => response.json()) 
+        .then(function(data){
+            console.log(data)
+        })
 })
