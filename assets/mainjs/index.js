@@ -17,7 +17,11 @@ $(window).on('load', function() {
         }
     });
     oktaSignIn.session.get(function (res){
-        fetch('https://dev-77878233.okta.com/api/v1/users/me')
+        fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+            headers: {
+              Authorization: `token ${res.id}`
+            }
+          })
             .then(response => response.json()) 
             .then(function(data){
                 console.log(data)
