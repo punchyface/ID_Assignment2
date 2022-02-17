@@ -438,6 +438,7 @@ $(document).ready(function () {
     $("select#voucher").on("change", function (e) {
         e.preventDefault();
         updateTotal();
+        recalculateTotal();
     })
 
     //function to fresh table
