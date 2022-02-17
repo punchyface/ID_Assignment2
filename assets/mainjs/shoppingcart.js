@@ -120,7 +120,7 @@ $(document).ready(function () {
         /*to Update drop down box for voucher
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
-            user = res.userId;
+            var okuser = res.userId;
 
             var settings = {
                 "async": true,
@@ -135,15 +135,13 @@ $(document).ready(function () {
             }
 
             $.ajax(settings).done(function (response){
-                let content = "";
                 for (var i = 0; i < response[i]; i++){
-                    if(response[i].user == user){
-                        content += `
-                        <option value="${response[i].cost}">$${response[i].cost} voucher</option>`
+                    if(response[i].user == okuser){
+                        //add info to html page
+                        document.querySelector("#voucher").innerHTML += 
+                         `<option value="${response[i].cost}">$${response[i].cost} voucher</option>`;
                     }
                 }
-                //add info to html page
-                $("#voucher").html(content);
             })
         })
 
