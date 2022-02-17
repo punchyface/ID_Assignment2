@@ -5,6 +5,8 @@ Preloader Init
 $(window).on('load', function() {
     // Animate loader off screen
     $(".se-pre-con").fadeOut("slow");
+
+    //testing
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -17,7 +19,6 @@ $(window).on('load', function() {
         }
     });
     oktaSignIn.session.get(function (res){
-        console.log(res.id)
 
         var settings = {
             "async": true,

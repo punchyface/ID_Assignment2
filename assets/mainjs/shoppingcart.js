@@ -69,7 +69,6 @@ $(document).ready(function () {
         $(".tbody").html(content);
         $(".total-price table .display-total-cost").html(total.toFixed(2));
         sumUpQty();
-        updateTotal(total);
 
         /*to remove cart item when remove btn is clicked
         -------------------------------------------------------------------------------*/
@@ -140,8 +139,8 @@ $(document).ready(function () {
             $.ajax(settings).done(function (response){
                 for (var i = 0; i < response[i]; i++){
                     //add info to html page
-                    document.querySelector("#voucher.form-control").innerHTML += 
-                        `<option value="${response[i]._id}">$${response[i].cost} off</option>`;
+                    document.querySelector("#voucher.form-control").innerHTML += `
+                    <option value="${response[i]._id}">$${response[i].cost} off</option>`;
                     
                 }
     
@@ -413,20 +412,20 @@ $(document).ready(function () {
     }
 
     //function to update total
-    function updateTotal(previoustotal){
-        var subtotal = previoustotal;
-        var voucher = parseFloat(document.getElementById("voucher").value);
+    function updateTotal(){
+        var subtotal = document.querySelector(".display-total-cost").innerHTML;
+        var voucher = document.getElementById("voucher").value;
         console.log(voucher);
-        var total = parseFloat(subtotal) - voucher;
+        var total = parseInt(subtotal) - parseInt(voucher);
 
         //update pages
-        if(voucher == null || voucher == NaN){
+        if(voucher == null){
             $(".display-voucher-value").html("-0.00");
-            $(".display-final-cost").html(subtotal.toFixed(2));
+            $(".display-final-cost").html(subtotal);
         }
         else{
-            $(".display-voucher-value").html("-"+voucher.toFixed(2));
-            $(".display-final-cost").html(total.toFixed(2));
+            $(".display-voucher-value").html("-" + voucher);
+            $(".display-final-cost").html(total);
         }
         
     }
