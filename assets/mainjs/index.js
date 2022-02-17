@@ -11,15 +11,18 @@ $(window).on('load', function() {
         logoText: 'Shiok Ah',
         clientId: "0oa3tpe06geyv3Tq25d7",
         authParams: {
-        issuer: "default",
-        responseType: ['token', 'id_token'],
-        display: 'page'
+            issuer: "default",
+            responseType: ['token', 'id_token'],
+            display: 'page'
         }
     });
     oktaSignIn.session.get(function (res){
+
         fetch('https://dev-77878233.okta.com/api/v1/users/me', {
             headers: {
-              Authorization: `token ${res.id}`
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `SSMS ${res.id}`
             }
           })
             .then(response => response.json()) 
