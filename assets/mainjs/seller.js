@@ -21,7 +21,7 @@ $(document).ready(function () {
             console.log(response);
             let content ="";
             for (var i = 0; i < response.length; i++) {
-                content = `${content}<span><button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button><button class="remove-cat">&times;</button></span>`
+                content = `${content}<span><button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button><button id="remove-cat" class="remove-cat">&times;</button></span>`
             }
             document.querySelector(".food-menu-content .mix-item-menu").innerHTML += content;
             
@@ -313,11 +313,13 @@ $(document).ready(function () {
     $("#add-foodcategory-submit").on("click", function (e) {
         e.preventDefault();
         let foodcategory = $("#add-foodcategory").val();
+        console.log(foodcategory);
         postFoodCat(foodcategory);
     })
 
     //function to post foodcategory
     function postFoodCat(foodcategory){
+        console.log(foodcategory);
         var jsondata = {
             "foodcat":foodcategory
         };
@@ -344,9 +346,14 @@ $(document).ready(function () {
         });
     }
 
-    var allremovecatbtn = document.getElementsByClassName("remove-cat");
-    for(var i = 0; i < allremovecatbtn.length; i++){
-        allremovecatbtn[i].addEventListener('click', function(event){
+    let allremovecatbtn = document.getElementsByClassName('remove-cat');
+    console.log(allremovecatbtn);
+    for(let i = 0; i < allremovecatbtn.length; i++){
+        var button = allremovecatbtn[i];
+        console.log(button);
+        button.on('click', function(event){
+            event.preventDefault();
+            console.log(button);
             let btnclicked = event.target;
             //remove it from html
             btnclicked.closest('span').remove();
