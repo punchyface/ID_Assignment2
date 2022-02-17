@@ -141,7 +141,7 @@ $(document).ready(function () {
                 for (var i = 0; i < response.length; i++){
                     //add info to html page
                     document.querySelector("#voucher.form-control").innerHTML += `
-                    <option value="${JSON.stringify(response[i])}">$${response[i].cost} off</option>`;
+                    <option value=${JSON.stringify(response[i])}>$${response[i].cost} off</option>`;
                     
                 }
     
