@@ -82,6 +82,8 @@ $(document).ready(function () {
                 removeItemInStorage(buttonClicked.closest('div').firstElementChild.innerHTML, itemsInLocalStorage)
                 //call function to calculate the total cost
                 recalculateTotal();
+                //call function to update final cost
+                updateTotal();
                 //call function to update total item in cart
                 sumUpQty();
                 //refresh page
@@ -121,11 +123,11 @@ $(document).ready(function () {
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
             var okuser = res.userId;
-
+            console.log(okuser);
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}","status":true}`,
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
                 "method": "GET",
                 "headers": {
                     "content-type": "application/json",
@@ -407,6 +409,24 @@ $(document).ready(function () {
         $('.modal-checkout .close-btn').on('click', function(){
             location.reload();
         })
+    }
+
+    //function to update total
+    function updateTotal(){
+        var Subtotal = document.querySelector(".display-total-cost").innerHTML;
+        var voucher = document.getElementById("voucher").value;
+        var total = parseInt(Subtotal) - parseInt(voucher);
+
+        //update pages
+        if(voucher == null){
+            $(".display-voucher-value").innerHTML = "- 0.00";
+            $(".display-final-cost").innerHTML = Subtotal;
+        }
+        else{
+            $(".display-voucher-value").innerHTML = "-" + voucher;
+            $(".display-final-cost").innerHTML = total;
+        }
+        
     }
 
     //function to fresh table
