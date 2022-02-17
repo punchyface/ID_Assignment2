@@ -60,13 +60,21 @@ $(document).ready(function() {
                                     <img src="${response[i].product.foodimageurl}" alt="">
                                 </div>
                                 <div class="order-info">
+                                    <h4>Product Info:</h4>
                                     <div>
                                         <p>${response[i].product.foodname}</p> <!-- item name -->
                                         <p>$${response[i].product.foodprice.toFixed(2)}</p> <!-- item price-->
+                                        <p>Qty: ${response[i].qty}</p>
                                     </div>
                                 </div>
-                                <div class="order-price">
-                                    <p>${response[i].qty}</p>
+                                <div class="delivery-info">
+                                    <h4>Delivery Info:</h4>
+                                    <p>${response[i].address}</p>
+                                    <p>${response[i].arrangedatetime}</p>
+                                </div>
+                                <div class="delivery-info">
+                                    <h4>Remarks:</h4>
+                                    <p>${response[i].remarks}</p>
                                 </div>
                                 <div class="remove-order">
                                     <button class="remove-single-order">&times;</button>
