@@ -37,7 +37,7 @@ $(document).ready(function () {
         //Go through local storage and update page
         Object.values(itemsInLocalStorage).map(item => {
             //$(".default-cart-preloader").fadeOut(60); //Remove default preloader
-            $(".total-price").css('visibility', 'visible'); //Make price visible
+            $(".cart-footer").css('visibility', 'visible'); //Make price visible
             content += `<tr>
             <!-- Product -->
             <td>
