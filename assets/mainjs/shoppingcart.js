@@ -147,6 +147,8 @@ $(document).ready(function () {
                 }
     
             })
+            
+            updateTotal()
         
         
             /*autofil address
@@ -421,7 +423,7 @@ $(document).ready(function () {
         var voucher = document.getElementById("voucher").value;
         voucher = JSON.parse(voucher);
         console.log(voucher);
-        var total = parseInt(subtotal);
+        var total = parseFloat(subtotal);
 
         //update pages
         if(voucher == null){
