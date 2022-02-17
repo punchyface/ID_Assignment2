@@ -21,7 +21,7 @@ $(document).ready(function () {
             console.log(response);
             let content ="";
             for (var i = 0; i < response.length; i++) {
-                content = `${content}<button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button>`
+                content = `${content}<span><button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button><button class="remove-cat">&times;</button></span>`
             }
             document.querySelector(".food-menu-content .mix-item-menu").innerHTML += content;
             
@@ -310,6 +310,73 @@ $(document).ready(function () {
         });
     }
     
+    $("#add-foodcategory-submit").on("click", function (e) {
+        e.preventDefault();
+        let foodcategory = $("#add-foodcategory").val();
+        postFoodCat(foodcategory);
+    })
+
+    //function to post foodcategory
+    function postFoodCat(foodcategory){
+        var jsondata = {
+            "foodcat":foodcategory
+        };
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://onlinefood-ef2c.restdb.io/rest/foodcategory",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata),
+            "beforeSend": function(){
+              $("#add-foodcategory-submit").prop( "disabled", true);
+            }
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            location.reload();
+        });
+    }
+
+    var allremovecatbtn = document.getElementsByClassName("remove-cat");
+    for(var i = 0; i < allremovecatbtn.length; i++){
+        allremovecatbtn[i].addEventListener('click', function(event){
+            let btnclicked = event.target;
+            //remove it from html
+            btnclicked.closest('span').remove();
+            //get id of btn clicked
+            let id = btnclicked.previousElementSibling.id;
+            console.log(id);
+            //call function to remove category
+            removeFoodCategory(id);
+        })
+    }
+
+    //function to remove food category
+    function removeFoodCategory(id){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://onlinefood-ef2c.restdb.io/rest/foodcategory/${id}`,
+            "method": "DELETE",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            }
+        }
+          
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            location.reload();
+        });
+    }
 
 
 
