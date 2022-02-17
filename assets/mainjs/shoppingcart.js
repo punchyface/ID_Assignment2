@@ -434,11 +434,6 @@ $(document).ready(function () {
         
     }
 
-    $("select#voucher").on("click", "option", function (e) {
-        e.preventDefault();
-        updateTotal();
-    })
-
     //function to fresh table
     function refreshTable(){
         let checkstorage = JSON.parse(localStorage.getItem('Product Details'));
