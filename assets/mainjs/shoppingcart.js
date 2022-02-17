@@ -434,7 +434,7 @@ $(document).ready(function () {
         
     }
 
-    $(".voucher").on("click", "option", function (e) {
+    $("select#voucher").on("click", "option", function (e) {
         e.preventDefault();
         updateTotal();
     })
