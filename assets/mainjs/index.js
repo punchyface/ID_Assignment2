@@ -20,19 +20,17 @@ $(window).on('load', function() {
     });
     oktaSignIn.session.get(function (res){
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": `https://dev-77878233.okta.com/api/v1/users/me`,
-            "method": "GET",
-            "headers": {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Authorization": `SSWS ${res.id}`
+        (async function () {
+            try {
+                const response = await fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+                    credentials: 'include'
+                });
+                const me = await response.json();
+                console.log(me);
+            } catch (err) {
+                console.error(err);
             }
-        }
-
-        $.ajax(settings).done(function (response){})
+        })();
 
     })
 })
