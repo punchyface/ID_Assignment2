@@ -428,11 +428,16 @@ $(document).ready(function () {
             $(".display-final-cost").html(subtotal);
         }
         else{
-            $(".display-voucher-value").html("-" + voucher);
+            $(".display-voucher-value").html("-" + voucher.value);
             $(".display-final-cost").html(total);
         }
         
     }
+
+    $("select#voucher").on("change", function (e) {
+        e.preventDefault();
+        updateTotal();
+    })
 
     //function to fresh table
     function refreshTable(){
