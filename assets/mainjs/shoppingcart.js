@@ -125,7 +125,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://onlinefood-ef2c.restdb.io/rest/voucher",
+                "url": `https://onlinefood-ef2c.restdb.io/rest/?q={"user":"${okuser}"}`,
                 "method": "GET",
                 "headers": {
                     "content-type": "application/json",
@@ -136,14 +136,10 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response){
                 for (var i = 0; i < response[i]; i++){
-                    console.log(response[i].user);
-                    console.log(okuser);
-                    if(response[i].user == okuser){
-                        console.log(working)
-                        //add info to html page
-                        document.querySelector("#voucher.form-control").innerHTML += 
-                         `<option value="${response[i].cost}">$${response[i].cost} voucher</option>`;
-                    }
+                    //add info to html page
+                    document.querySelector("#voucher.form-control").innerHTML += 
+                        `<option value="${response[i].cost}">$${response[i].cost} voucher</option>`;
+                    
                 }
             })
         })
