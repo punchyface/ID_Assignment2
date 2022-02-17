@@ -16,7 +16,11 @@ $(window).on('load', function() {
         display: 'page'
         }
     });
-    oktaSignIn.users.get(function (res){
-        confirm.log(res)
+    oktaSignIn.session.get(function (res){
+        fetch('https://dev-77878233.okta.com/api/v1/users/me')
+            .then(response => response.json()) 
+            .then(function(data){
+                console.log(data)
+            })
     })
 })
