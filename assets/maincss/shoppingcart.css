@@ -116,9 +116,10 @@ tbody p{
     margin: 20px auto 10px;
     font-weight: bold;
     transition: all 0.3s ease 0s;
+    border: none;
 }
 /* check out btn input hover effect */
-.check-out-btn input:hover{
+.check-out-btn button:hover{
     background-color: #2EE59D;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
