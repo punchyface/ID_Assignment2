@@ -421,18 +421,17 @@ $(document).ready(function () {
         var voucher = document.getElementById("voucher").value;
         voucher = JSON.parse(voucher);
         console.log(voucher);
-        var total = parseInt(subtotal) - parseInt(voucher);
+        var total = parseInt(subtotal);
 
         //update pages
         if(voucher == null){
             $(".display-voucher-value").html("-0.00");
-            $(".display-final-cost").html(subtotal);
         }
         else{
             $(".display-voucher-value").html("-" + voucher.cost);
-            $(".display-final-cost").html(total);
+            total -= voucher.cost
         }
-        
+        $(".display-final-cost").html(total);
     }
 
     $("select#voucher").on("change", function (e) {
