@@ -17,6 +17,7 @@ $(window).on('load', function() {
         }
     });
     oktaSignIn.session.get(function (res){
+        console.log(res.id)
 
         var settings = {
             "async": true,
@@ -26,7 +27,7 @@ $(window).on('load', function() {
             "headers": {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization": `SSMS ${res.idp.id}`
+                "Authorization": `SSWS ${res.id}`
             }
         }
 
