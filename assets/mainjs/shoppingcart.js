@@ -418,7 +418,7 @@ $(document).ready(function () {
     function updateTotal(){
         var subtotal = document.querySelector(".display-total-cost").innerHTML;
         var voucher = document.getElementById("voucher").value;
-        JSON.parse(voucher);
+        voucher = JSON.parse(voucher);
         console.log(voucher);
         var total = parseInt(subtotal) - parseInt(voucher);
 
