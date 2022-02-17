@@ -13,19 +13,15 @@ $(document).ready(function () {
         }
     });
     var itemsInLocalStorage = localStorage.getItem('Product Details');
+    if (itemsInLocalStorage != null){
+    itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
+    
+    getItemInCart(itemsInLocalStorage);
 
-    setTimeout(function(){
-        if (itemsInLocalStorage != null){
-        itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
-        
-        $(".default-cart-preloader").fadeOut(60); //Remove default preloader
-        getItemInCart(itemsInLocalStorage);
-
-        }
-        else{
-            EmptyCartPreloader();
-        }
-    },3100);
+    }
+    else{
+        EmptyCartPreloader();
+    }
 
     //function to get items in cart
     function getItemInCart(itemsInLocalStorage){
@@ -140,30 +136,34 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response){
                 console.log(response)
-                document.querySelector("#voucher.form-control").innerHTML = "<option value='null'>None</option>";
+                document.querySelector("select#voucher.form-control").innerHTML = `<option value='null'>None</option>`;
                 for (var i = 0; i < response.length; i++){
                     //add info to html page
-                    document.querySelector("#voucher.form-control").innerHTML += `
+                    document.querySelector("select#voucher.form-control").innerHTML += `
                     <option value=${JSON.stringify(response[i])}>$${response[i].cost} off</option>`;
-                    
                 }
             })
 
-        
-            /*autofil address
-            -------------------------------------------------------------------------------*/
-            fetch('https://dev-77878233.okta.com/api/v1/users/me', {
-                    credentials: 'include'
-                })
-                .then(response => response.json()) 
-                .then(function(me){
-                    console.log(me);
-                    address = me.profile.Address;
-                    if (address != null){
-                        $("#address.form-control").val(address);
-                    }
-            });
         })
+
+        /*autofil address
+        -------------------------------------------------------------------------------*/
+        fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+                credentials: 'include'
+            })
+            .then(response => response.json()) 
+            .then(function(me){
+                console.log(me);
+                address = me.profile.Address;
+                if (address != null){
+                    $("#address.form-control").val(address);
+                }
+        });
+        
+        $(document).ready(function(){
+            $(".default-cart-preloader").fadeOut(60); //Remove default preloader
+        })
+        
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
