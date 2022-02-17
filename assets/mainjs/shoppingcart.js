@@ -69,7 +69,6 @@ $(document).ready(function () {
         $(".tbody").html(content);
         $(".total-price table .display-total-cost").html(total.toFixed(2));
         sumUpQty();
-        updateTotal();
 
         /*to remove cart item when remove btn is clicked
         -------------------------------------------------------------------------------*/
@@ -138,10 +137,10 @@ $(document).ready(function () {
             }
 
             $.ajax(settings).done(function (response){
-                let voucherbox = document.getElementById("voucher");
                 for (var i = 0; i < response[i]; i++){
                     //add info to html page
-                    voucherbox.appendChild(`<option value="${response[i]._id}">$${response[i].cost} off</option>`);
+                    document.querySelector("#voucher.form-control").innerHTML += 
+                        `<option value="${response[i]._id}">$${response[i].cost} off</option>`;
                     
                 }
     
