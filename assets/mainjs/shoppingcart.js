@@ -117,7 +117,7 @@ $(document).ready(function () {
             })
         }
 
-        /*to Update drop down box for voucher
+        /*to Update drop down box for voucher and autofill address
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
             var okuser = res.userId;
@@ -125,7 +125,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": `https://onlinefood-ef2c.restdb.io/rest/?q={"user":"${okuser}"}`,
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}","status":true}`,
                 "method": "GET",
                 "headers": {
                     "content-type": "application/json",
@@ -138,12 +138,16 @@ $(document).ready(function () {
                 for (var i = 0; i < response[i]; i++){
                     //add info to html page
                     document.querySelector("#voucher.form-control").innerHTML += 
-                        `<option value="${response[i].cost}">$${response[i].cost} off</option>`;
+                        `<option value="${response[i]._id}">$${response[i].cost} off</option>`;
                     
                 }
             })
-        })
+        
+        
+            /*autofil address
+            -------------------------------------------------------------------------------*/
 
+        })
 
 
         /*to clear all items in local storage and cart (checkout)
@@ -151,9 +155,11 @@ $(document).ready(function () {
         $('.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
+            
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
+                let voucher = $("#update-voucher").val();
                 //post to order entity
                 var jsondata = {
                         "user": user,
