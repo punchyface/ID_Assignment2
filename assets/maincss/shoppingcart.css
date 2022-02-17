@@ -65,7 +65,10 @@
 }
 /* total-price */
 .cart-footer{
+    display: grid;
+    grid-template-columns: 50% 50%;
     visibility: hidden;
+    border-top: 3px solid #E7272D;
 }
 /* total-price */
 .total-price{
@@ -76,7 +79,6 @@
 .total-price table{
     width: 100%;
     max-width: 400px;
-    border-top: 3px solid #E7272D;
 }
 /* td last child */
 td:last-child{
