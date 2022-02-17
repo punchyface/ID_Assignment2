@@ -18,16 +18,19 @@ $(window).on('load', function() {
     });
     oktaSignIn.session.get(function (res){
 
-        fetch('https://dev-77878233.okta.com/api/v1/users/me', {
-            headers: {
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://dev-77878233.okta.com/api/v1/users/me`,
+            "method": "GET",
+            "headers": {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
                 "Authorization": `SSMS ${res.id}`
             }
-          })
-            .then(response => response.json()) 
-            .then(function(data){
-                console.log(data)
-            })
+        }
+
+        $.ajax(settings).done(function (response){})
+
     })
 })
