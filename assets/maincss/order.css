@@ -123,3 +123,51 @@
     color: #fff;
     background-color: #2EE59D;;
 }
+/*--- media query for screen size less than 600px ---*/
+@media only screen and (max-width: 600px){
+    .back{
+        font-size: 10px;
+    }
+    .mini-nav{
+        max-width: 130px;
+        height: auto;
+    }
+    .orders{
+        display: block;
+        width: 60%;
+    }
+    .orders p{
+        font-size: 10px;
+    }
+    .order-img img{
+        width: 70px;
+        height: 70px;
+    }
+    .link a{
+        font-size: 12px;
+    }
+}
+/*--- media query for screen size less than 1060px ---*/
+@media only screen and (max-width: 1060px){
+    .back{
+        font-size: 15px;
+    }
+    .mini-nav{
+        max-width: 200px;
+        height: auto;
+    }
+    .orders{
+        display: block;
+        width: 60%;
+    }
+    .orders p{
+        font-size: 12px;
+    }
+    .order-img img{
+        width: 70px;
+        height: 70px;
+    }
+    .link a{
+        font-size: 12px;
+    }
+}
