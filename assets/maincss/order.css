@@ -112,6 +112,7 @@
     text-align: center;
     font-size: 28px;
     display: none;
+    padding-top: 100px;
 }
 .empty button{
     border: none;
@@ -146,6 +147,9 @@
     .link a{
         font-size: 12px;
     }
+    .empty{
+        font-size: 18px;
+    }
 }
 /*--- media query for screen size less than 1060px ---*/
 @media only screen and (max-width: 1060px){
@@ -169,5 +173,8 @@
     }
     .link a{
         font-size: 12px;
+    }
+    .empty{
+        font-size: 20px;
     }
 }
