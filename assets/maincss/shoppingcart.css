@@ -117,6 +117,7 @@ tbody p{
     font-weight: bold;
     transition: all 0.3s ease 0s;
     border: none;
+    height: 30px;
 }
 /* check out btn input hover effect */
 .check-out-btn button:hover{
