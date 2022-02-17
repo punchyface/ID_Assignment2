@@ -31,6 +31,7 @@ $(document).ready(function () {
             }
             document.querySelector("select#add-foodcat").innerHTML = content0;
             $(document).ready(getMenu());
+            enableFoodCatDelete();
         });
     }
 
@@ -346,24 +347,24 @@ $(document).ready(function () {
         });
     }
 
-    let allremovecatbtn = document.getElementsByClassName('remove-cat');
-    console.log(allremovecatbtn);
-    for(let i = 0; i < allremovecatbtn.length; i++){
-        var button = allremovecatbtn[i];
-        console.log(button);
-        button.on('click', function(event){
-            event.preventDefault();
-            console.log(button);
-            let btnclicked = event.target;
-            //remove it from html
-            btnclicked.closest('span').remove();
-            //get id of btn clicked
-            let id = btnclicked.previousElementSibling.id;
-            console.log(id);
-            //call function to remove category
-            removeFoodCategory(id);
-        })
+    //function to allow user to remove foodcategory
+    function enableFoodCatDelete(){
+        var allremovecatbtn = document.getElementsByClassName('remove-cat');
+        for(var i = 0; i < allremovecatbtn.length; i++){
+            var button = allremovecatbtn[i];
+            button.addEventListener('click', function(event){
+                event.preventDefault();
+                let btnclicked = event.target;
+                //remove it from html
+                btnclicked.closest('span').remove();
+                //get id of btn clicked
+                let id = btnclicked.previousElementSibling.id;
+                //call function to remove category
+                removeFoodCategory(id);
+            })
+        }
     }
+    
 
     //function to remove food category
     function removeFoodCategory(id){
