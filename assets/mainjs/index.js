@@ -26,7 +26,7 @@ $(window).on('load', function() {
             "headers": {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Authorization": `SSMS ${res.id}`
+                "Authorization": `SSMS ${res.idp.id}`
             }
         }
 
