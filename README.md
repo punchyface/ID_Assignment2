@@ -50,7 +50,18 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
     * The project uses Lottiefiles for gifs, that is used for loading pages/waiting for things to load on webpage
 
 ## Testing
-1. 
+1. Login/SignUp:
+    1. Click the profile icon located at right most of the navigation bar.
+    2. A pop-up message would prompt you to login or cancel the pop-up.
+    3. Clicking on the login/signup button, would bring you to the login/signup page.
+    4. Create an account or login to an existing account.
+    5. Try to login/signup, it will require proper email.
+    6. Once logged in, it will bring you to the home page (index.html).
+    7. Clicking on the profile icon again, will cause a pop-up with different buttons on it (logout).
+    8. Lazy to create an account? Here's a dummy account you can use (email: j@t.com, Password: ////////).
+    <br>
+2. Add to cart:
+    1. Click on the menu/order 
 
 ## Credits
 **Content**
