@@ -438,13 +438,13 @@ $(document).ready(function () {
             $(".display-voucher-value").html("-0.00");
         }
         else{
-            $(".display-voucher-value").html("-" + voucher.cost);
+            $(".display-voucher-value").html("-" + (voucher.cost).toFixed(2));
             total -= voucher.cost
-            if (total<0){
+            if (total < 0){
                 total = 0
             }
         }
-        $(".display-final-cost").html(total);
+        $(".display-final-cost").html(total.toFixed(2));
     }
 
     $("select#voucher").on("change", function (e) {
