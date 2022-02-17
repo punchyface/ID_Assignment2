@@ -77,11 +77,11 @@ $(document).ready(function() {
                         }
                         //update html page
                         if(count > 0){
-                            //display empty message
-                            $(".empty").css('display', 'block');
+                            $(".load-data-here").html(content);
                         }
                         else{
-                            $(".load-data-here").html(content);
+                            //display empty message
+                            $(".empty").css('display', 'block');
                         }
                         //loop to get onclick function
                         var alldeletebtn = document.getElementsByClassName("remove-single-order");
