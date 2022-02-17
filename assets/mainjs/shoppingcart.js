@@ -17,7 +17,7 @@ $(document).ready(function () {
         itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
         
         getItemInCart(itemsInLocalStorage);
-                /*to Update drop down box for voucher and autofill address
+        /*to Update drop down box for voucher and autofill address
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
             updateTotal()
@@ -113,6 +113,7 @@ $(document).ready(function () {
         $(".tbody").html(content);
         $(".total-price table .display-total-cost").html(total.toFixed(2));
         sumUpQty();
+        updateTotal();
 
         /*to remove cart item when remove btn is clicked
         -------------------------------------------------------------------------------*/
