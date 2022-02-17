@@ -69,6 +69,7 @@ $(document).ready(function () {
         $(".tbody").html(content);
         $(".total-price table .display-total-cost").html(total.toFixed(2));
         sumUpQty();
+        updateTotal(total);
 
         /*to remove cart item when remove btn is clicked
         -------------------------------------------------------------------------------*/
@@ -412,20 +413,20 @@ $(document).ready(function () {
     }
 
     //function to update total
-    function updateTotal(){
-        var subtotal = document.querySelector(".display-total-cost").innerHTML;
-        var voucher = document.getElementById("voucher").value;
+    function updateTotal(previoustotal){
+        var subtotal = previoustotal;
+        var voucher = parseFloat(document.getElementById("voucher").value);
         console.log(voucher);
-        var total = parseInt(subtotal) - parseInt(voucher);
+        var total = parseFloat(subtotal) - voucher;
 
         //update pages
         if(voucher == null){
             $(".display-voucher-value").html("-0.00");
-            $(".display-final-cost").html(subtotal);
+            $(".display-final-cost").html(subtotal.toFixed(2));
         }
         else{
-            $(".display-voucher-value").html("-" + voucher);
-            $(".display-final-cost").html(total);
+            $(".display-voucher-value").html("-" + voucher.toFixed(2));
+            $(".display-final-cost").html(total.toFixed(2));
         }
         
     }
