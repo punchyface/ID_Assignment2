@@ -69,6 +69,7 @@ $(document).ready(function () {
         $(".tbody").html(content);
         $(".total-price table .display-total-cost").html(total.toFixed(2));
         sumUpQty();
+        updateTotal();
 
         /*to remove cart item when remove btn is clicked
         -------------------------------------------------------------------------------*/
