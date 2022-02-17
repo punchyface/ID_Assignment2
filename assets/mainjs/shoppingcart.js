@@ -119,22 +119,29 @@ $(document).ready(function () {
             })
         }
 
-        /*to Update drop down box for voucher
+        /*to Update drop down box for voucher and autofill address
         -------------------------------------------------------------------------------*/
-        $("#voucher").on('click', function(){
-            oktaSignIn.session.get(function (res){
-                var okuser = res.userId;
-                console.log(okuser);
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
-                    "method": "GET",
-                    "headers": {
-                        "content-type": "application/json",
-                        "x-apikey": APIKEY,
-                        "cache-control": "no-cache"
-                    }
+        oktaSignIn.session.get(function (res){
+            var okuser = res.userId;
+            console.log(okuser);
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
+                "method": "GET",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY,
+                    "cache-control": "no-cache"
+                }
+            }
+
+            $.ajax(settings).done(function (response){
+                for (var i = 0; i < response[i]; i++){
+                    //add info to html page
+                    document.querySelector("#voucher.form-control").innerHTML += 
+                        `<option value="${response[i]._id}">$${response[i].cost} off</option>`;
+                    
                 }
     
                 $.ajax(settings).done(function (response){
@@ -146,17 +153,23 @@ $(document).ready(function () {
                     }
                 })
             })
-        })
+        
+        
+            /*autofil address
+            -------------------------------------------------------------------------------*/
 
+        })
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
         $('.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
+            
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
+                let voucher = $("#update-voucher").val();
                 //post to order entity
                 var jsondata = {
                         "user": user,
