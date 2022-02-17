@@ -147,12 +147,27 @@ $(document).ready(function () {
                 }
     
             })
-            
+
             updateTotal()
-        
         
             /*autofil address
             -------------------------------------------------------------------------------*/
+
+            (async function () {
+                try {
+                    const response = await fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+                        credentials: 'include'
+                    });
+                    const me = await response.json();
+                    console.log(me);
+                    address = me.profile.Address;
+                    if (address != null){
+                        $("#address.form-control").val(address);
+                    } 
+                } catch (err) {
+                    console.error(err);
+                }
+            });
 
         })
 
