@@ -428,7 +428,7 @@ $(document).ready(function () {
             $(".display-final-cost").html(subtotal);
         }
         else{
-            $(".display-voucher-value").html("-" + voucher.value);
+            $(".display-voucher-value").html("-" + voucher.cost);
             $(".display-final-cost").html(total);
         }
         
