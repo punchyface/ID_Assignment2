@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $(".se-pre-con").fadeOut("slow");
     const APIKEY = '61e0110da0f7d226f9b75dbc';
+
+    listdatetime()
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -17,7 +19,7 @@ $(document).ready(function () {
         itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
         
         getItemInCart(itemsInLocalStorage);
-        /*to Update drop down box for voucher and autofill address
+        /*to Update drop down box for voucher
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
             updateTotal()
@@ -63,7 +65,7 @@ $(document).ready(function () {
         $(document).ready(function(){
             $(".default-cart-preloader").fadeOut(60); //Remove default preloader
         })
-        
+
 
     }
     else{
@@ -173,8 +175,10 @@ $(document).ready(function () {
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
-                let voucher = $("#update-voucher").val();
+                let voucher = $("#voucher.form-control").val();
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
+                let arrangedate = $("#arrangedate.form-control").val();
+                let arrangetime = $("#arrangetime.form-control").val();
                 let arrangedatetime;
                 //post to order entity
                 var jsondata = {
@@ -245,8 +249,119 @@ $(document).ready(function () {
     }
 
 
+
+
     /* start of external functions
     -------------------------------------------------------------------------------*/
+    
+    
+    
+    function listdatetime(){
+        //format 18/01/2022 13:00:00
+        
+        //store opening hour
+        const openhour = 8;
+        //store closing hour
+        const closehour = 22;
+        //store opening min (must be a factor of time slots interval)
+        const openmin = 30;
+        //store closing min (must be a factor of time slots interval)
+        const closemin = 0;
+        //duration for delivery and preperation
+        const prepareduration = 30;
+        //interval between time slots 
+        const timeslotsinterval = 10;
+        //how mays day before you can pre-order excluding today
+        const preorderday = 2;
+
+        let starthour = openhour;
+        nextopenmin = openmin;
+        openingtime = moment({hour: openhour,minute: openmin})
+
+        closingtime = moment({hour: closehour,minute: closemin})
+
+        listdate();
+        // on first time
+        selecteddate = $("select#arrangedate.form-control").val();
+        listtimeslots(selecteddate);
+
+        //subsequent time
+        $("select#arrangedate.form-control").on("change", function(e){
+            e.preventDefault()
+            selecteddate = $("select#arrangedate.form-control").val();
+            listtimeslots(selecteddate)
+        })
+
+        function listdate(){
+            datelist = [];
+            time = moment().format("HH:mm");
+            document.querySelector("select#arrangedate.form-control").innerHTML = null;
+
+            if ((time >= openingtime && time <= closingtime) === false){
+                date = moment()
+                console.log("hi")
+                if (date.format("HH") < moment({hour: openhour}).format("HH")){
+                    datelist.push(date.format("DD/MM/YYYY"));
+                    for (i = 1; i <= preorderday; i++ ){
+                        datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                    }
+                }
+                else{
+                    for (i = 1; i <= preorderday + 1; i++ ){
+                        datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                    }
+                }
+            }
+            else{
+                datelist.push(date.format("DD/MM/YYYY"));
+                for (i = 1; i <= preorderday; i++ ){
+                    datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                }
+            }
+            
+            for (i = 0; i < datelist.length; i++){
+                console.log(datelist[i]);
+                document.querySelector("select#arrangedate.form-control").innerHTML += ` <option value='${datelist[i]}'>${datelist[i]}</option>`
+            }
+        }
+
+
+        function listtimeslots(selecteddate){
+            time = moment().add(prepareduration, 'minutes')
+            document.querySelector("select#arrangetime.form-control").innerHTML = null;
+            if ((selecteddate == time.format("DD/MM/YYYY")) && (time >= openingtime && time <= closingtime)){
+                diff = Number(time.format("mm")) % timeslotsinterval
+                nextopentime = time.add(timeslotsinterval - diff, 'minutes')
+                starthour = Number(nextopentime.format("HH"))
+                nextopenmin = Number(nextopentime.format("mm"))
+            }
+
+            let endmin = 60;
+            let timeslots = [];
+            for(let hour = starthour; hour < closehour; hour++) {
+                if (hour == closehour -1 ){
+                    endmin = closemin + timeslotsinterval;
+                }
+                let startmin = 0;
+                if (hour == starthour){
+                    startmin = nextopenmin
+                } 
+                for(min = startmin; min < endmin; min += timeslotsinterval){
+                    timeslots.push(
+                        moment({
+                            hour,
+                            minute: min
+                        }).format('HH:mm')
+                    );
+                }
+            }
+            for (i = 0; i < timeslots.length; i++)
+            {
+                console.log(timeslots[i]);
+                document.querySelector("select#arrangetime.form-control").innerHTML += ` <option value='${timeslots[i]}'>${timeslots[i]}</option>`
+            }
+        }   
+    }
 
     //function to replace cart preloader
     function EmptyCartPreloader(){
