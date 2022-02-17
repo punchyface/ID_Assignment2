@@ -1,0 +1,109 @@
+/* preloader
+---------------------------------------------------------------------------*/
+.preload-order{
+    width: 80%;
+    height: 30vh;
+    background: url(../img/preloader.gif) center no-repeat;
+}
+
+/* order page
+---------------------------------------------------------------------------*/
+.order-page-container{
+    display: flex;
+}
+.mini-nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    height: 100vh;
+    text-align: center;
+    box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+}
+.mini-nav .header{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.order-display-area{
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background-color: #f7f7f7;
+}
+.previous-order-content{
+    top: 7%;
+    left: 10%;
+    width: 100%;
+    position: relative;
+}
+
+/* sidebar
+---------------------------------------------------------------------------*/
+.back{
+    color: #000;
+    text-decoration: none;
+    position: absolute;
+    left: 1.5%;
+    top: 2.5%;
+    font-size: 20px;
+}
+.back:hover{
+    color: #E7272D;
+}
+.logo-img{
+    top: 7%;
+    position: relative;
+}
+/* orders
+---------------------------------------------------------------------------*/
+.orders{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    border-radius: 40px;
+    padding: 5px;
+    box-shadow: 20px 20px 60px #e7e7e7,
+    -20px -20px 60px #ffffff;
+    text-align: center;
+    align-items: center;
+    background-color: #fff;
+}
+.order-img{
+    padding-left: 20px;
+}
+.order-img img{
+    width: 90px;
+    height: 90px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.remove-order{
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0px 15px;
+}
+.remove-single-order{
+    background-color: white;
+    border: none;
+}
+/* fall message
+---------------------------------------------------------------------------*/
+.empty{
+    text-align: center;
+    font-size: 28px;
+    display: none;
+}
+.empty button{
+    border: none;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.empty button:hover{
+    color: #fff;
+    background-color: #2EE59D;;
+}
