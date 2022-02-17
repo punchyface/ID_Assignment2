@@ -43,3 +43,18 @@ footer p {
 div.fooditem div.row{
     margin: 5rem; 
 }
+/* buttons
+--------------------------------------------------------------------------*/
+.remove-cat{
+    padding-left: 0px;
+    transition: all .2s;
+}
+.remove-cat:hover{
+    color: #E7272D;
+    transform: rotate(-90deg);
+}
+#delete:hover,
+#update:hover{
+    color: #fff;
+    background-color: #E7272D;
+}
