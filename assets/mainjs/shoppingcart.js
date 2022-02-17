@@ -14,9 +14,56 @@ $(document).ready(function () {
     });
     var itemsInLocalStorage = localStorage.getItem('Product Details');
     if (itemsInLocalStorage != null){
-    itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
-    
-    getItemInCart(itemsInLocalStorage);
+        itemsInLocalStorage = JSON.parse(itemsInLocalStorage);
+        
+        getItemInCart(itemsInLocalStorage);
+                /*to Update drop down box for voucher and autofill address
+        -------------------------------------------------------------------------------*/
+        oktaSignIn.session.get(function (res){
+            updateTotal()
+            var okuser = res.userId;
+            console.log(okuser);
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
+                "method": "GET",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": APIKEY,
+                    "cache-control": "no-cache"
+                }
+            }
+
+            $.ajax(settings).done(function (response){
+                console.log(response)
+                for (var i = 0; i < response.length; i++){
+                    //add info to html page
+                    document.querySelector("select#voucher.form-control").innerHTML += `
+                    <option value=${JSON.stringify(response[i])}>$${response[i].cost} off</option>`;
+                }
+            })
+
+        })
+
+        /*autofil address
+        -------------------------------------------------------------------------------*/
+        fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+                credentials: 'include'
+            })
+            .then(response => response.json()) 
+            .then(function(me){
+                console.log(me);
+                address = me.profile.Address;
+                if (address != null){
+                    $("#address.form-control").val(address);
+                }
+        });
+
+        $(document).ready(function(){
+            $(".default-cart-preloader").fadeOut(60); //Remove default preloader
+        })
+        
 
     }
     else{
@@ -115,55 +162,6 @@ $(document).ready(function () {
                 refreshTable();
             })
         }
-
-        /*to Update drop down box for voucher and autofill address
-        -------------------------------------------------------------------------------*/
-        oktaSignIn.session.get(function (res){
-            updateTotal()
-            var okuser = res.userId;
-            console.log(okuser);
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
-                "method": "GET",
-                "headers": {
-                    "content-type": "application/json",
-                    "x-apikey": APIKEY,
-                    "cache-control": "no-cache"
-                }
-            }
-
-            $.ajax(settings).done(function (response){
-                console.log(response)
-                document.querySelector("select#voucher.form-control").innerHTML = `<option value='null'>None</option>`;
-                for (var i = 0; i < response.length; i++){
-                    //add info to html page
-                    document.querySelector("select#voucher.form-control").innerHTML += `
-                    <option value=${JSON.stringify(response[i])}>$${response[i].cost} off</option>`;
-                }
-            })
-
-        })
-
-        /*autofil address
-        -------------------------------------------------------------------------------*/
-        fetch('https://dev-77878233.okta.com/api/v1/users/me', {
-                credentials: 'include'
-            })
-            .then(response => response.json()) 
-            .then(function(me){
-                console.log(me);
-                address = me.profile.Address;
-                if (address != null){
-                    $("#address.form-control").val(address);
-                }
-        });
-        
-        $(document).ready(function(){
-            $(".default-cart-preloader").fadeOut(60); //Remove default preloader
-        })
-        
 
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
