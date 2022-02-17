@@ -121,31 +121,32 @@ $(document).ready(function () {
 
         /*to Update drop down box for voucher
         -------------------------------------------------------------------------------*/
-        oktaSignIn.session.get(function (res){
-            var okuser = res.userId;
-            console.log(okuser);
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
-                "method": "GET",
-                "headers": {
-                    "content-type": "application/json",
-                    "x-apikey": APIKEY,
-                    "cache-control": "no-cache"
+        $("#voucher").on('click', function(){
+            oktaSignIn.session.get(function (res){
+                var okuser = res.userId;
+                console.log(okuser);
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
+                    "method": "GET",
+                    "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": APIKEY,
+                        "cache-control": "no-cache"
+                    }
                 }
-            }
-
-            $.ajax(settings).done(function (response){
-                for (var i = 0; i < response[i]; i++){
-                    //add info to html page
-                    document.querySelector("#voucher.form-control").innerHTML += 
-                        `<option value="${response[i].cost}">$${response[i].cost} off</option>`;
-                    
-                }
+    
+                $.ajax(settings).done(function (response){
+                    for (var i = 0; i < response[i]; i++){
+                        //add info to html page
+                        document.querySelector("#voucher.form-control").innerHTML += 
+                            `<option value="${response[i].cost}">$${response[i].cost} off</option>`;
+                        
+                    }
+                })
             })
         })
-
 
 
         /*to clear all items in local storage and cart (checkout)
@@ -407,18 +408,19 @@ $(document).ready(function () {
 
     //function to update total
     function updateTotal(){
-        var Subtotal = document.querySelector(".display-total-cost").innerHTML;
+        var subtotal = document.querySelector(".display-total-cost").innerHTML;
         var voucher = document.getElementById("voucher").value;
-        var total = parseInt(Subtotal) - parseInt(voucher);
+        console.log(voucher);
+        var total = parseInt(subtotal) - parseInt(voucher);
 
         //update pages
         if(voucher == null){
-            $(".display-voucher-value").innerHTML = "- 0.00";
-            $(".display-final-cost").innerHTML = Subtotal;
+            $(".display-voucher-value").html("-0.00");
+            $(".display-final-cost").html(subtotal);
         }
         else{
-            $(".display-voucher-value").innerHTML = "-" + voucher;
-            $(".display-final-cost").innerHTML = total;
+            $(".display-voucher-value").html("-" + voucher);
+            $(".display-final-cost").html(total);
         }
         
     }
