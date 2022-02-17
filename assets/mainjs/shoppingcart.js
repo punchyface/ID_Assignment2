@@ -152,22 +152,17 @@ $(document).ready(function () {
         
             /*autofil address
             -------------------------------------------------------------------------------*/
-            (async function () {
-                try {
-                    const response = await fetch('https://dev-77878233.okta.com/api/v1/users/me', {
-                        credentials: 'include'
-                    });
-                    const me = await response.json();
+            fetch('https://dev-77878233.okta.com/api/v1/users/me', {
+                    credentials: 'include'
+                })
+                .then(response => response.json()) 
+                .then(function(me){
                     console.log(me);
                     address = me.profile.Address;
                     if (address != null){
                         $("#address.form-control").val(address);
                     }
-                } catch (err) {
-                    console.error(err);
-                }
-            })();
-
+            });
         })
 
         /*to clear all items in local storage and cart (checkout)
