@@ -154,8 +154,10 @@
             </div>
 
             <!-- Display total price -->
-            <div class="cart-footer">
-                <div class="cart-form">
+            
+            <div class="total-price">
+                <table>
+                    <!-- Form Start here -->
                     <div class="form-group">
                         <label for="voucher">Voucher</label>
                         <select class="form-control" id="voucher">
@@ -181,22 +183,19 @@
                         <label for="address">Address</label>
                         <textarea id="address" class="form-control" required></textarea>
                     </div>
-                </div>
-                <div class="total-price">
-                    <table>
-                        <tr>
-                            <td>Total</td>
-                            <td class="display-total-cost">$0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="check-out-btn">
-                                <button type="button">Check out</button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
+                    <!-- Form Ends here -->
+                    <tr>
+                        <td>Total</td>
+                        <td class="display-total-cost">$0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="check-out-btn">
+                            <button type="button">Check out</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
+
 
         </div>
 
