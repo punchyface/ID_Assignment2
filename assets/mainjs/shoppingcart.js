@@ -129,7 +129,7 @@ $(document).ready(function () {
                 "method": "GET",
                 "headers": {
                     "content-type": "application/json",
-                    "x-apikey": "<your CORS apikey here>",
+                    "x-apikey": APIKEY,
                     "cache-control": "no-cache"
                 }
             }
