@@ -117,6 +117,38 @@ $(document).ready(function () {
             })
         }
 
+        /*to Update drop down box for voucher
+        -------------------------------------------------------------------------------*/
+        oktaSignIn.session.get(function (res){
+            user = res.userId;
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://onlinefood-ef2c.restdb.io/rest/voucher",
+                "method": "GET",
+                "headers": {
+                    "content-type": "application/json",
+                    "x-apikey": "<your CORS apikey here>",
+                    "cache-control": "no-cache"
+                }
+            }
+
+            $.ajax(settings).done(function (response){
+                let content = "";
+                for (var i = 0; i < response[i]; i++){
+                    if(response[i].user == user){
+                        content += `
+                        <option value="${response[i].cost}">$${response[i].cost} voucher</option>`
+                    }
+                }
+                //add info to html page
+                $("#voucher").html(content);
+            })
+        })
+
+
+
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
         $('.check-out-btn button').on('click', function(event){
