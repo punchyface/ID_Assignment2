@@ -430,6 +430,9 @@ $(document).ready(function () {
         else{
             $(".display-voucher-value").html("-" + voucher.cost);
             total -= voucher.cost
+            if (total<0){
+                total = 0
+            }
         }
         $(".display-final-cost").html(total);
     }
