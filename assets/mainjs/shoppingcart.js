@@ -141,7 +141,7 @@ $(document).ready(function () {
                 for (var i = 0; i < response.length; i++){
                     //add info to html page
                     document.querySelector("#voucher.form-control").innerHTML += `
-                    <option value="${response[i]._id}">$${response[i].cost} off</option>`;
+                    <option value="${JSON.stringify(response[i])}">$${response[i].cost} off</option>`;
                     
                 }
     
@@ -163,13 +163,15 @@ $(document).ready(function () {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#update-voucher").val();
+                //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
+                let arrangedatetime;
                 //post to order entity
                 var jsondata = {
                         "user": user,
                         "product": product,
-                        "address": address/*,
-                        "arrangedatetime": {datetime book in 24h format (DD/MM/YYYY HH:mm:ss)},
-                        "voucher" : {cost}*/
+                        "address": address,
+                        "arrangedatetime": arrangedatetime,
+                        "voucher" : [voucher]
                     };
                 var settings = {
                 "async": true,
@@ -416,6 +418,7 @@ $(document).ready(function () {
     function updateTotal(){
         var subtotal = document.querySelector(".display-total-cost").innerHTML;
         var voucher = document.getElementById("voucher").value;
+        JSON.parse(voucher);
         console.log(voucher);
         var total = parseInt(subtotal) - parseInt(voucher);
 
