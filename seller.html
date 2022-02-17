@@ -24,6 +24,7 @@
     <link href="assets/css/bootsnav.css" rel="stylesheet" />
     <link href="assets/maincss/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet" />
+    <link href="assets/maincss/seller.css" rel="stylesheet"/>
     <!-- ========== End Stylesheet ========== -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -157,6 +158,25 @@
     </div>
 
     <!-- End Add Food -->
+
+    <!-- Start Add Foodcategory -->
+    <div class="add--food inc-isotop default-padding">
+        <div class="container">
+            <h1 class="jumbotron-heading">Add Food Category</h1>
+            <div class="form" id="add-foodcategory">
+                <form id="add-foodcategory-form">
+                    <div class="form-group">
+                        <label for="add-foodcategory">Food Category</label>
+                        <input type="text" id="add-foodcategory" class="form-control" required>
+                        <input type="submit" value="Send" class="btn btn-primary" id="add-foodcategory-submit" style="margin-top: 2rem;">
+                    </div>
+                </form>
+            </div>
+            <div id="add-error"></div>
+        </div><!-- end add container --> 
+    </div>
+    <!-- End Add Foodcategory-->
+
     <!-- Start Popup -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -183,8 +203,8 @@
                     <div class="col-md-12 food-menu-content">
                         <div class="mix-item-menu text-center">
                             <button class="active" data-filter="*">All</button>
-                            <button id="unavailable" data-filter=".availfalse">Unavailable</button>
-                            <button id="recommended" data-filter=".recommendedtrue">Recommended</button>
+                            <span><button id="unavailable" data-filter=".availfalse">Unavailable</button><button class="remove-cat">&times;</button></span>
+                            <span><button id="recommended" data-filter=".recommendedtrue">Recommended</button><button class="remove-cat">&times;</button></span>
                             <!-- category button-->
                             
                         </div>
