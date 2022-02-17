@@ -137,21 +137,13 @@ $(document).ready(function () {
             }
 
             $.ajax(settings).done(function (response){
+                let voucherbox = document.getElementById("voucher");
                 for (var i = 0; i < response[i]; i++){
                     //add info to html page
-                    document.querySelector("#voucher.form-control").innerHTML += 
-                        `<option value="${response[i]._id}">$${response[i].cost} off</option>`;
+                    voucherbox.appendChild(`<option value="${response[i]._id}">$${response[i].cost} off</option>`);
                     
                 }
     
-                $.ajax(settings).done(function (response){
-                    for (var i = 0; i < response[i]; i++){
-                        //add info to html page
-                        document.querySelector("#voucher.form-control").innerHTML += 
-                            `<option value="${response[i].cost}">$${response[i].cost} off</option>`;
-                        
-                    }
-                })
             })
         
         
