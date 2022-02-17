@@ -420,12 +420,12 @@ $(document).ready(function () {
         var total = parseFloat(subtotal) - voucher;
 
         //update pages
-        if(voucher == null){
+        if(voucher == null || voucher == NaN){
             $(".display-voucher-value").html("-0.00");
             $(".display-final-cost").html(subtotal.toFixed(2));
         }
         else{
-            $(".display-voucher-value").html("-" + voucher.toFixed(2));
+            $(".display-voucher-value").html("-"+voucher.toFixed(2));
             $(".display-final-cost").html(total.toFixed(2));
         }
         
