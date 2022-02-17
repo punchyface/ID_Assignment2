@@ -123,6 +123,7 @@ $(document).ready(function () {
         /*to Update drop down box for voucher and autofill address
         -------------------------------------------------------------------------------*/
         oktaSignIn.session.get(function (res){
+            updateTotal()
             var okuser = res.userId;
             console.log(okuser);
             var settings = {
@@ -148,7 +149,6 @@ $(document).ready(function () {
     
             })
 
-            updateTotal()
         
             /*autofil address
             -------------------------------------------------------------------------------*/
@@ -167,7 +167,7 @@ $(document).ready(function () {
                 } catch (err) {
                     console.error(err);
                 }
-            });
+            })();
 
         })
 
@@ -437,7 +437,6 @@ $(document).ready(function () {
         var subtotal = document.querySelector(".display-total-cost").innerHTML;
         var voucher = document.getElementById("voucher").value;
         voucher = JSON.parse(voucher);
-        console.log(voucher);
         var total = parseFloat(subtotal);
 
         //update pages
