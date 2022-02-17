@@ -138,7 +138,7 @@ $(document).ready(function () {
                 for (var i = 0; i < response[i]; i++){
                     //add info to html page
                     document.querySelector("#voucher.form-control").innerHTML += 
-                        `<option value="${response[i].cost}">$${response[i].cost} voucher</option>`;
+                        `<option value="${response[i].cost}">$${response[i].cost} off</option>`;
                     
                 }
             })
@@ -158,7 +158,9 @@ $(document).ready(function () {
                 var jsondata = {
                         "user": user,
                         "product": product,
-                        "address": address
+                        "address": address/*,
+                        "arrangedatetime": {datetime book in 24h format (DD/MM/YYYY HH:mm:ss)},
+                        "voucher" : {cost}*/
                     };
                 var settings = {
                 "async": true,
