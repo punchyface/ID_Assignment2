@@ -63,7 +63,7 @@ $(document).ready(function() {
                                     <h4>Product Info:</h4>
                                     <div>
                                         <p>${response[i].product.foodname}</p> <!-- item name -->
-                                        <p>$${response[i].product.foodprice.toFixed(2)}</p> <!-- item price-->
+                                        <p>$${response[i].product.foodprice}</p> <!--item price-->
                                         <p>Qty: ${response[i].qty}</p>
                                     </div>
                                 </div>
