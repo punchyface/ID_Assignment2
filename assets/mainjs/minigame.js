@@ -1,5 +1,6 @@
 $(document).ready(function() {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
+    var  count0 = 0;
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -216,11 +217,18 @@ $(document).ready(function() {
                             "cache-control": "no-cache"
                         },
                         "processData": false,
-                        "data": JSON.stringify(jsondata)
+                        "data": JSON.stringify(jsondata),
+                        "beforeSend": function(){
+                            count0++;
+                            if (count0 != 1){
+                                throw new Error("repeated post");
+                            }
+                        }
                     }
 
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+                        count0 = 0;
                         //show pop-up message
                         displayWinMessage(wheelValue);
                     });
