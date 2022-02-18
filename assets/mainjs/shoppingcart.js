@@ -169,87 +169,110 @@ $(document).ready(function () {
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
         $('.check-out-btn button').on('click', function(event){
-            $(".check-out-btn button").prop( "disabled", true);
-            $(".default-cart-preloader").show();
-            //make body tag unscrollable
-            
-            
+
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
+                voucher = JSON.parse(voucher);
                 let address = $("#address.form-control").val();
+                let remarks = $("#remarks.form-control").val();
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
-                console.log(typeof arrangedate);
-                console.log(typeof arrangetime);
                 let arrangedatetime = new Date(arrangedate + ' ' + arrangetime);
-                console.log(product);
                 console.log(address);
                 console.log(voucher);
                 console.log(arrangedatetime);
-                //post to order entity
-                var jsondata = {
-                        "user": user,
-                        "product": product,
-                        "address": address,
-                        "arrangedatetime": arrangedatetime,
-                        "voucher" : [voucher]
-                    };
+                tocheck(address, order-error);
+
+                //change voucher status
+                var jsondata = {"status": false};
                 var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://onlinefood-ef2c.restdb.io/rest/order",
-                "method": "POST",
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${voucher._id}`,
+                "method": "PATCH",
                 "headers": {
                     "content-type": "application/json",
                     "x-apikey": APIKEY,
                     "cache-control": "no-cache"
                 },
                 "processData": false,
-                "data": JSON.stringify(jsondata)
+                "data": JSON.stringify(jsondata),
+                "beforeSend": function(){
+                    $(".check-out-btn button").prop( "disabled", true);
+                    $(".default-cart-preloader").show();
+                    //make body tag unscrollable
                 }
-                $.ajax(settings).done(function (response) {
-                    console.log(response);
-                    let totalsum = 0.00;
-                    var allsubtotals = document.getElementsByClassName('subtotal')
-                    for(var i = 0; i < allsubtotals.length; i++){
-                        var subtotal = allsubtotals[i];
-                        totalsum += parseFloat(subtotal.innerHTML);
-                    }
+                }
 
-                    let minspend = 50
-                    if (totalsum >= minspend){
-                        var jsondata = {"user": user};
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": "https://onlinefood-ef2c.restdb.io/rest/game",
-                            "method": "POST",
-                            "headers": {
-                                "content-type": "application/json",
-                                "x-apikey": APIKEY,
-                                "cache-control": "no-cache"
-                            },
-                            "processData": false,
-                            "data": JSON.stringify(jsondata)
+                $.ajax(settings).done(function (response) {
+                console.log(response);
+                    
+                    //post to order entity
+                    var jsondata = {
+                            "user": user,
+                            "product": product,
+                            "address": address,
+                            "arrangedatetime": arrangedatetime,
+                            "voucher" : [voucher._id],
+                            "remarks" : remarks
+                        };
+                    var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://onlinefood-ef2c.restdb.io/rest/order",
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": APIKEY,
+                        "cache-control": "no-cache"
+                    },
+                    "processData": false,
+                    "data": JSON.stringify(jsondata)
+                    }
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+                        let totalsum = 0.00;
+                        var allsubtotals = document.getElementsByClassName('subtotal')
+                        for(var i = 0; i < allsubtotals.length; i++){
+                            var subtotal = allsubtotals[i];
+                            totalsum += parseFloat(subtotal.innerHTML);
                         }
-                        $.ajax(settings).done(function (response) {
-                            console.log(response);
-                            document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`
+
+                        let minspend = 50
+                        if (totalsum >= minspend){
+                            var jsondata = {"user": user};
+                            var settings = {
+                                "async": true,
+                                "crossDomain": true,
+                                "url": "https://onlinefood-ef2c.restdb.io/rest/game",
+                                "method": "POST",
+                                "headers": {
+                                    "content-type": "application/json",
+                                    "x-apikey": APIKEY,
+                                    "cache-control": "no-cache"
+                                },
+                                "processData": false,
+                                "data": JSON.stringify(jsondata)
+                            }
+                            $.ajax(settings).done(function (response) {
+                                console.log(response);
+                                document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`
+                                //Clear local storage
+                                localStorage.clear();
+                                //show popup/modal
+                                $(document).ready(showModal());
+                            });
+                        }
+                        else{
                             //Clear local storage
                             localStorage.clear();
                             //show popup/modal
-                            $(document).ready(showModal());
-                        });
-                    }
-                    else{
-                        //Clear local storage
-                        localStorage.clear();
-                        //show popup/modal
-                        showModal();
-                    }
+                            showModal();
+                        }
+                    })
                 })
                     
             })
@@ -596,5 +619,14 @@ $(document).ready(function () {
             getItemInCart(checkstorage);
         }
     }
+
+    //validator
+    function tocheck(idcheck, area) {
+        const inpObj = document.getElementById(idcheck);
+        if (!inpObj.checkValidity()) {
+        document.getElementById(area).innerHTML = `<b>${inpObj.validationMessage} Located in (${idcheck})</b>`;
+        throw new Error();
+        } 
+    } 
 
 })
