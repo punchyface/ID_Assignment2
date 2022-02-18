@@ -177,7 +177,6 @@ $(document).ready(function () {
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
                 voucher = JSON.parse(voucher);
-                console.log(voucher);
 
                 let address = $("#address.form-control").val();
                 let remarks = $("#remarks.form-control").val();
@@ -186,6 +185,8 @@ $(document).ready(function () {
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
                 let arrangedatetime = arrangedate + ' ' + arrangetime;
+                
+                console.log("working");
 
                 tocheck(address, order-error);
 
