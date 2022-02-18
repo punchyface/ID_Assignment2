@@ -1,6 +1,4 @@
-body{
-    height: 100vh;
-}
+
 /* preloader
 ---------------------------------------------------------------------------*/
 .preload-order{
@@ -15,6 +13,7 @@ body{
     display: flex;
     width: auto;
     height: auto;
+    min-height: 100vh;
 }
 .mini-nav{
     display: flex;
@@ -36,15 +35,16 @@ body{
 .order-display-area{
     display: block;
     width: 100%;
+    height: auto;
     padding: 5px;
     background-color: #f7f7f7;
+    min-height: 100vh;
 }
 .previous-order-content{
-    top: 7%;
-    left: 5%;
+    padding-top: 50px;
+    padding-left: 50px;
     width: auto;
     height: auto;
-    position: relative;
     overflow: hidden;
 }
 
@@ -167,7 +167,6 @@ body{
         font-size: 20px;
     }
     .previous-order-content{
-        position: initial;
         width: auto;
         height: auto;
         padding-top: 40px;
