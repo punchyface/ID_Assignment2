@@ -191,7 +191,8 @@ $(document).ready(function () {
                 //change voucher status
                 if (voucher != null){
                     console.log("if working");
-                    var jsondata = {"status": false};
+                    console.log(voucher);
+                    var jsondata = {"user": user, "cost" : voucher.cost, "status": false};
                     var settings = {
                         "async": true,
                         "crossDomain": true,
@@ -220,7 +221,6 @@ $(document).ready(function () {
                     console.log(user);
                     console.log(address);
                     product = JSON.parse(localStorage.getItem('Product Details'));
-                    console.log(voucher)
                     var jsondata = {};
                     //post to order entity
                     if (gotvoucher == true){
@@ -231,8 +231,6 @@ $(document).ready(function () {
                             "arrangedatetime": arrangedatetime,
                             "remarks" : remarks, 
                             "voucher" : [voucher._id]
-
-                            
                         };
                     }
                     else{
