@@ -343,6 +343,10 @@ $(document).ready(function () {
                 nextopentime = time.add(timeslotsinterval - diff, 'minutes')
                 starthour = Number(nextopentime.format("HH"))
                 nextopenmin = Number(nextopentime.format("mm"))
+                diffsec = 60 - Number(time.format("ss"))
+                timeouttime = diffsec * 1000 + diff * 60000;
+                console.log(timeouttime)
+                setTimeout(function(){listtimeslots(selecteddate)}, timeouttime)
             }
             else{
                 starthour = openhour
