@@ -70,7 +70,9 @@ $(document).ready(function() {
                             //minus attempt and update page
                             attempt -= 1;
                             $(".no-attempt").html(attempt);
-                            
+                            //reset counter
+                            count = 0;
+
                             wheel.style.transition = 'all 5s ease-out';
                             deg = spinTheWheel(deg);
                             //remove tuple
