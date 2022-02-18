@@ -177,6 +177,7 @@ $(document).ready(function () {
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
                 voucher = JSON.parse(voucher);
+                console.log(voucher);
 
                 let address = $("#address.form-control").val();
                 let remarks = $("#remarks.form-control").val();
