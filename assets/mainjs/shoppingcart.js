@@ -171,6 +171,8 @@ $(document).ready(function () {
         $('.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
+            //make body tag unscrollable
+            $("body").addClass("body-load");
             
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -231,6 +233,8 @@ $(document).ready(function () {
                             document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`
                             //Clear local storage
                             localStorage.clear();
+                            //remove class from body tag
+                            $("body").removeClass("body-load");
                             //show popup/modal
                             $(document).ready(showModal());
                         });
@@ -238,6 +242,8 @@ $(document).ready(function () {
                     else{
                         //Clear local storage
                         localStorage.clear();
+                        //remove class from body tag
+                        $("body").removeClass("body-load");
                         //show popup/modal
                         showModal();
                     }
