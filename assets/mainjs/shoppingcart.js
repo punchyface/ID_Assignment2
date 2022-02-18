@@ -171,12 +171,12 @@ $(document).ready(function () {
         $('.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
+            validateForm()
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 let voucher = $("#voucher.form-control").val();
                 voucher = JSON.parse(voucher);
-
                 let address = $("#address.form-control").val();
                 let remarks = $("#remarks.form-control").val();
 
@@ -637,14 +637,14 @@ $(document).ready(function () {
     }
 
     //validator
-    function tocheck(idcheck, area) {
-        const inpObj = document.getElementById(idcheck);
-        if (!inpObj.checkValidity()) {
-            document.getElementById(area).innerHTML = `<b>${inpObj.validationMessage} Located in (${idcheck})</b>`;
-            $(".check-out-btn button").prop( "disabled", false);
-            $(".default-cart-preloader").hide();
-            throw new Error();
-        } 
-    } 
+    function validateForm() {
+        let x = document.forms["address-form"]["address"].value;
+        if (x == "") {
+          alert("Address must be filled out");
+          $(".check-out-btn button").prop( "disabled", false);
+          $(".default-cart-preloader").hide();
+          return false;
+        }
+    }
 
 })
