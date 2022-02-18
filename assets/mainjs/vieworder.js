@@ -54,6 +54,7 @@ $(document).ready(function() {
                         let count = 0;
                         let content = "";
                         for(var i = 0; i < response.length; i++){
+                            console.log(response[i]);
                             content += `
                             <div class="orders" id="${response[i]._id}">
                                 <div class="order-img">
