@@ -21,7 +21,7 @@ $(document).ready(function () {
             console.log(response);
             let content ="";
             for (var i = 0; i < response.length; i++) {
-                content = `${content}<span><button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button><button id="remove-cat" class="remove-cat">&times;</button></span>`
+                content = `${content}<button id="${response[i]._id}" data-filter=".${response[i]._id}">${response[i].foodcat}</button><button id="remove-cat" class="remove-cat">&times;</button>`
             }
             document.querySelector(".food-menu-content .mix-item-menu").innerHTML += content;
             
@@ -361,14 +361,14 @@ $(document).ready(function () {
                 let foodcat = btnclicked.previousElementSibling.textContent;
                 console.log(foodcat);
                 // get method to check if can delete
-                checkIfCategoryCanDelete(id, foodcat, btnclicked);
+                checkIfCategoryCanDelete(id, foodcat);
                 
             })
         }
     }
     
     //function to check if category can be deleted
-    function checkIfCategoryCanDelete(id, foodcat, btnclicked){
+    function checkIfCategoryCanDelete(id, foodcat){
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -382,9 +382,9 @@ $(document).ready(function () {
         }
 
         $.ajax(settings).done(function (response){
-            let avail = false;
+            var avail = false;
             for(var i = 0; i < response.length; i++){
-                if(response[i].foodcat == foodcat){
+                if(response[i].foodcat[0].foodcat == foodcat){
                     avail = true;
                 }
             }
@@ -393,8 +393,7 @@ $(document).ready(function () {
                 alert("Unable to delete, there are dishes with this foodcategory.");
             }
             else{
-                //remove it from html
-                btnclicked.closest('span').remove();
+                
                 //call function to remove category
                 removeFoodCategory(id);
             }
@@ -420,6 +419,7 @@ $(document).ready(function () {
             location.reload();
         });
     }
+
 
 
 
