@@ -217,6 +217,8 @@ $(document).ready(function () {
                 }
                
                 function postorder(){    
+                    console.log(user);
+                    console.log(address);
                     //post to order entity
                     var jsondata = {
                             "user": user,
