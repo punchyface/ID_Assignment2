@@ -212,6 +212,7 @@ $(document).ready(function () {
                     }
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+                        count0 = 0;
                         postorder(true)
                     })
 
@@ -255,7 +256,13 @@ $(document).ready(function () {
                             "cache-control": "no-cache"
                         },
                         "processData": false,
-                        "data": JSON.stringify(jsondata)
+                        "data": JSON.stringify(jsondata),
+                        "beforeSend": function(){
+                            count0++;
+                            if (count0 != 1){
+                                throw new Error();
+                            }
+                        }
                     }
                     $.ajax(settings).done(function (response) {
                         console.log(response);
