@@ -55,6 +55,7 @@ $(document).ready(function() {
                         let content = "";
                         for(var i = 0; i < response.length; i++){
                             var keyname = Object.values(response[i].product)[0];
+                            let image = keyname.foodimageurl;
                             let foodname = keyname.foodname;
                             let itemprice = keyname.foodprice;
                             let qty = keyname.qty;
@@ -62,7 +63,7 @@ $(document).ready(function() {
                             content += `
                             <div class="orders" id="${response[i]._id}">
                                 <div class="order-img">
-                                    <img src="${response[i].product.Object.keys(response[i].product)[0].foodimageurl}" alt="">
+                                    <img src="${image}" alt="">
                                 </div>
                                 <div class="order-info">
                                     <h4>Product Info:</h4>
