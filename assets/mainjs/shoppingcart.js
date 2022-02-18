@@ -174,7 +174,6 @@ $(document).ready(function () {
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
-                product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
                 voucher = JSON.parse(voucher);
 
@@ -220,6 +219,9 @@ $(document).ready(function () {
                 function postorder(){    
                     console.log(user);
                     console.log(address);
+                    product = JSON.parse(localStorage.getItem('Product Details'))
+                    console.log(product)
+                    console.log(voucher)
                     //post to order entity
                     var jsondata = {
                             "user": user,
