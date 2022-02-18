@@ -181,7 +181,7 @@ $(document).ready(function () {
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
-                let arrangedatetime;
+                let arrangedatetime = new Date(arrangedate + ' ' + arrangetime);
                 //post to order entity
                 var jsondata = {
                         "user": user,
