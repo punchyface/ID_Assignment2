@@ -146,9 +146,6 @@ $(document).ready(function() {
                     document.querySelector('.close-reward-btn').addEventListener('click', function(e){
                         e.preventDefault();
                         $('.win-message').css('display', 'none');
-                        //enable buttons
-                        document.querySelector('.close-btn').style.pointerEvents = 'auto';
-                        document.querySelector('.spin-btn').style.pointerEvents = 'auto';
                     })
                 }
 
@@ -182,12 +179,15 @@ $(document).ready(function() {
                                 console.log(attempt);
                                 //method to spin the wheel
                                 attempt = spin(id,user,attempt);
-
+                                //enable buttons
+                                document.querySelector('.close-btn').style.pointerEvents = 'auto';
                             }
                         }
                         if(attempt == 0){
                             //disable button to spin
                             $('.spin-btn').prop('disabled', true);
+                            //enable buttons
+                            document.querySelector('.close-btn').style.pointerEvents = 'auto';
                         }
                         
                         
