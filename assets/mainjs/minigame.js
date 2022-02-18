@@ -170,7 +170,7 @@ $(document).ready(function() {
                     
                     $.ajax(settings).done(function (response) {
                         var attempt = response.length;
-
+                        for (var i = 0; i < response.length; i++){
                             //check if attempt is more than 0
                             if(attempt > 0){
                                 //user id
@@ -182,13 +182,12 @@ $(document).ready(function() {
                                 //method to spin the wheel
                                 attempt = spin(id,user,attempt);
 
-                                
                             }
-                            else{
-                                //disable button to spin
-                                $('.spin-btn').prop('disabled', true);
-                            }
-
+                        }
+                            
+                        //disable button to spin
+                        $('.spin-btn').prop('disabled', true);
+                            
                         
                     });
                 }
