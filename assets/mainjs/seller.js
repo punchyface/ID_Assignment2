@@ -355,16 +355,51 @@ $(document).ready(function () {
             button.addEventListener('click', function(event){
                 event.preventDefault();
                 let btnclicked = event.target;
-                //remove it from html
-                btnclicked.closest('span').remove();
                 //get id of btn clicked
                 let id = btnclicked.previousElementSibling.id;
-                //call function to remove category
-                removeFoodCategory(id);
+                //get foodcat of button clicked
+                let foodcat = btnclicked.previousElementSibling.textContent;
+                console.log(foodcat);
+                // get method to check if can delete
+                checkIfCategoryCanDelete(id, foodcat, btnclicked);
+                
             })
         }
     }
     
+    //function to check if category can be deleted
+    function checkIfCategoryCanDelete(id, foodcat, btnclicked){
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://onlinefood-ef2c.restdb.io/rest/menu",
+            "method": "GET",
+            "headers": {
+              "content-type": "application/json",
+              "x-apikey": APIKEY,
+              "cache-control": "no-cache"
+            }
+        }
+
+        $.ajax(settings).done(function (response){
+            let avail = false;
+            for(var i = 0; i < response.length; i++){
+                if(response[i].foodcat == foodcat){
+                    avail = true;
+                }
+            }
+
+            if(avail == true){
+                alert("Unable to delete, there are dishes with this foodcategory.");
+            }
+            else{
+                //remove it from html
+                btnclicked.closest('span').remove();
+                //call function to remove category
+                removeFoodCategory(id);
+            }
+        })
+    }
 
     //function to remove food category
     function removeFoodCategory(id){
