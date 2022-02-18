@@ -57,17 +57,20 @@ $(document).ready(function() {
                             console.log(response[i]);
                             console.log(response[i].product);
                             console.log(response[i].product[0]);
+                            var keyname = Object.keys(response[i].product)[0];
+                            console.log(keyname);
+
                             content += `
                             <div class="orders" id="${response[i]._id}">
                                 <div class="order-img">
-                                    <img src="${response[i].product[0].foodimageurl}" alt="">
+                                    <img src="${response[i].product.Object.keys(response[i].product)[0].foodimageurl}" alt="">
                                 </div>
                                 <div class="order-info">
                                     <h4>Product Info:</h4>
                                     <div>
-                                        <p>${response[i].product[0].foodname}</p> <!-- item name -->
-                                        <p>$${response[i].product[0].foodprice}</p> <!--item price-->
-                                        <p>Qty: ${response[i].product[0].qty}</p>
+                                        <p>${response[i].Object.keys(response[i].product)[0].foodname}</p> <!-- item name -->
+                                        <p>$${response[i].Object.keys(response[i].product)[0].foodprice}</p> <!--item price-->
+                                        <p>Qty: ${response[i].Object.keys(response[i].product)[0].qty}</p>
                                     </div>
                                 </div>
                                 <div class="delivery-info">
@@ -127,6 +130,29 @@ $(document).ready(function() {
                     $.ajax(settings).done(function (response) {
                         console.log(response);
                     });
+                }
+
+                //function to check if category can be deleted
+                function getfoodname(product){
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "https://onlinefood-ef2c.restdb.io/rest/menu",
+                        "method": "GET",
+                        "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": APIKEY,
+                        "cache-control": "no-cache"
+                        }
+                    }
+
+                    $.ajax(settings).done(function (response){
+                        for(var i = 0; i < response.length; i++){
+                            if(response[i].foodname == product){
+                                return response[i].foodname;
+                            }
+                        }
+                    })
                 }
 
 
