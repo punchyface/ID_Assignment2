@@ -169,6 +169,8 @@ $(document).ready(function () {
         /*to clear all items in local storage and cart (checkout)
         -------------------------------------------------------------------------------*/
         $('.check-out-btn button').on('click', function(event){
+            $(".check-out-btn button").prop( "disabled", true);
+            $(".default-cart-preloader").show();
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -183,7 +185,6 @@ $(document).ready(function () {
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
                 let arrangedatetime = arrangedate + ' ' + arrangetime;
-                console.log(arrangedatetime)
 
                 tocheck(address, order-error);
 
@@ -201,12 +202,7 @@ $(document).ready(function () {
                             "cache-control": "no-cache"
                         },
                         "processData": false,
-                        "data": JSON.stringify(jsondata),
-                            "beforeSend": function(){
-                                $(".check-out-btn button").prop( "disabled", true);
-                                $(".default-cart-preloader").show();
-                                //make body tag unscrollable
-                            }
+                        "data": JSON.stringify(jsondata)
                     }
                     $.ajax(settings).done(function (response) {
                         console.log(response);
@@ -239,11 +235,7 @@ $(document).ready(function () {
                             "cache-control": "no-cache"
                         },
                         "processData": false,
-                        "data": JSON.stringify(jsondata),
-                        "beforeSend": function(){
-                            $(".check-out-btn button").prop( "disabled", true);
-                            $(".default-cart-preloader").show();
-                        }
+                        "data": JSON.stringify(jsondata)
                     }
                     $.ajax(settings).done(function (response) {
                         console.log(response);
@@ -636,8 +628,10 @@ $(document).ready(function () {
     function tocheck(idcheck, area) {
         const inpObj = document.getElementById(idcheck);
         if (!inpObj.checkValidity()) {
-        document.getElementById(area).innerHTML = `<b>${inpObj.validationMessage} Located in (${idcheck})</b>`;
-        throw new Error();
+            document.getElementById(area).innerHTML = `<b>${inpObj.validationMessage} Located in (${idcheck})</b>`;
+            $(".check-out-btn button").prop( "disabled", false);
+            $(".default-cart-preloader").hide();
+            throw new Error();
         } 
     } 
 
