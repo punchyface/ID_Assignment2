@@ -179,6 +179,7 @@ $(document).ready(function() {
                                 $('.no-attempt').html(attempt);
                                 //enable button to spin
                                 $('.spin-btn').prop('disabled', false);
+                                console.log(attempt);
                                 //method to spin the wheel
                                 attempt = spin(id,user,attempt);
 
