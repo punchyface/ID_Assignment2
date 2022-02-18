@@ -89,6 +89,10 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 ## Credits
 **Content**
 * Codes references:
+    * Page layout/template:
+        - https://elements.envato.com/?adposition=&gclid=EAIaIQobChMIqZav9aqJ9gIVlX8rCh22AQWDEAAYASAAEgJr3vD_BwE
+
+
     * Shopping Cart:
         - https://youtu.be/B20Getj_Zk4
         - https://youtu.be/PoTGs38DR9E
@@ -139,5 +143,10 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 
 ## Page Link
 **https://punchyface.github.io/ID_Assignment2/**
+
+## Demo Link
+* Requires NgeeAnn email to access
+    * https://connectnpedu.sharepoint.com/:v:/s/IDAssignment2/ETKtJOJtWWVHm1sRWFSc0pkBuh29_HSW02i1imYgcTEjNQ
+    
 
 
