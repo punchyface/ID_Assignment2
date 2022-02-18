@@ -173,7 +173,6 @@ $(document).ready(function () {
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
             validateForm()
-            count0++;
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -205,8 +204,9 @@ $(document).ready(function () {
                         "data": JSON.stringify(jsondata),
                         "beforeSend": function(){
                             count0++;
+
                             if (count0 != 1){
-                                throw new error();
+                                throw new Error("repeated patch");
                             }
                         }
                     }
@@ -260,7 +260,7 @@ $(document).ready(function () {
                         "beforeSend": function(){
                             count0++;
                             if (count0 != 1){
-                                throw new Error();
+                                throw new Error("repeated post");
                             }
                         }
                     }
@@ -431,7 +431,6 @@ $(document).ready(function () {
             }
             for (i = 0; i < timeslots.length; i++)
             {
-                console.log(timeslots[i])
                 document.querySelector("select#arrangetime.form-control").innerHTML += ` <option value='${timeslots[i]}'>${timeslots[i]}</option>`
             }
         }   
