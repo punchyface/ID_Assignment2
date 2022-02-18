@@ -172,7 +172,6 @@ $(document).ready(function () {
         $('td.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
-            validateForm()
 
             oktaSignIn.session.get(function (res) {
                 user = res.userId
@@ -261,6 +260,9 @@ $(document).ready(function () {
                             count0++;
                             if (count0 != 1){
                                 throw new Error("repeated post");
+                            }
+                            else{
+                                validateForm()
                             }
                         }
                     }
@@ -661,7 +663,7 @@ $(document).ready(function () {
           alert("Address must be filled out");
           $(".check-out-btn button").prop( "disabled", false);
           $(".default-cart-preloader").hide();
-          return false;
+          throw new Error("Address must be filled out");
         }
     }
 

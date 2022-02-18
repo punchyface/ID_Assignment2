@@ -1,6 +1,7 @@
 $(document).ready(function() {
     const APIKEY = '61e0110da0f7d226f9b75dbc';
     var  count0 = 0;
+    var delsuccess = false;
     var oktaSignIn = new OktaSignIn({
         baseUrl: "https://dev-77878233.okta.com",
         logo: 'assets/img/logo.png',
@@ -64,7 +65,6 @@ $(document).ready(function() {
                     $(".spin-btn").on('click', function(e){
                         e.preventDefault();
                         count += 1;
-                        arraycounter += 1;
 
                         if(count == 1 && attempt > 0){
                             //disable buttons
@@ -79,6 +79,7 @@ $(document).ready(function() {
                             wheel.style.transition = 'all 5s ease-out';
                             deg = spinTheWheel(deg);
                             //remove tuple
+                            arraycounter += 1;
                             removeTupleFromGame(idarray[arraycounter], deg);
 
                             //when spin is over
@@ -103,7 +104,7 @@ $(document).ready(function() {
                         
                     })
                     //function to delete tuple
-                    function removeTupleFromGame(id, deg){
+                    function removeTupleFromGame(id){
                         var settings = {
                             "async": true,
                             "crossDomain": true,
@@ -113,11 +114,19 @@ $(document).ready(function() {
                                 "content-type": "application/json",
                                 "x-apikey": APIKEY,
                                 "cache-control": "no-cache"
+                            },
+                            "beforeSend": function(){
+                                count0++;
+                                if (count0 != 1){
+                                    throw new Error("repeated delete");
+                                }
                             }
                         }
                         
                         $.ajax(settings).done(function (response) {
                             console.log(response);
+                            count0 = 0
+                            delsuccess = true
                             
                         });
                     }
@@ -178,7 +187,7 @@ $(document).ready(function() {
                     $.ajax(settings).done(function (response) {
                         var attempt = response.length;
                         var idarray = [];
-                        for (var i = 0; i < attempt - 1; i++){
+                        for (var i = 0; i < attempt; i++){
                             idarray.push(response[i]._id);
                         }
                         //check if attempt is more than 0
@@ -219,9 +228,14 @@ $(document).ready(function() {
                         "processData": false,
                         "data": JSON.stringify(jsondata),
                         "beforeSend": function(){
-                            count0++;
-                            if (count0 != 1){
-                                throw new Error("repeated post");
+                            if (delsuccess == true){
+                                count0++;
+                                if (count0 != 1){
+                                    throw new Error("repeated post");
+                                }
+                            }
+                            else{
+                                throw new Error("game attempt is not deleted")
                             }
                         }
                     }
@@ -229,6 +243,7 @@ $(document).ready(function() {
                     $.ajax(settings).done(function (response) {
                         console.log(response);
                         count0 = 0;
+                        delsuccess = false
                         //show pop-up message
                         displayWinMessage(wheelValue);
                     });
