@@ -22,7 +22,7 @@
       left: 50%;
       transform: translate(-50%,-50%);
       height: 100%;
-      margin-top: 25%;
+      margin-top: 10%;
       overflow-x: hidden;
       overflow-y: hidden;
   }
