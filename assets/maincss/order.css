@@ -143,10 +143,10 @@
         height: auto;
     }
     .orders{
-        display: block;
-        width: 90%;
+        display: flex;
+        width: 80%;
         height: auto;
-        margin-left: 30px;
+        margin-left: 50px;
         
     }
     .orders p{
@@ -191,7 +191,7 @@
         height: auto;
     }
     .orders{
-        flex-wrap: wrap;
+        display: block;
         width: 80%;
         height: auto;
     }
