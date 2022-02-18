@@ -12,7 +12,8 @@
 .order-page-container{
     display: flex;
     width: auto;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
 }
 .mini-nav{
     display: flex;
@@ -34,12 +35,14 @@
 .order-display-area{
     display: block;
     width: 100%;
+    height: auto;
     padding: 5px;
     background-color: #f7f7f7;
+    min-height: 100vh;
 }
 .previous-order-content{
-    padding-top: 20px;
-    padding-left: 20px;
+    padding-top: 50px;
+    padding-left: 50px;
     width: auto;
     height: auto;
     overflow: hidden;
@@ -164,7 +167,6 @@
         font-size: 20px;
     }
     .previous-order-content{
-        position: initial;
         width: auto;
         height: auto;
         padding-top: 40px;
