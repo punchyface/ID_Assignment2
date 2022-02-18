@@ -60,14 +60,14 @@ $(document).ready(function() {
                     }
                     $(".spin-btn").on('click', function(e){
                         e.preventDefault();
+                        //minus attempt and update page
+                        attempt -= 1;
+                        $(".no-attempt").html(attempt);
                         //disable buttons
                         document.querySelector('.close-btn').style.pointerEvents = 'none';
                         document.querySelector('.spin-btn').style.pointerEvents = 'none';
                         wheel.style.transition = 'all 5s ease-out';
                         deg = spinTheWheel(deg);
-                        //minus attempt and update page
-                        attempt -= 1;
-                        $(".no-attempt").html(attempt);
                         //remove tuple
                         removeTupleFromGame(id);
                         //return attempt
@@ -76,9 +76,7 @@ $(document).ready(function() {
                 
                     //when spin is over
                     wheel.addEventListener('transitionend', function(){
-                        //enable buttons
-                        document.querySelector('.close-btn').style.pointerEvents = 'auto';
-                        document.querySelector('.spin-btn').style.pointerEvents = 'auto';
+                        
 
                         //get actual degree
                         var actualDeg = deg % 360;
@@ -125,6 +123,9 @@ $(document).ready(function() {
                     document.querySelector('.close-reward-btn').addEventListener('click', function(e){
                         e.preventDefault();
                         $('.win-message').css('display', 'none');
+                        //enable buttons
+                        document.querySelector('.close-btn').style.pointerEvents = 'auto';
+                        document.querySelector('.spin-btn').style.pointerEvents = 'auto';
                     })
                 }
 
