@@ -310,7 +310,7 @@ $(document).ready(function () {
         //store opening hour
         const openhour = 8;
         //store closing hour
-        const closehour = 25;
+        const closehour = 24;
         //store opening min (must be a factor of time slots interval)
         const openmin = 30;
         //store closing min (must be a factor of time slots interval)
@@ -343,10 +343,11 @@ $(document).ready(function () {
 
         function listdate(){
             datelist = [];
-            time = moment().format("HH:mm");
+            time = moment();
             document.querySelector("select#arrangedate.form-control").innerHTML = null;
             date = moment()
-            if ((time >= openingtime && time <= closingtime) === false){
+            diff = timeslotsinterval - (Number(time.format("mm")) % timeslotsinterval) + prepareduration;
+            if ((time.format("HH:mm") >= openingtime && time.add(diff, "minutes").format("HH:mm") <= closingtime) === false){
                 if (date.format("HH") < moment({hour: openhour}).format("HH")){
                     datelist.push(date.format("DD/MM/YYYY"));
                     for (i = 1; i <= preorderday; i++ ){
@@ -373,6 +374,7 @@ $(document).ready(function () {
 
 
         function listtimeslots(selecteddate){
+            console.log(selecteddate)
             time = moment().add(prepareduration, 'minutes')
             document.querySelector("select#arrangetime.form-control").innerHTML = null;
             if ((selecteddate == time.format("DD/MM/YYYY")) && (time.format("HH:mm") >= openingtime && time.format("HH:mm") <= closingtime)){
@@ -413,6 +415,7 @@ $(document).ready(function () {
             }
             for (i = 0; i < timeslots.length; i++)
             {
+                console.log(timeslots[i])
                 document.querySelector("select#arrangetime.form-control").innerHTML += ` <option value='${timeslots[i]}'>${timeslots[i]}</option>`
             }
         }   
