@@ -145,8 +145,10 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 **https://punchyface.github.io/ID_Assignment2/**
 
 ## Demo Link
-* Requires NgeeAnn email to access
+* **https://drive.google.com/file/d/1il53VC_FMVTM8GY7OHuZqBkG4TQXmUd4/view?usp=sharing**
+
+* Requires NgeeAnn email to access (backup)
     * https://connectnpedu.sharepoint.com/:v:/s/IDAssignment2/ETKtJOJtWWVHm1sRWFSc0pkBuh29_HSW02i1imYgcTEjNQ
-    
+
 
 
