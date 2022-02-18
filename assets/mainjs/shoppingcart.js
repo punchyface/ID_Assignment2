@@ -276,9 +276,9 @@ $(document).ready(function () {
 
         let starthour = openhour;
         nextopenmin = openmin;
-        openingtime = moment({hour: openhour,minute: openmin})
+        openingtime = moment({hour: openhour,minute: openmin}).format("HH:mm")
 
-        closingtime = moment({hour: closehour,minute: closemin})
+        closingtime = moment({hour: closehour,minute: closemin}).format("HH:mm")
 
         listdate();
         // on first time
@@ -296,26 +296,25 @@ $(document).ready(function () {
             datelist = [];
             time = moment().format("HH:mm");
             document.querySelector("select#arrangedate.form-control").innerHTML = null;
-
+            date = moment()
             if ((time >= openingtime && time <= closingtime) === false){
-                date = moment()
                 console.log("hi")
                 if (date.format("HH") < moment({hour: openhour}).format("HH")){
                     datelist.push(date.format("DD/MM/YYYY"));
                     for (i = 1; i <= preorderday; i++ ){
-                        datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                        datelist.push(date.add( 1,'days').format("DD/MM/YYYY"))
                     }
                 }
                 else{
                     for (i = 1; i <= preorderday + 1; i++ ){
-                        datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                        datelist.push(date.add( 1,'days').format("DD/MM/YYYY"))
                     }
                 }
             }
             else{
                 datelist.push(date.format("DD/MM/YYYY"));
                 for (i = 1; i <= preorderday; i++ ){
-                    datelist.push(date.add( i,'days').format("DD/MM/YYYY"))
+                    datelist.push(date.add( 1,'days').format("DD/MM/YYYY"))
                 }
             }
             
@@ -329,7 +328,7 @@ $(document).ready(function () {
         function listtimeslots(selecteddate){
             time = moment().add(prepareduration, 'minutes')
             document.querySelector("select#arrangetime.form-control").innerHTML = null;
-            if ((selecteddate == time.format("DD/MM/YYYY")) && (time >= openingtime && time <= closingtime)){
+            if ((selecteddate == time.format("DD/MM/YYYY")) && (time.format("HH:mm") >= openingtime && time.format("HH:mm") <= closingtime)){
                 diff = Number(time.format("mm")) % timeslotsinterval
                 nextopentime = time.add(timeslotsinterval - diff, 'minutes')
                 starthour = Number(nextopentime.format("HH"))
