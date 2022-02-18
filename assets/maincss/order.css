@@ -1,3 +1,6 @@
+body{
+    height: 100vh;
+}
 /* preloader
 ---------------------------------------------------------------------------*/
 .preload-order{
@@ -18,7 +21,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 300px;
-    height: 100vh;
+    height: auto;
     text-align: center;
     box-shadow: 6px 0px 5px 0px rgba(0,0,0,0.2);
     z-index: 3;

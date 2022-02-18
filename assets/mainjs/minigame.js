@@ -46,6 +46,7 @@ $(document).ready(function() {
                 -----------------------------------------------------------------------------------------------*/
                 function spin(id,user,attempt){
                     let deg = 0;
+                    let count = 0;
                     let zoneSize = 45;
                     let wheel = document.querySelector('.wheel-border');
                     const valueInWheel = {
@@ -60,18 +61,23 @@ $(document).ready(function() {
                     }
                     $(".spin-btn").on('click', function(e){
                         e.preventDefault();
-                        //minus attempt and update page
-                        attempt -= 1;
-                        $(".no-attempt").html(attempt);
-                        //disable buttons
-                        document.querySelector('.close-btn').style.pointerEvents = 'none';
-                        document.querySelector('.spin-btn').style.pointerEvents = 'none';
-                        wheel.style.transition = 'all 5s ease-out';
-                        deg = spinTheWheel(deg);
-                        //remove tuple
-                        removeTupleFromGame(id);
-                        //return attempt
-                        return attempt;
+                        count += 1;
+
+                        if(count == 1){
+                            //disable buttons
+                            document.querySelector('.close-btn').style.pointerEvents = 'none';
+                            document.querySelector('.spin-btn').style.pointerEvents = 'none';
+                            //minus attempt and update page
+                            attempt -= 1;
+                            $(".no-attempt").html(attempt);
+                            
+                            wheel.style.transition = 'all 5s ease-out';
+                            deg = spinTheWheel(deg);
+                            //remove tuple
+                            removeTupleFromGame(id);
+                            //return attempt
+                            return attempt;
+                        }
                     })
                 }
 
