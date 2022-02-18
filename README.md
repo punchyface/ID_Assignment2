@@ -27,7 +27,7 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 <br>
 
 **Features left to implement** <br>
-- none
+- Create an account for seller
 
 ## Technologies Used
 * HTML
@@ -61,7 +61,30 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
     8. Lazy to create an account? Here's a dummy account you can use (email: j@t.com, Password: ////////).
     <br>
 2. Add to cart:
-    1. Click on the menu/order 
+    1. Click on the menu/order now button found in the home page (index.html).
+    2. It will take you to the menu page, where you can see a variety of dishes to be ordered from.
+    3. Try clicking the different category, notice that the foods/dishes would be filtered to based on what is clicked.
+    4. Try adding a dish to cart by clicking the add to cart button on that particular dish.
+    5. A pop-up will prompt you to login/signup if you have not done so, however if you're logged in you wiil be able to add the items to the cart.
+    6. Notice as you click the add to cart buttons, the number of items in the cart and the number on the dish itself would increase accordingly.
+    <br>
+3. View cart items:
+    1. Click on the shopping cart logo, located in between Minigame and the profile icon.
+    2. Upon loading the shopping cart page, if there is currently no items in the cart, a notice with the words "your cart is empty" will be shown.
+    3. If there are items in your cart, all the items that you selected would be displayed, with its quantity as well as its price.
+    4. Try clicking the plus button on one of your items.
+    5. Notice as you hover over the button there is a change in color to the button.
+    6. When plus button is clicked, notice that the number of quantity increases as well as its subtotal.
+    7. Similarly, when the minus button is clicked the number of quantity decreases as well as its subtotal.
+    8. Try clicking the remove button of an item, it would remove the item from your cart.
+    <br>
+4. MiniGame:
+    1. Click on the minigame located at the navigation bar.
+    2. A pop-up message would be prompted if not logged in.
+    3. After logging in, if this account that is logged in has made a purchase of more than $50, i attempt to spin the wheel will be given.
+    4. If the account have not made any purchase above that cost $50 or more, the spin button would be disabled.
+    5. Try clicking the spin button if there is an attempt in the account.
+    6. Notice that the wheel would spin and when it stops, a pop-up would appear telling you the prize you won, with the blue triangle indicator as the reward you'll get.
 
 ## Credits
 **Content**
@@ -109,3 +132,9 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
 
 
 **Acknowledgements**
+* Websites used as references
+    * https://www.xianfoods.com/
+    * https://www.backyardburgers.com/
+    * https://g2geogeske.com/
+
+
