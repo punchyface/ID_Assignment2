@@ -80,7 +80,6 @@
 .cart-footer{
     display: grid;
     grid-template-columns: 50% 50%;
-    visibility: hidden;
     border-top: 3px solid #E7272D;
 }
 /* total-price */

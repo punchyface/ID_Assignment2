@@ -285,6 +285,7 @@ $(document).ready(function () {
 
         let starthour = openhour;
         nextopenmin = openmin;
+
         openingtime = moment({hour: openhour,minute: openmin}).format("HH:mm")
 
         closingtime = moment({hour: closehour,minute: closemin}).format("HH:mm")
@@ -342,6 +343,10 @@ $(document).ready(function () {
                 nextopentime = time.add(timeslotsinterval - diff, 'minutes')
                 starthour = Number(nextopentime.format("HH"))
                 nextopenmin = Number(nextopentime.format("mm"))
+            }
+            else{
+                starthour = openhour
+                nextopenmin = openmin
             }
 
             let endmin = 60;
