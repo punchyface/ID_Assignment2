@@ -76,7 +76,7 @@
     height: 100%;
     transform: rotate(-135deg);
 }
-#wheel-value{
+.wheel-value{
     width: 50%;
     height: 50%;
     display: inline-block;
