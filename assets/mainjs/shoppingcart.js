@@ -184,8 +184,7 @@ $(document).ready(function () {
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
-                let arrangedatetime = moment(arrangedate + ' ' + arrangetime).format('DD-MM-YYYY');
-                console.log(arrangedatetime);
+                let arrangedatetime = arrangedate + ' ' + arrangetime;
 
                 tocheck(address, order-error);
 
