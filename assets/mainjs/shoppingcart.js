@@ -207,7 +207,7 @@ $(document).ready(function () {
                     }
                     $.ajax(settings).done(function (response) {
                         console.log(response);
-                        postorder()
+                        postorder(true)
                     })
 
                 }
@@ -216,21 +216,35 @@ $(document).ready(function () {
                     postorder()
                 }
                
-                function postorder(){    
+                function postorder(gotvoucher){    
                     console.log(user);
                     console.log(address);
-                    product = JSON.parse(localStorage.getItem('Product Details'))
-                    console.log(product)
+                    product = JSON.parse(localStorage.getItem('Product Details'));
                     console.log(voucher)
+                    var jsondata = {};
                     //post to order entity
-                    var jsondata = {
+                    if (gotvoucher == true){
+                        var jsondata = {
                             "user": user,
                             "product": product,
                             "address": address,
                             "arrangedatetime": arrangedatetime,
-                            "voucher" : [voucher._id],
-                            "remarks" : remarks
+                            "remarks" : remarks, 
+                            "voucher" : [voucher._id]
+
+                            
                         };
+                    }
+                    else{
+                        var jsondata = {
+                            "user": user,
+                            "product": product,
+                            "address": address,
+                            "arrangedatetime": arrangedatetime,
+                            "remarks" : remarks
+                            
+                        };
+                    }
                     console.log(jsondata)
                     var settings = {
                         "async": true,
