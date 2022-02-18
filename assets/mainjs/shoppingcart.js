@@ -192,6 +192,7 @@ $(document).ready(function () {
 
                 //change voucher status
                 if (voucher != null){
+                    console.log("if working");
                     var jsondata = {"status": false};
                     var settings = {
                         "async": true,
