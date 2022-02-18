@@ -184,14 +184,10 @@ $(document).ready(function () {
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
                 let arrangedatetime = arrangedate + ' ' + arrangetime;
-                
-                console.log("working");
 
 
                 //change voucher status
                 if (voucher != null){
-                    console.log("if working");
-                    console.log(voucher);
                     var jsondata = {"user": user, "cost" : voucher.cost, "status": false};
                     var settings = {
                         "async": true,
@@ -213,13 +209,10 @@ $(document).ready(function () {
 
                 }
                 else{
-                    console.log("else working");
                     postorder()
                 }
                
                 function postorder(gotvoucher){    
-                    console.log(user);
-                    console.log(address);
                     product = JSON.parse(localStorage.getItem('Product Details'));
                     var jsondata = {};
                     //post to order entity
@@ -243,7 +236,6 @@ $(document).ready(function () {
                             
                         };
                     }
-                    console.log(jsondata)
                     var settings = {
                         "async": true,
                         "crossDomain": true,
