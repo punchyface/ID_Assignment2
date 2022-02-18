@@ -58,14 +58,14 @@ $(document).ready(function() {
                             content += `
                             <div class="orders" id="${response[i]._id}">
                                 <div class="order-img">
-                                    <img src="${response[i].product.foodimageurl}" alt="">
+                                    <img src="${response[i].product[0].foodimageurl}" alt="">
                                 </div>
                                 <div class="order-info">
                                     <h4>Product Info:</h4>
                                     <div>
-                                        <p>${response[i].product.foodname}</p> <!-- item name -->
-                                        <p>$${response[i].product.foodprice}</p> <!--item price-->
-                                        <p>Qty: ${response[i].qty}</p>
+                                        <p>${response[i].product[0].foodname}</p> <!-- item name -->
+                                        <p>$${response[i].product[0].foodprice}</p> <!--item price-->
+                                        <p>Qty: ${response[i].product[0].qty}</p>
                                     </div>
                                 </div>
                                 <div class="delivery-info">
