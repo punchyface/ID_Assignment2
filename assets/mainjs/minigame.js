@@ -73,24 +73,6 @@ $(document).ready(function() {
                         //return attempt
                         return attempt;
                     })
-                
-                    //when spin is over
-                    wheel.addEventListener('transitionend', function(){
-                        
-
-                        //get actual degree
-                        var actualDeg = deg % 360;
-                        //remove transition
-                        wheel.style.transition = 'none';
-                        //make sure wheel is at right position
-                        wheel.style.transform = `rotate(${actualDeg}deg)`;
-                        //Calculate and get value
-                        var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
-                        //call get voucher method
-                        postVoucher(wheelValue, user);
-                        //display popup
-                        displayWinMessage(wheelValue);
-                    })
                 }
 
                 //function to spin the wheel
@@ -186,6 +168,23 @@ $(document).ready(function() {
                     
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+                        //when spin is over
+                        wheel.addEventListener('transitionend', function(){
+                            
+
+                            //get actual degree
+                            var actualDeg = deg % 360;
+                            //remove transition
+                            wheel.style.transition = 'none';
+                            //make sure wheel is at right position
+                            wheel.style.transform = `rotate(${actualDeg}deg)`;
+                            //Calculate and get value
+                            var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
+                            //call get voucher method
+                            postVoucher(wheelValue, user);
+                            //display popup
+                            displayWinMessage(wheelValue);
+                        })
                     });
                 }
 
