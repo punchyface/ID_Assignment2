@@ -57,8 +57,9 @@ $(document).ready(function() {
                             console.log(response[i]);
                             console.log(response[i].product);
                             console.log(response[i].product[0]);
-                            var keyname = Object.keys(response[i].product)[0];
-                            console.log(keyname);
+                            var keyname = Object.values(response[i].product)[0];
+                            let foodname = keyname.foodname;
+                            console.log(foodname);
 
                             content += `
                             <div class="orders" id="${response[i]._id}">
