@@ -229,6 +229,7 @@ $(document).ready(function () {
                             "voucher" : [voucher._id],
                             "remarks" : remarks
                         };
+                    console.log(jsondata)
                     var settings = {
                         "async": true,
                         "crossDomain": true,
