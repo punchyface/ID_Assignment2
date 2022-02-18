@@ -214,6 +214,7 @@ $(document).ready(function () {
 
                 }
                 else{
+                    console.log("else working");
                     postorder()
                 }
                
