@@ -171,15 +171,24 @@ $(document).ready(function () {
         $('.check-out-btn button').on('click', function(event){
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
+            //make body tag unscrollable
+            
             
             oktaSignIn.session.get(function (res) {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
+                let address = $("#address.form-control").val();
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
-                let arrangedatetime;
+                console.log(typeof arrangedate);
+                console.log(typeof arrangetime);
+                let arrangedatetime = new Date(arrangedate + ' ' + arrangetime);
+                console.log(product);
+                console.log(address);
+                console.log(voucher);
+                console.log(arrangedatetime);
                 //post to order entity
                 var jsondata = {
                         "user": user,
