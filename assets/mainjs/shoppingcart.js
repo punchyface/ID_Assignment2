@@ -188,7 +188,6 @@ $(document).ready(function () {
                 
                 console.log("working");
 
-                tocheck(address, order-error);
 
                 //change voucher status
                 if (voucher != null){
