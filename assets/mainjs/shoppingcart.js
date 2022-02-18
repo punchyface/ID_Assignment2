@@ -182,6 +182,8 @@ $(document).ready(function () {
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
+                console.log(typeof arrangedate);
+                console.log(typeof arrangetime);
                 let arrangedatetime = new Date(arrangedate + ' ' + arrangetime);
                 console.log(product);
                 console.log(address);
@@ -238,8 +240,6 @@ $(document).ready(function () {
                             document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" href="#" id="game">You earn a chance to spin the wheel</a></p>`
                             //Clear local storage
                             localStorage.clear();
-                            //remove class from body tag
-                            $("body").removeClass("body-load");
                             //show popup/modal
                             $(document).ready(showModal());
                         });
@@ -247,8 +247,6 @@ $(document).ready(function () {
                     else{
                         //Clear local storage
                         localStorage.clear();
-                        //remove class from body tag
-                        $("body").removeClass("body-load");
                         //show popup/modal
                         showModal();
                     }
