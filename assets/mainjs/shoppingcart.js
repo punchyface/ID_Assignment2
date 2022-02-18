@@ -28,7 +28,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}"}`,
+                "url": `https://onlinefood-ef2c.restdb.io/rest/voucher?q={"user":"${okuser}", "status": "true"}`,
                 "method": "GET",
                 "headers": {
                     "content-type": "application/json",
