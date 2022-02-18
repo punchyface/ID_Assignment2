@@ -172,7 +172,7 @@ $(document).ready(function () {
             $(".check-out-btn button").prop( "disabled", true);
             $(".default-cart-preloader").show();
             //make body tag unscrollable
-            $("body").addClass("body-load");
+            
             
             oktaSignIn.session.get(function (res) {
                 user = res.userId
