@@ -74,11 +74,46 @@ $(document).ready(function() {
                             wheel.style.transition = 'all 5s ease-out';
                             deg = spinTheWheel(deg);
                             //remove tuple
-                            removeTupleFromGame(id, wheel);
+                            removeTupleFromGame(id, deg);
                             //return attempt
                             return attempt;
                         }
                     })
+                    //function to delete tuple
+                    function removeTupleFromGame(id, deg){
+                        var settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": `https://onlinefood-ef2c.restdb.io/rest/game/${id}`,
+                            "method": "DELETE",
+                            "headers": {
+                                "content-type": "application/json",
+                                "x-apikey": APIKEY,
+                                "cache-control": "no-cache"
+                            }
+                        }
+                        
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            //when spin is over
+                            wheel.addEventListener('transitionend', function(){
+                                
+
+                                //get actual degree
+                                var actualDeg = deg % 360;
+                                //remove transition
+                                wheel.style.transition = 'none';
+                                //make sure wheel is at right position
+                                wheel.style.transform = `rotate(${actualDeg}deg)`;
+                                //Calculate and get value
+                                var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
+                                //call get voucher method
+                                postVoucher(wheelValue, user);
+                                //display popup
+                                displayWinMessage(wheelValue);
+                            })
+                        });
+                    }
                 }
 
                 //function to spin the wheel
@@ -155,42 +190,6 @@ $(document).ready(function() {
                             }
 
                         
-                    });
-                }
-
-                //function to delete tuple
-                function removeTupleFromGame(id, wheel){
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": `https://onlinefood-ef2c.restdb.io/rest/game/${id}`,
-                        "method": "DELETE",
-                        "headers": {
-                        "content-type": "application/json",
-                        "x-apikey": APIKEY,
-                        "cache-control": "no-cache"
-                        }
-                    }
-                    
-                    $.ajax(settings).done(function (response) {
-                        console.log(response);
-                        //when spin is over
-                        wheel.addEventListener('transitionend', function(){
-                            
-
-                            //get actual degree
-                            var actualDeg = deg % 360;
-                            //remove transition
-                            wheel.style.transition = 'none';
-                            //make sure wheel is at right position
-                            wheel.style.transform = `rotate(${actualDeg}deg)`;
-                            //Calculate and get value
-                            var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
-                            //call get voucher method
-                            postVoucher(wheelValue, user);
-                            //display popup
-                            displayWinMessage(wheelValue);
-                        })
                     });
                 }
 
