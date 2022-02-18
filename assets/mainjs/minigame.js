@@ -185,10 +185,11 @@ $(document).ready(function() {
 
                             }
                         }
-                            
-                        //disable button to spin
-                        $('.spin-btn').prop('disabled', true);
-                            
+                        if(attempt == 0){
+                            //disable button to spin
+                            $('.spin-btn').prop('disabled', true);
+                        }
+                        
                         
                     });
                 }
