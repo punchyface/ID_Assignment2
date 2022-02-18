@@ -74,7 +74,7 @@ $(document).ready(function() {
                             wheel.style.transition = 'all 5s ease-out';
                             deg = spinTheWheel(deg);
                             //remove tuple
-                            removeTupleFromGame(id);
+                            removeTupleFromGame(id, wheel);
                             //return attempt
                             return attempt;
                         }
@@ -159,7 +159,7 @@ $(document).ready(function() {
                 }
 
                 //function to delete tuple
-                function removeTupleFromGame(id){
+                function removeTupleFromGame(id, wheel){
                     var settings = {
                         "async": true,
                         "crossDomain": true,
