@@ -111,8 +111,6 @@ $(document).ready(function() {
                                 var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
                                 //call get voucher method
                                 postVoucher(wheelValue, user);
-                                //display popup
-                                displayWinMessage(wheelValue);
                             })
                         });
                     }
