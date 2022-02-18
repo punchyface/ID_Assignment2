@@ -59,7 +59,7 @@ $(document).ready(function() {
                             let foodname = keyname.foodname;
                             let itemprice = keyname.foodprice;
                             let qty = keyname.qty;
-                            let date = new Date(response[i].arrangedatetime);
+                            let datetime = response[i].arrangedatetime;
 
                             content += `
                             <div class="orders" id="${response[i]._id}">
@@ -77,7 +77,7 @@ $(document).ready(function() {
                                 <div class="delivery-info">
                                     <h4>Delivery Info:</h4>
                                     <p>${response[i].address}</p>
-                                    <p>${date.toUTCString()}</p>
+                                    <p>${datetime}</p>
                                 </div>
                                 <div class="delivery-info">
                                     <h4>Remarks:</h4>
