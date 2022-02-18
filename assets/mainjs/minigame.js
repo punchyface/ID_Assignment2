@@ -97,8 +97,6 @@ $(document).ready(function() {
                             console.log(response);
                             //when spin is over
                             wheel.addEventListener('transitionend', function(){
-                                
-
                                 //get actual degree
                                 var actualDeg = deg % 360;
                                 //remove transition
