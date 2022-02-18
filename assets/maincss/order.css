@@ -94,8 +94,8 @@
     padding-left: 20px;
 }
 .order-img img{
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     padding: 5px;
     border-radius: 10px;
 }
@@ -104,14 +104,34 @@
     font-weight: bold;
     padding: 0px 15px;
 }
-.remove-single-order{
+#show-more{
     background-color: white;
     border: none;
     transition: all .3s;
+    font-size: 1.5rem;
 }
-.remove-single-order:hover{
+#show-more:hover{
     color: #E7272D;
     transform: rotate(90deg);
+    font-size: 3rem;
+}
+
+.orderitem{
+    display: flex;
+    align-content: center;
+}
+
+.modal-header{
+    margin-bottom: 1.5rem;
+}
+
+hr{
+    padding-bottom: 0.15rem;
+    margin-bottom: 1rem;
+    background-color:#E7272D;
+}
+.modal-content hr:last-child{
+    display: none;
 }
 /* fall message
 ---------------------------------------------------------------------------*/
