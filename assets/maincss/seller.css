@@ -49,6 +49,9 @@ div.fooditem div.row{
     padding-left: 0px;
     transition: all .2s;
 }
+.remove-cat.active::after{
+    background: transparent !important;
+}
 .remove-cat:hover{
     color: #E7272D;
     transform: rotate(-90deg);
