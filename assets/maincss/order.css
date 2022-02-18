@@ -1,6 +1,4 @@
-body{
-    height: 100vh;
-}
+
 /* preloader
 ---------------------------------------------------------------------------*/
 .preload-order{
@@ -14,7 +12,7 @@ body{
 .order-page-container{
     display: flex;
     width: auto;
-    height: auto;
+    height: 100vh;
 }
 .mini-nav{
     display: flex;
@@ -40,11 +38,10 @@ body{
     background-color: #f7f7f7;
 }
 .previous-order-content{
-    top: 7%;
-    left: 5%;
+    padding-top: 20px;
+    padding-left: 20px;
     width: auto;
     height: auto;
-    position: relative;
     overflow: hidden;
 }
 
