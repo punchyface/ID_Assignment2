@@ -44,7 +44,8 @@ $(document).ready(function() {
 
                 /* start of external functions
                 -----------------------------------------------------------------------------------------------*/
-                function spin(id,user,attempt){
+                function spin(idarray,user,attempt){
+                    let arraycounter = -1;
                     let deg = 0;
                     let count = 0;
                     let zoneSize = 45;
@@ -62,6 +63,7 @@ $(document).ready(function() {
                     $(".spin-btn").on('click', function(e){
                         e.preventDefault();
                         count += 1;
+                        arraycounter += 1;
 
                         if(count == 1){
                             //disable buttons
@@ -76,7 +78,7 @@ $(document).ready(function() {
                             wheel.style.transition = 'all 5s ease-out';
                             deg = spinTheWheel(deg);
                             //remove tuple
-                            removeTupleFromGame(id, deg);
+                            removeTupleFromGame(idarray[arraycounter], deg);
                             //return attempt
                             return attempt;
                         }
@@ -170,22 +172,21 @@ $(document).ready(function() {
                     
                     $.ajax(settings).done(function (response) {
                         var attempt = response.length;
+                        var idarray = [];
                         for (var i = 0; i < attempt - 1; i++){
-                            //check if attempt is more than 0
-                            if(attempt > 0){
-                                //user id
-                                var id = response[i]._id;
-                                //update attempt page
-                                $('.no-attempt').html(attempt);
-                                //enable button to spin
-                                $('.spin-btn').prop('disabled', false);
-                                console.log(attempt);
-                                //method to spin the wheel
-                                attempt = spin(id,user,attempt);
-
-                            }
+                            idarray.push(response[i]._id);
                         }
-                        if(attempt == 0){
+                        //check if attempt is more than 0
+                        if(attempt > 0){
+                            //update attempt page
+                            $('.no-attempt').html(attempt);
+                            //enable button to spin
+                            $('.spin-btn').prop('disabled', false);
+                            console.log(attempt);
+                            //method to spin the wheel
+                            attempt = spin(idarray,user,attempt);
+                        }
+                        else{
                             //disable button to spin
                             $('.spin-btn').prop('disabled', true);
                         }
