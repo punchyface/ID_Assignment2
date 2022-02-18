@@ -174,127 +174,133 @@ $(document).ready(function () {
             $(".default-cart-preloader").show();
             validateForm()
             count0++;
-            if (count0 = 1){
-                oktaSignIn.session.get(function (res) {
-                    user = res.userId
-                    let voucher = $("#voucher.form-control").val();
-                    voucher = JSON.parse(voucher);
-                    let address = $("#address.form-control").val();
-                    let remarks = $("#remarks.form-control").val();
 
-                    //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
-                    let arrangedate = $("#arrangedate.form-control").val();
-                    let arrangetime = $("#arrangetime.form-control").val();
-                    let arrangedatetime = arrangedate + ' ' + arrangetime;
+            oktaSignIn.session.get(function (res) {
+                user = res.userId
+                let voucher = $("#voucher.form-control").val();
+                voucher = JSON.parse(voucher);
+                let address = $("#address.form-control").val();
+                let remarks = $("#remarks.form-control").val();
+
+                //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
+                let arrangedate = $("#arrangedate.form-control").val();
+                let arrangetime = $("#arrangetime.form-control").val();
+                let arrangedatetime = arrangedate + ' ' + arrangetime;
 
 
-                    //change voucher status
-                    if (voucher != null){
-                        var jsondata = {"status": false};
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${voucher._id}`,
-                            "method": "PATCH",
-                            "headers": {
-                                "content-type": "application/json",
-                                "x-apikey": APIKEY,
-                                "cache-control": "no-cache"
-                            },
-                            "processData": false,
-                            "data": JSON.stringify(jsondata)
+                //change voucher status
+                if (voucher != null){
+                    var jsondata = {"status": false};
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": `https://onlinefood-ef2c.restdb.io/rest/voucher/${voucher._id}`,
+                        "method": "PATCH",
+                        "headers": {
+                            "content-type": "application/json",
+                            "x-apikey": APIKEY,
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false,
+                        "data": JSON.stringify(jsondata),
+                        "beforeSend": function(){
+                            count0++;
+                            if (count0 != 1){
+                                throw new error();
+                            }
                         }
-                        $.ajax(settings).done(function (response) {
-                            console.log(response);
-                            postorder(true)
-                        })
+                    }
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+                        postorder(true)
+                    })
 
+                }
+                else{
+                    postorder()
+                }
+            
+                function postorder(gotvoucher){    
+                    product = JSON.parse(localStorage.getItem('Product Details'));
+                    var jsondata = {};
+                    //post to order entity
+                    if (gotvoucher == true){
+                        var jsondata = {
+                            "user": user,
+                            "product": product,
+                            "address": address,
+                            "arrangedatetime": arrangedatetime,
+                            "remarks" : remarks, 
+                            "voucher" : [voucher._id]
+                        };
                     }
                     else{
-                        postorder()
+                        var jsondata = {
+                            "user": user,
+                            "product": product,
+                            "address": address,
+                            "arrangedatetime": arrangedatetime,
+                            "remarks" : remarks
+                            
+                        };
                     }
-                
-                    function postorder(gotvoucher){    
-                        product = JSON.parse(localStorage.getItem('Product Details'));
-                        var jsondata = {};
-                        //post to order entity
-                        if (gotvoucher == true){
-                            var jsondata = {
-                                "user": user,
-                                "product": product,
-                                "address": address,
-                                "arrangedatetime": arrangedatetime,
-                                "remarks" : remarks, 
-                                "voucher" : [voucher._id]
-                            };
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "https://onlinefood-ef2c.restdb.io/rest/order",
+                        "method": "POST",
+                        "headers": {
+                            "content-type": "application/json",
+                            "x-apikey": APIKEY,
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false,
+                        "data": JSON.stringify(jsondata)
+                    }
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+                        let totalsum = 0.00;
+                        var allsubtotals = document.getElementsByClassName('subtotal')
+                        for(var i = 0; i < allsubtotals.length; i++){
+                            var subtotal = allsubtotals[i];
+                            totalsum += parseFloat(subtotal.innerHTML);
                         }
-                        else{
-                            var jsondata = {
-                                "user": user,
-                                "product": product,
-                                "address": address,
-                                "arrangedatetime": arrangedatetime,
-                                "remarks" : remarks
-                                
-                            };
-                        }
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": "https://onlinefood-ef2c.restdb.io/rest/order",
-                            "method": "POST",
-                            "headers": {
-                                "content-type": "application/json",
-                                "x-apikey": APIKEY,
-                                "cache-control": "no-cache"
-                            },
-                            "processData": false,
-                            "data": JSON.stringify(jsondata)
-                        }
-                        $.ajax(settings).done(function (response) {
-                            console.log(response);
-                            let totalsum = 0.00;
-                            var allsubtotals = document.getElementsByClassName('subtotal')
-                            for(var i = 0; i < allsubtotals.length; i++){
-                                var subtotal = allsubtotals[i];
-                                totalsum += parseFloat(subtotal.innerHTML);
-                            }
 
-                            let minspend = 50
-                            if (totalsum >= minspend){
-                                var jsondata = {"user": user};
-                                var settings = {
-                                    "async": true,
-                                    "crossDomain": true,
-                                    "url": "https://onlinefood-ef2c.restdb.io/rest/game",
-                                    "method": "POST",
-                                    "headers": {
-                                        "content-type": "application/json",
-                                        "x-apikey": APIKEY,
-                                        "cache-control": "no-cache"
-                                    },
-                                    "processData": false,
-                                    "data": JSON.stringify(jsondata)
-                                }
-                                $.ajax(settings).done(function (response) {
-                                    console.log(response);
-                                    document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" onclick='document.getElementById("game").click();' href="#">You earn a chance to spin the wheel</a></p>`
-                                    //Clear local storage
-                                    localStorage.clear();
-                                    //show popup/modal
-                                    $(document).ready(showModal());
-                                });
+                        let minspend = 50
+                        if (totalsum >= minspend){
+                            var jsondata = {"user": user};
+                            var settings = {
+                                "async": true,
+                                "crossDomain": true,
+                                "url": "https://onlinefood-ef2c.restdb.io/rest/game",
+                                "method": "POST",
+                                "headers": {
+                                    "content-type": "application/json",
+                                    "x-apikey": APIKEY,
+                                    "cache-control": "no-cache"
+                                },
+                                "processData": false,
+                                "data": JSON.stringify(jsondata)
                             }
-                            else{
+                            $.ajax(settings).done(function (response) {
+                                console.log(response);
+                                document.querySelector("#modal-checkout .modal-para").innerHTML += `<p><a class="btn btn-primary" onclick='document.getElementById("game").click();' href="#">You earn a chance to spin the wheel</a></p>`
                                 //Clear local storage
                                 localStorage.clear();
                                 //show popup/modal
-                                showModal();
-                            }
-                        }) 
-                    } 
-                })
-            }
+                                $(document).ready(showModal());
+                            });
+                        }
+                        else{
+                            //Clear local storage
+                            localStorage.clear();
+                            //show popup/modal
+                            showModal();
+                        }
+                    }) 
+                } 
+            })
+            
         })
 
     }

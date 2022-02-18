@@ -39,7 +39,7 @@ $(document).ready(function() {
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": `https://onlinefood-ef2c.restdb.io/rest/order?q={"user":"${okuser}"}`,
+                        "url": `https://onlinefood-ef2c.restdb.io/rest/order?q={"user":"${okuser}"}&sort=_created&dir=-1`,
                         "method": "GET",
                         "headers": {
                             "content-type": "application/json",
