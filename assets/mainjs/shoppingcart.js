@@ -178,6 +178,7 @@ $(document).ready(function () {
                 user = res.userId
                 product = JSON.parse(localStorage.getItem('Product Details'))
                 let voucher = $("#voucher.form-control").val();
+                let address = $("#address.form-control").val();
                 //{datetime book in 24h format (DD/MM/YYYY HH:mm:ss)}
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
