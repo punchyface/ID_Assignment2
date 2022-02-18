@@ -310,7 +310,7 @@ $(document).ready(function () {
         //store opening hour
         const openhour = 8;
         //store closing hour
-        const closehour = 22;
+        const closehour = 25;
         //store opening min (must be a factor of time slots interval)
         const openmin = 30;
         //store closing min (must be a factor of time slots interval)
