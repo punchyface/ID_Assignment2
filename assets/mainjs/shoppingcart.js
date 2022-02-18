@@ -594,12 +594,12 @@ $(document).ready(function () {
         $('.modal-checkout').css('display', 'block');
         //when dismiss btn clicked
         $('.modal-checkout .dismiss-btn').on('click', function(){
-            location.reload();
+            location.href = 'order.html';
         })
         
         //when x btn clicked
         $('.modal-checkout .close-btn').on('click', function(){
-            location.reload();
+            location.href = 'order.html';
         })
     }
 
