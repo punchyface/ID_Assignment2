@@ -308,7 +308,6 @@ $(document).ready(function () {
             document.querySelector("select#arrangedate.form-control").innerHTML = null;
             date = moment()
             if ((time >= openingtime && time <= closingtime) === false){
-                console.log("hi")
                 if (date.format("HH") < moment({hour: openhour}).format("HH")){
                     datelist.push(date.format("DD/MM/YYYY"));
                     for (i = 1; i <= preorderday; i++ ){
@@ -329,7 +328,6 @@ $(document).ready(function () {
             }
             
             for (i = 0; i < datelist.length; i++){
-                console.log(datelist[i]);
                 document.querySelector("select#arrangedate.form-control").innerHTML += ` <option value='${datelist[i]}'>${datelist[i]}</option>`
             }
         }
@@ -339,14 +337,16 @@ $(document).ready(function () {
             time = moment().add(prepareduration, 'minutes')
             document.querySelector("select#arrangetime.form-control").innerHTML = null;
             if ((selecteddate == time.format("DD/MM/YYYY")) && (time.format("HH:mm") >= openingtime && time.format("HH:mm") <= closingtime)){
-                diff = Number(time.format("mm")) % timeslotsinterval
-                nextopentime = time.add(timeslotsinterval - diff, 'minutes')
-                starthour = Number(nextopentime.format("HH"))
-                nextopenmin = Number(nextopentime.format("mm"))
-                diffsec = 60 - Number(time.format("ss"))
-                timeouttime = diffsec * 1000 + diff * 60000;
-                console.log(timeouttime)
-                setTimeout(function(){listtimeslots(selecteddate)}, timeouttime)
+                diff = Number(time.format("mm")) % timeslotsinterval;
+                diffmin = timeslotsinterval - diff
+                diffsec = 60 - Number(time.format("ss"));
+                
+                timeouttime = diffsec * 1000 + diffsec * 60000;
+                setTimeout(function(){listtimeslots(selecteddate)}, timeouttime);
+
+                nextopentime = time.add(diffmin, 'minutes');
+                starthour = Number(nextopentime.format("HH"));
+                nextopenmin = Number(nextopentime.format("mm"));
             }
             else{
                 starthour = openhour
@@ -361,7 +361,7 @@ $(document).ready(function () {
                 }
                 let startmin = 0;
                 if (hour == starthour){
-                    startmin = nextopenmin
+                    startmin = nextopenmin;
                 } 
                 for(min = startmin; min < endmin; min += timeslotsinterval){
                     timeslots.push(
@@ -374,7 +374,6 @@ $(document).ready(function () {
             }
             for (i = 0; i < timeslots.length; i++)
             {
-                console.log(timeslots[i]);
                 document.querySelector("select#arrangetime.form-control").innerHTML += ` <option value='${timeslots[i]}'>${timeslots[i]}</option>`
             }
         }   
