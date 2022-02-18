@@ -85,6 +85,23 @@ We have decided to use a bright and vibrant theme, using colors such as red and 
     4. If the account have not made any purchase above that cost $50 or more, the spin button would be disabled.
     5. Try clicking the spin button if there is an attempt in the account.
     6. Notice that the wheel would spin and when it stops, a pop-up would appear telling you the prize you won, with the blue triangle indicator as the reward you'll get.
+    <br>
+5. Add New product:
+    1. Click on the Seller's site located at the navigation bar.
+    2. Notice that there is a form to add new products into the menu.
+    3. Try clicking the send button without any value, it will show a text message that ask you to fill up the form.
+    4. Try filling the form up and click on the send button, the page would refresh.
+    5. Notice that the product that you entered appear at the bottom of the page.
+    6. Try going to the menu page, you will also be able to view the product that you published.
+    <br>
+6. Update product:
+    1. Head to the seller's site located at the navigation bar.
+    2. Try scrolling to the bottom of the page.
+    3. Notice that all dishes are displayed there with 2 buttons at the button, edit and delete.
+    4. Try clicking on the edit button, a form would be appear with all the current information of the particular dish.
+    5. Try changing a few things and click on the save changes button, notice that the dish/product has been updated.
+    6. Similarly, if you were to click on the delete button, the dish/product would be removed.
+    7. To ensure that the item has been removed, you can head to the menu page to check it out.
 
 ## Credits
 **Content**
