@@ -44,6 +44,77 @@ $(document).ready(function() {
 
                 /* start of external functions
                 -----------------------------------------------------------------------------------------------*/
+                function spin(id,user,attempt){
+                    let deg = 0;
+                    let count = 0;
+                    let zoneSize = 45;
+                    let wheel = document.querySelector('.wheel-border');
+                    const valueInWheel = {
+                        1: 10, //1st item (class item3)
+                        2: 1, //2nd item (anti-clockwise) (class item6)
+                        3: 20, //3rd item (class item1)
+                        4: 4, //4th item (class item4)
+                        5: 2, //5th item (class item7)
+                        6: 15, //6th item (class item2)
+                        7: 5, //7th item (class item5)
+                        8: 8, //8th item (class item8)
+                    }
+                    $(".spin-btn").on('click', function(e){
+                        e.preventDefault();
+                        count += 1;
+
+                        if(count == 1){
+                            //disable buttons
+                            document.querySelector('.close-btn').style.pointerEvents = 'none';
+                            document.querySelector('.spin-btn').style.pointerEvents = 'none';
+                            //minus attempt and update page
+                            attempt -= 1;
+                            $(".no-attempt").html(attempt);
+                            //reset counter
+                            count = 0;
+
+                            wheel.style.transition = 'all 5s ease-out';
+                            deg = spinTheWheel(deg);
+                            //remove tuple
+                            removeTupleFromGame(id, deg);
+                            //return attempt
+                            return attempt;
+                        }
+                    })
+                    //function to delete tuple
+                    function removeTupleFromGame(id, deg){
+                        var settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": `https://onlinefood-ef2c.restdb.io/rest/game/${id}`,
+                            "method": "DELETE",
+                            "headers": {
+                                "content-type": "application/json",
+                                "x-apikey": APIKEY,
+                                "cache-control": "no-cache"
+                            }
+                        }
+                        
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            //when spin is over
+                            wheel.addEventListener('transitionend', function(){
+                                //get actual degree
+                                var actualDeg = deg % 360;
+                                //remove transition
+                                wheel.style.transition = 'none';
+                                //make sure wheel is at right position
+                                wheel.style.transform = `rotate(${actualDeg}deg)`;
+                                //Calculate and get value
+                                var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
+                                //call get voucher method
+                                postVoucher(wheelValue, user);
+                                //display popup
+                                displayWinMessage(wheelValue);
+                            })
+                        });
+                    }
+                }
 
                 //function to spin the wheel
                 function spinTheWheel(deg){
@@ -75,6 +146,9 @@ $(document).ready(function() {
                     document.querySelector('.close-reward-btn').addEventListener('click', function(e){
                         e.preventDefault();
                         $('.win-message').css('display', 'none');
+                        //enable buttons
+                        document.querySelector('.close-btn').style.pointerEvents = 'auto';
+                        document.querySelector('.spin-btn').style.pointerEvents = 'auto';
                     })
                 }
 
@@ -107,81 +181,13 @@ $(document).ready(function() {
                                 $('.spin-btn').prop('disabled', false);
                                 console.log(attempt);
                                 //method to spin the wheel
-                                let deg = 0;
-                                let count = 0;
-                                let zoneSize = 45;
-                                let wheel = document.querySelector('.wheel-border');
-                                const valueInWheel = {
-                                    1: 10, //1st item (class item3)
-                                    2: 1, //2nd item (anti-clockwise) (class item6)
-                                    3: 20, //3rd item (class item1)
-                                    4: 4, //4th item (class item4)
-                                    5: 2, //5th item (class item7)
-                                    6: 15, //6th item (class item2)
-                                    7: 5, //7th item (class item5)
-                                    8: 8, //8th item (class item8)
-                                }
-                                $(".spin-btn").on('click', function(e){
-                                    e.preventDefault();
-                                    count += 1;
-
-                                    if(count == 1){
-                                        //disable buttons
-                                        document.querySelector('.close-btn').style.pointerEvents = 'none';
-                                        document.querySelector('.spin-btn').style.pointerEvents = 'none';
-                                        //minus attempt and update page
-                                        attempt -= 1;
-                                        $(".no-attempt").html(attempt);
-                                        //reset counter
-                                        count = 0;
-
-                                        wheel.style.transition = 'all 5s ease-out';
-                                        deg = spinTheWheel(deg);
-                                        //remove tuple
-                                        var settings = {
-                                            "async": true,
-                                            "crossDomain": true,
-                                            "url": `https://onlinefood-ef2c.restdb.io/rest/game/${id}`,
-                                            "method": "DELETE",
-                                            "headers": {
-                                                "content-type": "application/json",
-                                                "x-apikey": APIKEY,
-                                                "cache-control": "no-cache"
-                                            }
-                                        }
-                                        
-                                        $.ajax(settings).done(function (response) {
-                                            console.log(response);
-                                            //when spin is over
-                                            wheel.addEventListener('transitionend', function(){
-                                                //get actual degree
-                                                var actualDeg = deg % 360;
-                                                //remove transition
-                                                wheel.style.transition = 'none';
-                                                //make sure wheel is at right position
-                                                wheel.style.transform = `rotate(${actualDeg}deg)`;
-                                                //Calculate and get value
-                                                var wheelValue = valueFromWheel(actualDeg, zoneSize, valueInWheel);
-                                                //call get voucher method
-                                                postVoucher(wheelValue, user);
-                                                //display popup
-                                                displayWinMessage(wheelValue);
-                                            })
-                                        });
-                                    }
-                                    
-                                })
-                                //enable buttons
-                                document.querySelector('.close-btn').style.pointerEvents = 'auto';
-                                document.querySelector('.spin-btn').style.pointerEvents = 'auto';  
+                                attempt = spin(id,user,attempt);
 
                             }
                         }
                         if(attempt == 0){
                             //disable button to spin
                             $('.spin-btn').prop('disabled', true);
-                            //enable buttons
-                            document.querySelector('.close-btn').style.pointerEvents = 'auto';
                         }
                         
                         
