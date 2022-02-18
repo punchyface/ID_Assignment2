@@ -183,6 +183,10 @@ $(document).ready(function () {
                 let arrangedate = $("#arrangedate.form-control").val();
                 let arrangetime = $("#arrangetime.form-control").val();
                 let arrangedatetime = new Date(arrangedate + ' ' + arrangetime);
+                console.log(product);
+                console.log(address);
+                console.log(voucher);
+                console.log(arrangedatetime);
                 //post to order entity
                 var jsondata = {
                         "user": user,
